@@ -7,4 +7,4 @@
 /dataSources/
 /dataSources.local.xml
 # Environment variables
-backend/config/.env.local
+backend/config/
