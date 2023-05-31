@@ -58,7 +58,7 @@ To set up the Surf Store project on your local machine, follow these steps:
    cd Web-Surf-Store
    ```
    
-3. Create a `.env` file in the `backend/config` directory and provide the necessary environment variables. Refer to the `.env.example` file for the required variables.
+3. Refer to `.env.local` file in the `backend/config` directory and provide the necessary environment variables.
 
 4. Start the development server:
 
