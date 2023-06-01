@@ -9,7 +9,12 @@ mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnif
     .then(() => console.log('connected to mongodb'))
     .catch(err => console.log(err))
 
+//Routes
+import notFoundRoutes from "./routes/notFound.routes.js";
+
+
 const app = express()
+app.use("*", notFoundRoutes);
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
