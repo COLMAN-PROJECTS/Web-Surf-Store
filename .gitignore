@@ -8,3 +8,5 @@
 /dataSources.local.xml
 # Environment variables
 /backend/config/.env
+/backend/config/.env.test
+/backend/config/.env.local

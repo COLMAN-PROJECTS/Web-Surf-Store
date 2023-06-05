@@ -1,9 +1,9 @@
-import express from "express"
+const express = require('express');
 
 const router = express.Router();
 
 router.get('*', (req, res)=>{
-    res.status(404).sendFile(process.cwd() + 'backend/notFound.html');
+    res.status(404).sendFile( 'backend/notFound.html');
 });
 
-export default router;
+module.exports = router;
