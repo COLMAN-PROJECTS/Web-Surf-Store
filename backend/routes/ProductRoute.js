@@ -6,7 +6,7 @@ const {
     getProductById,
     updateProduct,
     deleteProduct
-} = require('../controllers/productController');
+} = require('../controllers/ProductController');
 
 // Create a new product
 router.post('/', async (req, res) => {
