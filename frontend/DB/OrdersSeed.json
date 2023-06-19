@@ -1,0 +1,20 @@
+{
+  "_id": {
+    "$oid": "647e2a7e961b8485a84dbdcb"
+  },
+  "user": "647e274b961b8485a84dbdc5",
+  "products":
+  [
+    {
+      "product": "647e274b961b8485a84dbdc5",
+      "quantity": 2
+    },
+    {
+      "product": "647e24aa961b8485a84dbdbb",
+      "quantity": 1
+    }
+  ],
+  "totalPrice": 519.97,
+  "shippingAddress": "123 Main St, Tel Aviv, Israel",
+  "paymentMethod": "Credit Card"
+}
