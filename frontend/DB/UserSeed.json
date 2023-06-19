@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "647e274b961b8485a84dbdc5"
+  },
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": " $2b$10$1v9WIXGO3DyI2f/c0I9Q3e6K14V1u7X/lhTzG9bX2t1yQeCQz7fwO",
+  "phone": "1234567890",
+  "role": "manager"
+},
+  {
+    "_id": {
+      "$oid": "647e274b961b8485a84dbdc6"
+    },
+    "name": "Eviatar d",
+    "email": "eviatard@example.com",
+    "password": " $2b$10$1v9WIXGO3DyI2f/c0I9Q3e6K14V1u7X/lhTzG9bX2t1yQeCQz7fw1",
+    "phone": "1234567891",
+    "role": "user"
+  },
+  {
+    "_id": {
+      "$oid": "647e274b961b8485a84dbdc7"
+    },
+    "name": "Matan d",
+    "email": "matand@example.com",
+    "password": " $2b$10$1v9WIXGO3DyI2f/c0I9Q3e6K14V1u7X/lhTzG9bX2t1yQeCQz7fw2",
+    "phone": "1234567892",
+    "role": "user"
+  },
+  {
+    "_id": {
+      "$oid": "647e274b961b8485a84dbdc8"
+    },
+    "name": "Dan d",
+    "email": "dand@example.com",
+    "password": " $2b$10$1v9WIXGO3DyI2f/c0I9Q3e6K14V1u7X/lhTzG9bX2t1yQeCQz7fw3",
+    "phone": "1234567893",
+    "role": "user"
+  }]
+
