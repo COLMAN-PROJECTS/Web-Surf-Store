@@ -1,0 +1,163 @@
+[{
+  "_id": {
+    "$oid": "647e24aa961b8485a84dbdbb"
+  },
+  "name": "Surfboard",
+  "description": "A high-quality surfboard for all skill levels.",
+  "price": 499.99,
+  "frontImage": "https://picsum.photos/200",
+  "category": "Surfing",
+  "details":
+    {
+      "size": "5.0",
+      "brand": "XYZ Surf Co."
+    }
+  ,
+  "images":
+    {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
+    }
+},
+
+
+  {
+    "_id": {
+      "$oid": "647e271a961b8485a84dbdc4"
+    },
+    "name": "Wetsuit",
+    "description": "A comfortable and durable wetsuit for cold water surfing.",
+    "price": 249.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "Surfing",
+    "details":
+    {
+      "size": "XL",
+      "brand": "ABC Surf Gear"
+    }
+  ,
+    "images":
+    {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "647e274b961b8485a84dbdc5"
+    },
+    "name": "Surf Wax",
+    "description": "A high-quality surf wax for optimal traction on your board.",
+    "price": 9.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "Surfing",
+    "details":
+    {
+      "size": "None",
+      "brand": "Surf Essentials"
+    }
+  ,
+    "images":
+    {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "647e275f961b8485a84dbdc6"
+    },
+    "name": "Surfboard Leash",
+    "description": "A durable leash to keep your surfboard attached to your ankle.",
+    "price": 29.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "Surfing",
+    "details":
+    {
+      "size": "6.0",
+      "brand": "Surf Leash Co."
+    }
+  ,
+    "images":
+    {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "647e2777961b8485a84dbdc7"
+    },
+    "name": "Surfboard Fins",
+    "description": "A set of high-performance surfboard fins for improved maneuverability.",
+    "price": 79.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "Surfing",
+    "details":
+  {
+    "size": "S",
+    "brand": "FinTech Surf"
+  }
+,
+  "images":
+  {
+    "image1": "https://picsum.photos/200",
+    "image2": "https://picsum.photos/200",
+    "image3": "https://picsum.photos/200",
+    "image4": "https://picsum.photos/200"
+  }
+  },
+  {
+    "_id": {
+      "$oid": "647e2786961b8485a84dbdc8"
+    },
+    "name": "Surfboard Bag",
+    "description": "A protective bag to carry and store your surfboard safely.",
+    "price": 89.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "Surfing",
+    "details":
+    {
+      "size": "S",
+      "brand": "WaveRider"
+    }
+  ,
+    "images":
+    {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "647e27a0961b8485a84dbdc9"
+    },
+    "name": "Surfboard Traction Pad",
+    "description": "A non-slip traction pad for enhanced grip and control on your surfboard.",
+    "price": 19.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "Surfing",
+    "details":
+    {
+      "size": "5.0",
+      "brand": "GripMaster"
+    }
+  ,
+    "images":
+    {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
+    }
+  }]
