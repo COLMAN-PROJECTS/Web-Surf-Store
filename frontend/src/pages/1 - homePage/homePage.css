@@ -9,7 +9,7 @@
   font-size: var(--bs-icon-size);
   width: calc(var(--bs-icon-size) * 2);
   height: calc(var(--bs-icon-size) * 2);
-  color: var(--bs-primary);
+  color: #0d6efd;
 }
 
 .bs-icon-xs {
@@ -35,17 +35,17 @@
 }
 
 .bs-icon.bs-icon-primary {
-  color: var(--bs-white);
-  background: var(--bs-primary);
+  color: #ffffff;
+  background: #0d6efd;
 }
 
 .bs-icon.bs-icon-primary-light {
-  color: var(--bs-primary);
-  background: rgba(var(--bs-primary-rgb), .2);
+  color: #0d6efd;
+  background: rgba(13, 110, 253, .2);
 }
 
 .bs-icon.bs-icon-semi-white {
-  color: var(--bs-primary);
+  color: #0d6efd;
   background: rgba(255, 255, 255, .5);
 }
 
@@ -71,9 +71,8 @@ footer {
 }
 
 .footer-navigation h3 {
-  margin: 0;
   font: normal 36px Cookie, cursive;
-  margin-bottom: 20px;
+  margin: 0 0 20px;
   color: #fff;
 }
 
@@ -302,15 +301,9 @@ nav.navbar.navbar-default.navbar-fixed-top {
 }
 
 .input-login {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 5px 10px;
   width: 90%;
 }
-
-<div class="checkbox" > <label > <input type="checkbox" / > Label </label > </div > {
-                                                                              }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
   background-color: transparent;
@@ -321,20 +314,17 @@ nav.navbar.navbar-default.navbar-fixed-top {
 
 li.active {
   background: #00B16A;
-  box-shadow: 0 1px 0px 0px #00B16A;
+  box-shadow: 0 1px #00B16A;
 }
 
 .navbar-default .navbar-nav > .active > a {
   background-color: #00B16A;
-  box-shadow: 0 1px 0px 0px #00B16A;
+  box-shadow: 0 1px #00B16A;
   background-image: none;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
   background: #00B16A;
-}
-
-a {
 }
 
 .block {
@@ -366,24 +356,6 @@ a {
 .details {
   border-top: 1px solid #e5e5e5;
   padding: 18px 20px;
-}
-
-.buttons {
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  background: rgba(255, 255, 255, .5);
-  opacity: 0;
-  -webkit-transition: opacity .25s ease-in;
-  -ms-transition: opacity .25s ease-in;
-  -moz-transition: opacity .25s ease-in;
-  -o-transition: opacity .25s ease-in;
-  transition: opacity .25s ease-in;
 }
 
 .product:hover .buttons, .product:hover a {
@@ -443,7 +415,7 @@ a.preview {
 .info h4::after {
   display: block;
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   content: "";
   width: 40px;
   height: 2px;
@@ -472,7 +444,6 @@ a.preview {
   font-size: 14px;
   font-weight: 700;
   color: #372f2b;
-  background: url("../img/clock-icon.png") no-repeat;
   background-position: 0 2px;
 }
 
@@ -483,7 +454,7 @@ a.preview {
 }
 
 .rating span.star {
-  font-family: FontAwesome;
+  font-family: FontAwesome, serif;
   font-weight: 400;
   font-style: normal;
   display: inline-block;
@@ -628,7 +599,6 @@ a.preview {
   font-size: 14px;
   font-weight: 700;
   color: #372f2b;
-  background: url("../img/clock-icon.png") no-repeat;
   background-position: 0 2px;
 }
 
@@ -639,7 +609,7 @@ a.preview {
 }
 
 .rating span.star {
-  font-family: FontAwesome;
+  font-family: FontAwesome, serif;
   font-weight: 400;
   font-style: normal;
   display: inline-block;
@@ -675,7 +645,6 @@ a.preview {
 
 @media (min-width: 768px) {
   .hero-content {
-    background: transparent;
     height: 500px;
     background-color: rgba(255,255,255,0.3);
   }
@@ -683,7 +652,6 @@ a.preview {
 
 @media (min-width: 768px) {
   .hero-content {
-    background: transparent;
     height: 500px;
     background-color: rgba(255,255,255,0.3);
   }
@@ -720,7 +688,7 @@ a.preview {
 }
 
 .h4-back {
-  color: var(--bs-card-bg);
+  color: #212529;
   background: rgba(11,27,29,0.3);
   border-radius: 7px;
   border-bottom-color: rgb(255, 255, 255);
