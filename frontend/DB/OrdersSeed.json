@@ -1,4 +1,6 @@
-{
+[
+
+  {
   "_id": {
     "$oid": "647e2a7e961b8485a84oocb1"
   },
@@ -19,4 +21,43 @@
   "totalPrice": 1199.98,
   "shippingAddress": "123 Main St, Tel Aviv, Israel",
   "paymentMethod": "Credit Card"
-}
+},
+
+
+{
+  "_id": {
+    "$oid": "647e2a7e961b8485a84oocb2"
+  },
+  "user": "647e274b961b8485a84dbdc8",
+  "products":
+  [
+    {
+      "product": "647e271a961b8485a84dbdd7",
+      "quantity": 1,
+      "unitPrice": 89.99,
+    }
+  ],
+  "totalPrice": 89.99,
+  "shippingAddress": "10th Dov Grunner St, Tel Aviv, Israel",
+  "paymentMethod": "Credit Card"
+},
+
+  {
+    "_id": {
+      "$oid": "647e2a7e961b8485a84oocb3"
+    },
+    "user": "647e274b961b8485a84dbdc7",
+    "products":
+    [
+      {
+        "product": "647e271a961b8485a84dbdd1",
+        "quantity": 1,
+        "unitPrice": 249.99
+      }
+    ],
+    "totalPrice": 249.99,
+    "shippingAddress": "12th Ben Zion St, Tel Aviv, Israel",
+    "paymentMethod": "Credit Card"
+  }
+
+]
