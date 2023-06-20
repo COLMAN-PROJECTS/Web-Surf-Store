@@ -9,12 +9,16 @@ mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnif
     .then(() => console.log('connected to mongodb'))
     .catch(err => console.log(err))
 //Routes
-const notFoundRoutes = require ("./routes/notFound.routes.js");
-
+const ProductRoute = require('./routes/ProductRoute.js')
 
 const app = express()
-app.use('*', notFoundRoutes);
+
+app.use(express.static('public'));
+app.use('/products', ProductRoute);
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/public/notFound.html')
+})
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.listen(process.env.Port)
+app.listen(process.env.PORT)
