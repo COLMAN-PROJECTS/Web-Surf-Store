@@ -31,7 +31,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
     }
 
     $(document).ready(function () {
-      let imageUrl = '/frontend/public/assets/images/homePage/imageTitelHomePage.webp';
+      let imageUrl = 'public/assets/images/homePage/imageTitelHomePage.webp';
       let backgroundImage = 'url(' + imageUrl + ') center / cover';
 
       $('#titleImage').css('background', backgroundImage);
