@@ -432,7 +432,7 @@
       "$oid": "647e271a961b8485a84dbde2"
     },
     "name": "Nsp Shapers Union Slot Machine 6´0´´ PU Surfboard",
-    "description": "The NSP Shapers Union Slot Machine 6´0´´ PU Surfboard in white is an ideal board for surfers who are looking for high performance and speed on the waves", ",
+    "description": "The NSP Shapers Union Slot Machine 6´0´´ PU Surfboard in white is an ideal board for surfers who are looking for high performance and speed on the waves",
     "price": 1019.99,
     "frontImage": "https://picsum.photos/200",
     "category": "Surfboards",
@@ -450,7 +450,7 @@
       "image3": "https://picsum.photos/200",
       "image4": "https://picsum.photos/200"
     }
-  }
+  },
 
   {
     "_id": {
@@ -482,7 +482,7 @@
       "$oid": "647e271a961b8485a84dbde4"
     },
     "name": "Aztron Soleil Xtreme 12´0´´ Inflatable Paddle Surf Set",
-    "description": "The most selling all-round and touring board shape combines easy paddling with a windsurf option",",
+    "description": "The most selling all-round and touring board shape combines easy paddling with a windsurf option",
     "price": 1209.99,
     "frontImage": "https://picsum.photos/200",
     "category": "SUP",
@@ -507,7 +507,7 @@
       "$oid": "647e271a961b8485a84dbde5"
     },
     "name": "Aztron Urono Touring 11´6´´ Inflatable Paddle Surf Set",
-    "description": "The most selling all-round and touring board shape combines easy paddling with a windsurf option",",
+    "description": "The most selling all-round and touring board shape combines easy paddling with a windsurf option",
     "price": 1209.99,
     "frontImage": "https://picsum.photos/200",
     "category": "SUP",
@@ -532,7 +532,7 @@
       "$oid": "647e271a961b8485a84dbde6"
     },
     "name": "Aztron Urono Touring 11´4´´ Inflatable Paddle Surf Set",
-    "description": "The most selling all-round and touring board shape combines easy paddling with a windsurf option",",
+    "description": "The most selling all-round and touring board shape combines easy paddling with a windsurf option",
     "price": 1109.99,
     "frontImage": "https://picsum.photos/200",
     "category": "SUP",
