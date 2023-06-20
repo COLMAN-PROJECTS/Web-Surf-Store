@@ -6,7 +6,7 @@
   "description": "A high-quality surfboard for all skill levels.",
   "price": 499.99,
   "frontImage": "https://picsum.photos/200",
-  "category": "Surfing",
+  "category": "Surf Board",
   "details":
     {
       "size": "5.0",

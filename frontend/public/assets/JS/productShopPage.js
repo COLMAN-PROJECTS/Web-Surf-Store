@@ -46,7 +46,94 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
       }))
     }));
 
-    $(document).ready(function () {
+    // $(document).ready(function () {
+    //   let Category = ["All Categories", 'Surfing', 'Sup', 'Wing Board', 'Accessories'];
+    //   let Brand = ["All Brands", 'Starboard', 'JP Australia', 'F-One', 'Gong', 'Aqua Marina'];
+    //   let price = ["All Price"];
+    //   let Size = ["All Sizes", 'Small', 'Medium', 'Large', 'X-Large', '5.0', '5.5', '6.0'];
+    //
+    //   let CategoryList = $('#CategoryList');
+    //   let BrandList = $('#BrandList');
+    //   let priceList = $('#PriceList');
+    //   let SizeList = $('#SizeList');
+    //
+    //   Category.forEach((item) => {
+    //     CategoryList.append('<option value=""> ' + item + '</option>');
+    //   });
+    //
+    //   Brand.forEach((item) => {
+    //     BrandList.append('<option value=""> ' + item + '</option>');
+    //   });
+    //
+    //   price.forEach((item) => {
+    //     priceList.append('<option value=""> ' + item + '</option>');
+    //   });
+    //
+    //   Size.forEach((item) => {
+    //     SizeList.append('<option value=""> ' + item + '</option>');
+    //   });
+    //
+    //   function filterProduct() {
+    //     let selectedCategory = CategoryList.val();
+    //     let selectedBrand = BrandList.val();
+    //     let selectedPrice = priceList.val();
+    //     let selectedSize = SizeList.val();
+    //
+    //     $.ajax({
+    //       method: 'GET',
+    //       url: '/frontend/DB/ProductSeed.json',
+    //       dataType: 'json',
+    //       success: function (products) {
+    //         let filteredProducts = products.filter((product) => {
+    //           return (
+    //             (selectedCategory === 'All Categories' || product.category === selectedCategory) &&
+    //             (selectedBrand === 'All Brands' || product.details.brand === selectedBrand) &&
+    //             (selectedPrice === 'All Price' || product.price.toString() === selectedPrice) &&
+    //             (selectedSize === 'All Sizes' || product.details.size === selectedSize)
+    //           );
+    //         });
+    //
+    //         $('#productContainer').empty();
+    //
+    //         for (let j = 0; j < filteredProducts.length; j++) {
+    //           let productImage = filteredProducts[j].frontImage;
+    //           let productName = filteredProducts[j].name;
+    //           let productPrice = filteredProducts[j].price;
+    //
+    //           let htmlCode = `
+    //                 <div id="productContainer">
+    //                   <div class="col">
+    //                     <div>
+    //                       <a href="#" target="_blank">
+    //                         <img class="img-fluid" style="height: 200px;" src= ${productImage} width="416" height="200">
+    //                       </a>
+    //                       <div class="py-4">
+    //                         <h4 class="text-center"><span style="color: rgb(51, 51, 51);">${productPrice}</span></h4>
+    //                         <p class="text-center"><span style="color: rgb(51, 51, 51);">${productName}</span></p>
+    //                         <button class="btn btn-primary pull-right" type="button" style="margin-bottom: 10px;">
+    //                           <i class="fa fa-cart-plus" style="font-size: 23px;margin-right: 9px;padding-top: 0;margin-top: 0;"></i>
+    //                           Add to cart
+    //                         </button>
+    //                       </div>
+    //                     </div>
+    //                   </div>
+    //                 </div>
+    //               `;
+    //           $('#productContainer').append(htmlCode);
+    //         }
+    //       }
+    //     })
+    //   }
+    //
+    //
+    //   CategoryList.on('change', filterProduct);
+    //   BrandList.on('change', filterProduct);
+    //   priceList.on('change', filterProduct);
+    //   SizeList.on('change', filterProduct);
+    //
+    //   filterProduct();
+    // })
+    $(document).ready(function() {
       let Category = ['All Categories', 'Surf Board', 'Sup', 'Wing Board', 'Accessories'];
       let Brand = ['All Brands', 'Starboard', 'JP Australia', 'F-One', 'Gong', 'Aqua Marina'];
       let price = ['All Price'];
@@ -58,58 +145,87 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
       let SizeList = $('#SizeList');
 
       Category.forEach((item) => {
-        CategoryList.append('<option value=""> ' + item + '</option>');
+        CategoryList.append('<option value="' + item + '">' + item + '</option>');
       });
 
       Brand.forEach((item) => {
-        BrandList.append('<option value=""> ' + item + '</option>');
+        BrandList.append('<option value="' + item + '">' + item + '</option>');
       });
 
       price.forEach((item) => {
-        priceList.append('<option value=""> ' + item + '</option>');
+        priceList.append('<option value="' + item + '">' + item + '</option>');
       });
 
       Size.forEach((item) => {
-        SizeList.append('<option value=""> ' + item + '</option>');
+        SizeList.append('<option value="' + item + '">' + item + '</option>');
       });
 
-    })
+      function filterProducts() {
+        let selectedCategory = CategoryList.val();
+        let selectedBrand = BrandList.val();
+        let selectedPrice = priceList.val();
+        let selectedSize = SizeList.val();
 
-    $(document).ready(function () {
-      $.ajax({
-        url: '/frontend/DB/ProductSeed.json',
-        dataType: 'json',
-        success: function (product) {
-          for (let j = 0; j < product.length; j++) {
-            let productImage = product[j].frontImage;
-            let productName = product[j].name;
-            let productPrice = product[j].price;
+        $.ajax({
+          method: 'GET',
+          url: '/frontend/DB/ProductSeed.json',
+          dataType: 'json',
+          success: function(products) {
+            let filteredProducts = products.filter((product) => {
+              return (
+                (selectedCategory === 'All Categories' || product.category === selectedCategory) &&
+                (selectedBrand === 'All Brands' || product.details.brand === selectedBrand) &&
+                (selectedPrice === 'All Price' || product.price.toString() === selectedPrice) &&
+                (selectedSize === 'All Sizes' || product.details.size === selectedSize)
+              );
+            });
 
-            let htmlCode = `
-                    <div id="productContainer">
-                      <div class="col">
-                        <div>
-                          <a href="#" target="_blank">
-                            <img class="img-fluid" style="height: 200px;" src= ${productImage} width="416" height="200">
-                          </a>
-                          <div class="py-4">
-                            <h4 class="text-center"><span style="color: rgb(51, 51, 51);">${productPrice}</span></h4>
-                            <p class="text-center"><span style="color: rgb(51, 51, 51);">${productName}</span></p>
-                            <button class="btn btn-primary pull-right" type="button" style="margin-bottom: 10px;">
-                              <i class="fa fa-cart-plus" style="font-size: 23px;margin-right: 9px;padding-top: 0;margin-top: 0;"></i>
-                              Add to cart
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  `;
-            $('#productContainer').append(htmlCode);
+            $('#productContainer').empty();
+
+            if(filteredProducts.length === 0) {
+              $('#productContainer').append("<h1> No products found </h1>");
+            }else {
+              for (let j = 0; j < filteredProducts.length; j++) {
+                let productImage = filteredProducts[j].frontImage;
+                let productName = filteredProducts[j].name;
+                let productPrice = filteredProducts[j].price;
+
+                let htmlCode = `
+            <div class="col">
+              <div>
+                <a href="#" target="_blank">
+                  <img class="img-fluid" style="height: 200px;" src="${productImage}" width="416" height="200">
+                </a>
+                <div class="py-4">
+                  <h4 class="text-center"><span style="color: rgb(51, 51, 51);">${productPrice}</span></h4>
+                  <p class="text-center"><span style="color: rgb(51, 51, 51);">${productName}</span></p>
+                  <button class="btn btn-primary pull-right" type="button" style="margin-bottom: 10px;">
+                    <i class="fa fa-cart-plus" style="font-size: 23px;margin-right: 9px;padding-top: 0;margin-top: 0;"></i>
+                    Add to cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+
+                $('#productContainer').append(htmlCode);
+              }
+            }
           }
-        }
-      })
+        });
+      }
 
+      CategoryList.on('change', filterProducts);
+      BrandList.on('change', filterProducts);
+      priceList.on('change', filterProducts);
+      SizeList.on('change', filterProducts);
+
+      // Initial product list load
+      filterProducts();
     });
+
+
+
 
   }()
 }), !1);
