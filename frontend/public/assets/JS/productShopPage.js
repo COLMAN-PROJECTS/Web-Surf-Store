@@ -38,7 +38,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
       $("#titleH1").text('Discover, Shop, and Surf the Best');
     })
 
- $(document).ready((function () {
+    $(document).ready((function () {
       $("#list").click((function (e) {
         e.preventDefault(), $("#products .item").addClass("list-group-item")
       })), $("#grid").click((function (e) {
@@ -47,10 +47,10 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
     }));
 
     $(document).ready(function () {
-      let Category = ['All Categories', 'Surf Board','Sup' , 'Wing Board','Accessories'];
+      let Category = ['All Categories', 'Surf Board', 'Sup', 'Wing Board', 'Accessories'];
       let Brand = ['All Brands', 'Starboard', 'JP Australia', 'F-One', 'Gong', 'Aqua Marina'];
       let price = ['All Price'];
-      let Size = ['All Sizes', 'Small', 'Medium', 'Large', 'X-Large','5.0','5.5','6.0'];
+      let Size = ['All Sizes', 'Small', 'Medium', 'Large', 'X-Large', '5.0', '5.5', '6.0'];
 
       let CategoryList = $('#CategoryList');
       let BrandList = $('#BrandList');
@@ -74,6 +74,42 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
       });
 
     })
+
+    $(document).ready(function () {
+      $.ajax({
+        url: '/frontend/DB/ProductSeed.json',
+        dataType: 'json',
+        success: function (product) {
+          for (let j = 0; j < product.length; j++) {
+            let productImage = product[j].frontImage;
+            let productName = product[j].name;
+            let productPrice = product[j].price;
+
+            let htmlCode = `
+                    <div id="productContainer">
+                      <div class="col">
+                        <div>
+                          <a href="#" target="_blank">
+                            <img class="img-fluid" style="height: 200px;" src= ${productImage} width="416" height="200">
+                          </a>
+                          <div class="py-4">
+                            <h4 class="text-center"><span style="color: rgb(51, 51, 51);">${productPrice}</span></h4>
+                            <p class="text-center"><span style="color: rgb(51, 51, 51);">${productName}</span></p>
+                            <button class="btn btn-primary pull-right" type="button" style="margin-bottom: 10px;">
+                              <i class="fa fa-cart-plus" style="font-size: 23px;margin-right: 9px;padding-top: 0;margin-top: 0;"></i>
+                              Add to cart
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  `;
+            $('#productContainer').append(htmlCode);
+          }
+        }
+      })
+
+    });
 
   }()
 }), !1);
