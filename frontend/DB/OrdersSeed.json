@@ -8,17 +8,19 @@
   "products":
   [
     {
-      "product": "647e271a961b8485a84dbde6",
+      "product": "647e271a961b8485a84dbdd5",
       "quantity": 1,
-      "unitPrice": 1109.99,
+      "size": "S",
+      "unitPrice": 79.99
     },
     {
       "product": "647e271a961b8485a84dbdd7",
       "quantity": 1,
-      "unitPrice": 89.99,
+      "size": "5.0",
+      "unitPrice": 89.99
     }
   ],
-  "totalPrice": 1199.98,
+  "totalPrice": 169.98,
   "shippingAddress": "123 Main St, Tel Aviv, Israel",
   "paymentMethod": "Credit Card"
 },
@@ -34,7 +36,8 @@
     {
       "product": "647e271a961b8485a84dbdd7",
       "quantity": 1,
-      "unitPrice": 89.99,
+      "size": "5.0",
+      "unitPrice": 89.99
     }
   ],
   "totalPrice": 89.99,
@@ -50,8 +53,9 @@
     "products":
     [
       {
-        "product": "647e271a961b8485a84dbdd1",
+        "product": "647e271a961b8485a84dbde5",
         "quantity": 1,
+        "size": "11.6",
         "unitPrice": 249.99
       }
     ],
