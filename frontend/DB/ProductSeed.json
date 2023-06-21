@@ -27,7 +27,7 @@
     "_id": {
       "$oid": "647e271a961b8485a84dbdc4"
     },
-    "name": "Wetsuit 4/3",
+    "name": "Rip Curl Wetsuit 4/3",
     "description": "A comfortable and durable wetsuit for cold water surfing",
     "price": 349.99,
     "frontImage": "https://picsum.photos/200",
@@ -64,12 +64,12 @@
     "_id": {
       "$oid": "647e271a961b8485a84dbdc7"
     },
-    "name": "Wetsuit 3/2",
+    "name": "O'neill Wetsuit 3/2",
     "description": "A comfortable and durable wetsuit for cold water surfing.",
     "price": 249.99,
     "frontImage": "https://picsum.photos/200",
     "category": "Wetsuits",
-    "brand": "o'neill",
+    "brand": "O'neill",
     "details": [
       {"size": "XL", "quantityInStock": 5},
       {"size": "L", "quantityInStock": 5},
