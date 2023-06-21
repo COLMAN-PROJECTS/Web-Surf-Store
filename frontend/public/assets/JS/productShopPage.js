@@ -134,6 +134,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
     //   filterProduct();
     // })
     $(document).ready(function() {
+
       let Category = ['All Categories', 'Surf Board', 'Sup', 'Wing Board', 'Accessories'];
       let Brand = ['All Brands', 'Starboard', 'JP Australia', 'F-One', 'Gong', 'Aqua Marina'];
       let price = ['All Price'];
@@ -143,13 +144,22 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
       let BrandList = $('#BrandList');
       let priceList = $('#PriceList');
       let SizeList = $('#SizeList');
+      let Brands = new Set();
+      Brands.add('All Brands');
+      fetch('/frontend/DB/ProductSeed.json')
+          .then(response => response.json())
+          .then(productSeed => {
+            productSeed.forEach((item) => {
+              Brands.add(item.brand);
+            });
+
+            Brands.forEach((item) => {
+              BrandList.append('<option value="' + item + '">' + item + '</option>');
+            });
+          });
 
       Category.forEach((item) => {
         CategoryList.append('<option value="' + item + '">' + item + '</option>');
-      });
-
-      Brand.forEach((item) => {
-        BrandList.append('<option value="' + item + '">' + item + '</option>');
       });
 
       price.forEach((item) => {
