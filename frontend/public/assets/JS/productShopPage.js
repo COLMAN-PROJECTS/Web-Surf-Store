@@ -150,21 +150,13 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
           .then(productSeed => {
             productSeed.forEach((item) => {
               Brands.add(item.brand);
+              Categories.add(item.category);
             });
             BrandList.prepend('<option value="All Brands">All Brands</option>');
-
+            CategoryList.prepend('<option value="All Categories">All Categories</option>');
             Brands.forEach((item) => {
               BrandList.append('<option value="' + item + '">' + item + '</option>');
             });
-          });
-      fetch('/frontend/DB/ProductSeed.json')
-          .then(response => response.json())
-          .then(productSeed => {
-            productSeed.forEach((item) => {
-              Categories.add(item.category);
-            });
-            CategoryList.prepend('<option value="All Categories">All Categories</option>');
-
             Categories.forEach((item) => {
               CategoryList.append('<option value="' + item + '">' + item + '</option>');
             });
