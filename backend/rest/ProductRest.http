@@ -5,7 +5,8 @@ GET http://localhost:3000/products
 POST http://localhost:3000/products
 Content-Type: application/json
 
-{"product":{
+{
+  "product": {
     "name": "SurfBoardTest2"
   }
 }
@@ -19,11 +20,25 @@ GET http://localhost:3000/products/6493345dfc9bba4d96521f17
 PATCH http://localhost:3000/products
 Content-Type: application/json
 
-{"product":{
-  "_id": "6493345dfc9bba4d96521f17",
-  "name": "SurfBoardTest2"
+{
+  "product": {
+    "_id": "6493345dfc9bba4d96521f17",
+    "name": "SurfBoardTest2"
+  }
 }
+
+###
+
+POST http://localhost:3000/products/filter
+Content-Type: application/json
+
+{
+  "product": {
+    "category": "Surfing",
+    "name": "Wetsuit"
+  }
 }
+
 
 ###
 

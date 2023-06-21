@@ -71,10 +71,22 @@ const deleteProduct = async (req, res) => {
     }
 };
 
+// Filter products
+const filterProducts = async (req, res) => {
+    try {
+        const filter = req.body;
+        const products = await productService.filterProducts(filter);
+        res.status(200).json(products);
+    } catch (error) {
+        res.status(500).json({error: 'Failed to fetch products.'});
+    }
+};
+
 module.exports = {
     createProduct,
     getAllProducts,
     getProductById,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    filterProducts
 };

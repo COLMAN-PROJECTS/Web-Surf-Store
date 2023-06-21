@@ -68,6 +68,15 @@ const deleteProduct = async (id) => {
     }
 };
 
+const filterProducts = async (filter) => {
+    try {
+        const {product} = filter;
+        return await Product.find(product);
+    }catch (error) {
+        throw  new Error("Error in filtering products");
+    }
+}
+
 
 
 module.exports = {
@@ -75,5 +84,6 @@ module.exports = {
         getAllProducts,
         getProductById,
         updateProduct,
-        deleteProduct
+        deleteProduct,
+        filterProducts
     };
