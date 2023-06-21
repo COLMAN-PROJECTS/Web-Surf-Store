@@ -150,24 +150,24 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
           .then(productSeed => {
             productSeed.forEach((item) => {
               Brands.add(item.brand);
+              Categories.add(item.category);
+              //TODO fix the issue where itsnt loading the sizes
+              item.details.forEach((detail) => {
+                Sizes.add(detail.size);});
+              filterProducts();
             });
             BrandList.prepend('<option value="All Brands">All Brands</option>');
-
+            CategoryList.prepend('<option value="All Categories">All Categories</option>');
+            SizeList.prepend('<option value="All Sizes">All Sizes</option>')
             Brands.forEach((item) => {
               BrandList.append('<option value="' + item + '">' + item + '</option>');
             });
-          });
-      fetch('/frontend/DB/ProductSeed.json')
-          .then(response => response.json())
-          .then(productSeed => {
-            productSeed.forEach((item) => {
-              Categories.add(item.category);
-            });
-            CategoryList.prepend('<option value="All Categories">All Categories</option>');
-
             Categories.forEach((item) => {
               CategoryList.append('<option value="' + item + '">' + item + '</option>');
             });
+            SizeList.forEach((item) => {
+              SizeList.append('<option value="' + item + '">' + item + '</option>');});
+            filterProducts();
           });
 
 
@@ -175,9 +175,9 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
         priceList.append('<option value="' + item + '">' + item + '</option>');
       });
 
-      Size.forEach((item) => {
-        SizeList.append('<option value="' + item + '">' + item + '</option>');
-      });
+      // Size.forEach((item) => {
+      //   SizeList.append('<option value="' + item + '">' + item + '</option>');
+      // });
 
       function filterProducts() {
         let selectedCategory = CategoryList.val();
@@ -186,14 +186,27 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
         let selectedSize = SizeList.val();
 
         $.ajax({
+          /*
+          url: 'server',
+          type: 'POST',
+          data: json.stringify({
+          category: selectedCategory,
+          brand: selectedBrand,
+          price: selectedPrice,
+          size: selectedSize}),
+
+          success: function (response) {
+
+          }
+          */
           method: 'GET',
           url: '/frontend/DB/ProductSeed.json',
           dataType: 'json',
-          success: function(products) {
+          success: function (products) {
             let filteredProducts = products.filter((product) => {
               return (
                 (selectedCategory === 'All Categories' || product.category === selectedCategory) &&
-                (selectedBrand === 'All Brands' || product.details.brand === selectedBrand) &&
+                (selectedBrand === 'All Brands' || product.brand === selectedBrand) &&
                 (selectedPrice === 'All Price' || product.price.toString() === selectedPrice) &&
                 (selectedSize === 'All Sizes' || product.details.size === selectedSize)
               );
@@ -201,9 +214,9 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
 
             $('#productContainer').empty();
 
-            if(filteredProducts.length === 0) {
+            if (filteredProducts.length === 0) {
               $('#productContainer').append("<h1> No products found </h1>");
-            }else {
+            } else {
               for (let j = 0; j < filteredProducts.length; j++) {
                 let productImage = filteredProducts[j].frontImage;
                 let productName = filteredProducts[j].name;
@@ -239,12 +252,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
       priceList.on('change', filterProducts);
       SizeList.on('change', filterProducts);
 
-      // Initial product list load
       filterProducts();
     });
-
-
-
-
   }()
 }), !1);
