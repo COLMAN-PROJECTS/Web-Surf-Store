@@ -1,7 +1,9 @@
+# get all products
 GET http://localhost:3000/products
 
 ###
 
+# create a new product
 POST http://localhost:3000/products
 Content-Type: application/json
 
@@ -13,10 +15,12 @@ Content-Type: application/json
 
 ###
 
+# get product by id
 GET http://localhost:3000/products/6493345dfc9bba4d96521f17
 
 ###
 
+# update product
 PATCH http://localhost:3000/products
 Content-Type: application/json
 
@@ -29,6 +33,7 @@ Content-Type: application/json
 
 ###
 
+# filter products
 POST http://localhost:3000/products/filter
 Content-Type: application/json
 
@@ -39,9 +44,9 @@ Content-Type: application/json
   }
 }
 
-
 ###
 
+# delete product
 DELETE http://localhost:3000/products
 Content-Type: application/json
 
@@ -49,7 +54,7 @@ Content-Type: application/json
   "_id": "6493345dfc9bba4d96521f17"
 }
 
-###
+
 
 
 
