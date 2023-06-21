@@ -1,4 +1,4 @@
-
+[
   {
     "_id": {
       "$oid": "647e24aa961b8485a84dbdbb"
@@ -8,7 +8,7 @@
     "price": 499.99,
     "frontImage": "https://picsum.photos/200",
     "category": "Surf Board",
-    "brand": "XYZ Surf Co."
+    "brand": "XYZ Surf Co.",
     "details": [
       {
         "size": "5.0",
@@ -22,6 +22,7 @@
       "image4": "https://picsum.photos/200"
     }
   },
+  
   {
     "_id": {
       "$oid": "647e271a961b8485a84dbdc4"
@@ -312,3 +313,4 @@
       "image4": "https://picsum.photos/200"
     }
   }
+]
