@@ -136,6 +136,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
     $(document).ready(function() {
       let Brands = new Set();
       let Categories = new Set();
+      let Sizes = new Set();
       let price = ['All Price'];
       let Size = ['All Sizes', 'Small', 'Medium', 'Large', 'X-Large', '5.0', '5.5', '6.0'];
 
@@ -252,6 +253,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
       priceList.on('change', filterProducts);
       SizeList.on('change', filterProducts);
 
+      // Initial product list load
       filterProducts();
     });
   }()
