@@ -1,0 +1,101 @@
+body {
+  background-color: #daeefc;
+}
+
+* {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+}
+
+.slogan-nav {
+  /* position: sticky; */
+  top: 0;
+  background: #161438b8;
+  z-index: 10;
+}
+
+.nav .nav-item {
+  display: inline-block;
+  font-size: large;
+  font-weight: bold;
+}
+
+.nav-item a {
+  color: white;
+}
+.nav-item a:hover {
+  color: #161438;
+}
+
+.icon-img {
+  width: 484px;
+  height: 124px;
+  display: inline-block;
+}
+
+.container {
+  background-color: #daeefc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  flex-direction: column;
+}
+
+.form-container {
+  background-color: #1d1d48;
+  border-radius: 15px;
+  padding: 5px 20px 20px 20px;
+}
+
+.form-field {
+  margin: 25px 0;
+  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form-field-label {
+  color: white;
+  margin-right: 10px;
+}
+
+.login-button-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.form-input-field {
+  font-size: 24px;
+  margin-left: auto;
+}
+
+#login-btn {
+  background: #ffc500;
+  color: black;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+#errors-container {
+    background-color: rgba(255, 0, 0, 0.6);
+    padding: 15px 25px;
+    border-radius: 15px;
+    display: none;
+}

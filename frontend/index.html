@@ -24,7 +24,64 @@
         <li class="nav-item"><a class="nav-link active" href="public/shoppingCartPage.html">shopping cart</a></li>
       </ul>
       <i class="fa fa-user" style="font-size: 29px;margin-right: 10px;"></i>
-      <button class="btn bg-white me-3" type="button">Log in</button>
+      <button class="btn bg-white me-3" type="button" onclick="showLoginPopup()">Log in</button>
+      <script>
+        function showLoginPopup() {
+          var popup = window.open("", "Login Popup", "width=400,height=300");
+          popup.document.write(`
+      <html>
+      <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="/frontend/public/assets/CSS/login.css">
+      </head>
+      <body>
+        <h2>Login</h2>
+        <form action="/login" method="POST" onsubmit="login(event)">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          <br>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+          <br>
+          <button type="submit">Log in</button>
+        </form>
+      </body>
+      </html>
+    `);
+//TODO: fixthis
+          // popup.login = function(event) {
+          //   event.preventDefault();
+
+            // var enteredEmail = popup.document.getElementById("email").value;
+            // var enteredPassword = popup.document.getElementById("password").value;
+
+          //   fetch("/DB/UserSeed.json")
+          //           .then(response => response.json())
+          //           .then(userData => {
+          //             var loggedInUser = userData.find(user => user.email === enteredEmail && user.password === 1111);
+          //
+          //             if (loggedInUser) {
+          //               alert("Login successful!");
+          //             } else {
+          //               alert("Login failed!");
+          //             }
+          //
+          //             popup.document.getElementById("email").value = "";
+          //             popup.document.getElementById("password").value = "";
+          //           })
+          //           .catch(error => {
+          //             console.error("Error fetching user data:", error);
+          //           });
+          // };
+          //
+          // popup.document.querySelector("form").addEventListener("submit", popup.login);
+          //
+          // popup.document.addEventListener("beforeunload", function() {
+          //   popup.document.querySelector("form").removeEventListener("submit", popup.login);
+          // });
+        }
+      </script>
+
     </div>
   </div>
 </nav>
