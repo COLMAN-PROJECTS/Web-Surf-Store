@@ -136,6 +136,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
     $(document).ready(function() {
       let Brands = new Set();
       let Categories = new Set();
+      let Sizes = new Set();
       let price = ['All Price'];
       let Size = ['All Sizes', 'Small', 'Medium', 'Large', 'X-Large', '5.0', '5.5', '6.0'];
 
@@ -151,15 +152,23 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
             productSeed.forEach((item) => {
               Brands.add(item.brand);
               Categories.add(item.category);
+              //TODO fix the issue where itsnt loading the sizes
+              item.details.forEach((detail) => {
+                Sizes.add(detail.size);});
+              filterProducts();
             });
             BrandList.prepend('<option value="All Brands">All Brands</option>');
             CategoryList.prepend('<option value="All Categories">All Categories</option>');
+            SizeList.prepend('<option value="All Sizes">All Sizes</option>')
             Brands.forEach((item) => {
               BrandList.append('<option value="' + item + '">' + item + '</option>');
             });
             Categories.forEach((item) => {
               CategoryList.append('<option value="' + item + '">' + item + '</option>');
             });
+            SizeList.forEach((item) => {
+              SizeList.append('<option value="' + item + '">' + item + '</option>');});
+            filterProducts();
           });
 
 
@@ -167,9 +176,9 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
         priceList.append('<option value="' + item + '">' + item + '</option>');
       });
 
-      Size.forEach((item) => {
-        SizeList.append('<option value="' + item + '">' + item + '</option>');
-      });
+      // Size.forEach((item) => {
+      //   SizeList.append('<option value="' + item + '">' + item + '</option>');
+      // });
 
       function filterProducts() {
         let selectedCategory = CategoryList.val();
