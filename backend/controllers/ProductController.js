@@ -1,12 +1,17 @@
 const productService = require('../services/productService');
 
 // Create a new product
-const createProduct = async (req, res) => {
-    // const {product} = req.body
-        const newProduct = await productService.createProduct(req.body);
-        if(!newProduct)
-        res.send("Something went wrong");
-    
+const createProduct = async (req, res, next) => {
+    try {
+        const {product} = req.body
+        const newProduct = await productService.createProduct(product);
+        if (!newProduct)
+            res.send("Something went wrong");
+        else
+            res.status(201).json(newProduct);
+    } catch (error) {
+        res.status(500).json({error});
+    }
 };
 
 // Get all products
@@ -36,25 +41,25 @@ const getProductById = async (req, res) => {
 
 // Update a product
 const updateProduct = async (req, res) => {
-    try {
-        const {id, name, description, price, frontImage, category, details, images} = req.body;
-        if (id) {
-            const updatedProduct = await productService.updateProduct(id, name, description, price, frontImage, category, details, images);
+        try {
+            const {product} = req.body;
+            const updatedProduct = await productService.updateProduct(product);
             if (updatedProduct) {
                 res.status(200).json(updatedProduct);
             } else {
-                res.status(404).json({error: 'Product not found.'});
+                res.status(404).json({error: 'Controller: Product not found.'});
             }
+        } catch
+            (error) {
+            res.status(500).json({error: 'Failed to update the product.'});
         }
-    } catch (error) {
-        res.status(500).json({error: 'Failed to update the product.'});
     }
-};
+;
 
 // Delete a product
 const deleteProduct = async (req, res) => {
     try {
-        const productId = req.params.id;
+        const productId = req.body;
         const deletedProduct = await productService.deleteProduct(productId);
         if (deletedProduct) {
             res.status(200).json(deletedProduct);

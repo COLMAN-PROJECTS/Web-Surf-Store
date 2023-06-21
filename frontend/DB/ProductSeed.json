@@ -1,137 +1,208 @@
-[{
-  "_id": {
-    "$oid": "647e24aa961b8485a84dbdbb"
-  },
-  "name": "Surfboard",
-  "description": "A high-quality surfboard for all skill levels.",
-  "price": 499.99,
-  "frontImage": "https://picsum.photos/200",
-  "category": "Surfing",
-  "details":
-    {
-      "size": "5.0",
-      "brand": "XYZ Surf Co."
-    }
-  ,
-  "images":
-    {
+[
+  {
+    "_id": {
+      "$oid": "647e24aa961b8485a84dbdbb"
+    },
+    "name": "Surfboard",
+    "description": "A high-quality surfboard for all skill levels.",
+    "price": 499.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "Surfboards",
+    "brand": "XYZ Surf Co.",
+    "details": [
+      {
+        "size": "5.0",
+        "quantityInStock": 10
+      }
+    ],
+    "images": {
       "image1": "https://picsum.photos/200",
       "image2": "https://picsum.photos/200",
       "image3": "https://picsum.photos/200",
       "image4": "https://picsum.photos/200"
     }
-},
-
-
+  },
+  
   {
     "_id": {
       "$oid": "647e271a961b8485a84dbdc4"
     },
-    "name": "Wetsuit",
+    "name": "Rip Curl Wetsuit 4/3",
+    "description": "A comfortable and durable wetsuit for cold water surfing",
+    "price": 349.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "Wetsuits",
+    "brand": "Rip Curl",
+    "details": [
+      {
+        "size": "XL",
+        "quantityInStock": 5
+      },
+      {
+        "size": "L",
+        "quantityInStock": 5
+      },
+      {
+        "size": "M",
+        "quantityInStock": 5
+      },
+      {
+        "size": "S",
+        "quantityInStock": 5
+      }
+    ],
+    "images": {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
+    }
+  },
+
+
+  {
+    "_id": {
+      "$oid": "647e271a961b8485a84dbdc7"
+    },
+    "name": "O'neill Wetsuit 3/2",
     "description": "A comfortable and durable wetsuit for cold water surfing.",
     "price": 249.99,
     "frontImage": "https://picsum.photos/200",
-    "category": "Surfing",
-    "details":
-    {
-      "size": "XL",
-      "brand": "ABC Surf Gear"
-    }
-  ,
-    "images":
-    {
+    "category": "Wetsuits",
+    "brand": "O'neill",
+    "details": [
+      {"size": "XL", "quantityInStock": 5},
+      {"size": "L", "quantityInStock": 5},
+      {"size": "M", "quantityInStock": 5},
+      {"size": "S", "quantityInStock": 5}],
+    "images": {
       "image1": "https://picsum.photos/200",
       "image2": "https://picsum.photos/200",
       "image3": "https://picsum.photos/200",
       "image4": "https://picsum.photos/200"
     }
   },
+
   {
     "_id": {
-      "$oid": "647e274b961b8485a84dbdc5"
+      "$oid": "647e271a961b8485a84dbdd2"
     },
     "name": "Surf Wax",
-    "description": "A high-quality surf wax for optimal traction on your board.",
+    "description": "Long lasting and easy to apply. Optimal for water temps from 60°F and below.",
     "price": 9.99,
     "frontImage": "https://picsum.photos/200",
-    "category": "Surfing",
-    "details":
-    {
+    "category": "Accessories",
+    "brand": "Sticky Bumps",
+    "details":[ {
       "size": "None",
-      "brand": "Surf Essentials"
-    }
-  ,
-    "images":
-    {
-      "image1": "https://picsum.photos/200",
-      "image2": "https://picsum.photos/200",
-      "image3": "https://picsum.photos/200",
-      "image4": "https://picsum.photos/200"
+      "quantityInStock": 20
+    }],
+    "images": {
+      "image1": "https://picsum.photos/200"
     }
   },
   {
     "_id": {
-      "$oid": "647e275f961b8485a84dbdc6"
+      "$oid": "647e271a961b8485a84dbdd3"
     },
-    "name": "Surfboard Leash",
+    "name": "Surfboard Leash 6 FT",
     "description": "A durable leash to keep your surfboard attached to your ankle.",
     "price": 29.99,
     "frontImage": "https://picsum.photos/200",
-    "category": "Surfing",
-    "details":
-    {
-      "size": "6.0",
-      "brand": "Surf Leash Co."
-    }
-  ,
-    "images":
-    {
+    "category": "Accessories",
+    "brand": "Rip Curl",
+    "details": [
+      {"size": "6.0", "quantityInStock": 20},
+      {"size": "7.0", "quantityInStock": 20},
+      {"size": "8.0", "quantityInStock": 20}],
+    "images": {
       "image1": "https://picsum.photos/200",
       "image2": "https://picsum.photos/200",
       "image3": "https://picsum.photos/200",
       "image4": "https://picsum.photos/200"
     }
   },
+
   {
     "_id": {
-      "$oid": "647e2777961b8485a84dbdc7"
+      "$oid": "647e271a961b8485a84dbdd5"
     },
     "name": "Surfboard Fins",
     "description": "A set of high-performance surfboard fins for improved maneuverability.",
     "price": 79.99,
     "frontImage": "https://picsum.photos/200",
-    "category": "Surfing",
-    "details":
-  {
-    "size": "S",
-    "brand": "FinTech Surf"
-  }
-,
-  "images":
-  {
-    "image1": "https://picsum.photos/200",
-    "image2": "https://picsum.photos/200",
-    "image3": "https://picsum.photos/200",
-    "image4": "https://picsum.photos/200"
-  }
+    "category": "Accessories",
+    "brand": "Quicksilver",
+    "details": [
+      {"size": "S", "quantityInStock": 20},
+      {"size": "M", "quantityInStock": 20},
+      {"size": "L", "quantityInStock": 20}],
+    "images": {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
+    }
   },
+
   {
     "_id": {
-      "$oid": "647e2786961b8485a84dbdc8"
+      "$oid": "647e271a961b8485a84dbdd7"
     },
     "name": "Surfboard Bag",
-    "description": "A protective bag to carry and store your surfboard safely.",
+    "description": "The Jobe Padded Multi Board Bag is the super strong watersports bag for all your needs. The Uni Board Bag fits all Jobe Kneeboards, Wakeboards, and Wakesurfers with ease and an extra large front pocket provides extra space for accessories. We´ve also added built in water drains, easy to carry comfortable straps, and even tie-down straps.",
     "price": 89.99,
     "frontImage": "https://picsum.photos/200",
-    "category": "Surfing",
-    "details":
-    {
-      "size": "S",
-      "brand": "WaveRider"
+    "category": "Bags",
+    "brand": "Jobe",
+    "details": [
+      {"size": "5.0", "quantityInStock": 5},
+      {"size": "6.0", "quantityInStock": 5},
+      {"size": "7.0", "quantityInStock": 5},
+      {"size": "8.0", "quantityInStock": 5}],
+    "images": {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
     }
-  ,
-    "images":
-    {
+  },
+
+  {
+    "_id": {
+      "$oid": "647e271a961b8485a84dbdd8"
+    },
+    "name": "Surfboard Traction Pad",
+    "description": "Whether you are foiling, surfing or paddling – the NSP Tail Pad provides long-lasting grip and confidence. Especially in foiling, a delicate balance is required to get you flying over the surface of the water and your feet need precise positioning to control pitch, roll and yaw.",
+    "price": 19.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "Accessories",
+      "brand": "NSP",
+    "details": [
+      {"size": "none", "quantityInStock": 20}],
+    "images": {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
+    }
+  },
+
+  {
+    "_id": {
+      "$oid": "647e271a961b8485a84dbdd9"
+    },
+    "name": "Album Surfboard Album Soft Top Presto Cotton Drops ",
+    "description": "The Album Surfboard Album Soft Top Presto Cotton Drops ",
+    "price": 919.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "Surfboards",
+      "brand": "Album",
+    "details": [
+      {"size": "5.7", "quantityInStock": 20},
+      {"size": "5.10", "quantityInStock": 20},
+      {"size": "6.0", "quantityInStock": 20}],
+    "images": {
       "image1": "https://picsum.photos/200",
       "image2": "https://picsum.photos/200",
       "image3": "https://picsum.photos/200",
@@ -140,24 +211,106 @@
   },
   {
     "_id": {
-      "$oid": "647e27a0961b8485a84dbdc9"
+      "$oid": "647e271a961b8485a84dbde1"
     },
-    "name": "Surfboard Traction Pad",
-    "description": "A non-slip traction pad for enhanced grip and control on your surfboard.",
-    "price": 19.99,
+    "name": "Ocean & Earth Ezi Rider Surfboard",
+    "description": "The Ezi-Rider softboard is a stable and versatile surfboard, ideal for beginners, even to break small waves, the whole family will be tearing this summer.\n ",
+    "price": 919.99,
     "frontImage": "https://picsum.photos/200",
-    "category": "Surfing",
-    "details":
-    {
-      "size": "5.0",
-      "brand": "GripMaster"
-    }
-  ,
-    "images":
-    {
+    "category": "Surfboards",
+      "brand": "Ocean & earth",
+    "details": [
+      {"size": "6.0", "quantityInStock": 6},
+      {"size": "7.0", "quantityInStock": 5},
+      {"size": "8.0", "quantityInStock": 4}],
+    "images": {
       "image1": "https://picsum.photos/200",
       "image2": "https://picsum.photos/200",
       "image3": "https://picsum.photos/200",
       "image4": "https://picsum.photos/200"
     }
-  }]
+  },
+  {
+    "_id": {
+      "$oid": "647e271a961b8485a84dbde2"
+    },
+    "name": "Nsp Shapers Union Slot Machine PU Surfboard",
+    "description": "The NSP Shapers Union Slot Machine PU Surfboard in white is an ideal board for surfers who are looking for high performance and speed on the waves",
+    "price": 1019.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "Surfboards",
+      "brand": "NSP",
+    "details": [
+      {"size": "6.0", "quantityInStock": 6},
+      {"size": "7.0", "quantityInStock": 5},
+      {"size": "8.0", "quantityInStock": 4}],
+    "images": {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "647e271a961b8485a84dbde3"
+    },
+    "name": "Nsp CSE The Cheater Surfboard",
+    "description": "Beautiful outlines combined with relaxed nose rockers, classic roll to V with double concaves in the tail combine to give you that “easy in” with loads of rail-to-rail performance.",
+    "price": 1009.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "Surfboards",
+      "brand": "NSP",
+    "details": [
+      {"size": "6.0", "quantityInStock": 2},
+      {"size": "7.0", "quantityInStock": 2},
+      {"size": "8.0", "quantityInStock": 3}],
+    "images": {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "647e271a961b8485a84dbde4"
+    },
+    "name": "Aztron Soleil Xtreme Inflatable Paddle Surf Set",
+    "description": "The most selling all-round and touring board shape combines easy paddling with a windsurf option",
+    "price": 1209.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "SUP",
+    "brand": "Aztron",
+    "details": [
+      {"size": "10.7", "quantityInStock": 6},
+      {"size": "11.0", "quantityInStock": 5},
+      {"size": "12.0", "quantityInStock": 4}],
+    "images": {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "647e271a961b8485a84dbde5"
+    },
+    "name": "Aztron Urono Touring Inflatable Paddle Surf Set",
+    "description": "The most selling all-round and touring board shape combines easy paddling with a windsurf option",
+    "price": 1209.99,
+    "frontImage": "https://picsum.photos/200",
+    "category": "SUP",
+      "brand": "Aztron",
+    "details": [
+      {"size": "11.6", "quantityInStock": 6},
+      {"size": "12.4", "quantityInStock": 5}],
+    "images": {
+      "image1": "https://picsum.photos/200",
+      "image2": "https://picsum.photos/200",
+      "image3": "https://picsum.photos/200",
+      "image4": "https://picsum.photos/200"
+    }
+  }
+]

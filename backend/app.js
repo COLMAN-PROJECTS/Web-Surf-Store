@@ -13,7 +13,10 @@ const ProductRoute = require('./routes/ProductRoute.js')
 
 const app = express()
 
-app.use(express.static('public'));
+app.use(express.static('./frontend'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.json())
 app.use('/products', ProductRoute);
 app.get('*', (req, res) => {
     res.sendFile(__dirname + '/public/notFound.html')
