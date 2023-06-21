@@ -143,7 +143,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
       let BrandList = $('#BrandList');
       let priceList = $('#PriceList');
       let SizeList = $('#SizeList');
-     
+
 
       fetch('/frontend/DB/ProductSeed.json')
           .then(response => response.json())
@@ -151,7 +151,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
             productSeed.forEach((item) => {
               Brands.add(item.brand);
             });
-            BrandList.prepend('<option value="all">All Brands</option>');
+            BrandList.prepend('<option value="All Brands">All Brands</option>');
 
             Brands.forEach((item) => {
               BrandList.append('<option value="' + item + '">' + item + '</option>');
@@ -163,7 +163,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
             productSeed.forEach((item) => {
               Categories.add(item.category);
             });
-            CategoryList.prepend('<option value="all">All Categories</option>');
+            CategoryList.prepend('<option value="All Categories">All Categories</option>');
 
             Categories.forEach((item) => {
               CategoryList.append('<option value="' + item + '">' + item + '</option>');
