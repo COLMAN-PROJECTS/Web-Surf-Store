@@ -136,7 +136,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
     $(document).ready(function() {
 
       let Category = ['All Categories', 'Surf Board', 'Sup', 'Wing Board', 'Accessories'];
-      let Brand = ['All Brands', 'Starboard', 'JP Australia', 'F-One', 'Gong', 'Aqua Marina'];
+      // let Brand = ['All Brands', 'Starboard', 'JP Australia', 'F-One', 'Gong', 'Aqua Marina'];
       let price = ['All Price'];
       let Size = ['All Sizes', 'Small', 'Medium', 'Large', 'X-Large', '5.0', '5.5', '6.0'];
 
