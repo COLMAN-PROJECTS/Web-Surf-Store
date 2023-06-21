@@ -193,7 +193,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
             let filteredProducts = products.filter((product) => {
               return (
                 (selectedCategory === 'All Categories' || product.category === selectedCategory) &&
-                (selectedBrand === 'All Brands' || product.details.brand === selectedBrand) &&
+                (selectedBrand === 'All Brands' || product.brand === selectedBrand) &&
                 (selectedPrice === 'All Price' || product.price.toString() === selectedPrice) &&
                 (selectedSize === 'All Sizes' || product.details.size === selectedSize)
               );
