@@ -136,7 +136,6 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
     $(document).ready(function() {
       let Brands = new Set();
       let Categories = new Set();
-      let Sizes = new Set();
       let price = ['All Price'];
       let Size = ['All Sizes', 'Small', 'Medium', 'Large', 'X-Large', '5.0', '5.5', '6.0'];
 
@@ -187,10 +186,23 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
         let selectedSize = SizeList.val();
 
         $.ajax({
+          /*
+          url: 'server',
+          type: 'POST',
+          data: json.stringify({
+          category: selectedCategory,
+          brand: selectedBrand,
+          price: selectedPrice,
+          size: selectedSize}),
+
+          success: function (response) {
+
+          }
+          */
           method: 'GET',
           url: '/frontend/DB/ProductSeed.json',
           dataType: 'json',
-          success: function(products) {
+          success: function (products) {
             let filteredProducts = products.filter((product) => {
               return (
                 (selectedCategory === 'All Categories' || product.category === selectedCategory) &&
@@ -202,9 +214,9 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
 
             $('#productContainer').empty();
 
-            if(filteredProducts.length === 0) {
+            if (filteredProducts.length === 0) {
               $('#productContainer').append("<h1> No products found </h1>");
-            }else {
+            } else {
               for (let j = 0; j < filteredProducts.length; j++) {
                 let productImage = filteredProducts[j].frontImage;
                 let productName = filteredProducts[j].name;
@@ -240,12 +252,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
       priceList.on('change', filterProducts);
       SizeList.on('change', filterProducts);
 
-      // Initial product list load
       filterProducts();
     });
-
-
-
-
   }()
 }), !1);
