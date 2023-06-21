@@ -345,7 +345,7 @@ div.social-links {
 }
 
 .h4-back {
-  color: var(--bs-card-bg);
+  color: rgb(255, 255, 255);
   background: rgba(11, 27, 29, .3);
   border-radius: 7px;
   border-bottom-color: #fff
