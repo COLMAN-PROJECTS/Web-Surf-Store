@@ -20,7 +20,7 @@ const getAllProducts = async (req, res) => {
         const products = await productService.getAllProducts();
         res.status(200).json(products);
     } catch (error) {
-        res.status(500).json({error: 'Failed to fetch products.'});
+        res.status(500).json({error: error.message});
     }
 };
 
@@ -35,7 +35,7 @@ const getProductById = async (req, res) => {
             res.status(404).json({error: 'Product not found.'});
         }
     } catch (error) {
-        res.status(500).json({error: 'Failed to fetch the product.'});
+        res.status(500).json({error: error.message});
     }
 };
 
@@ -51,7 +51,7 @@ const updateProduct = async (req, res) => {
             }
         } catch
             (error) {
-            res.status(500).json({error: 'Failed to update the product.'});
+            res.status(500).json({error: error.message});
         }
     }
 ;
@@ -67,7 +67,7 @@ const deleteProduct = async (req, res) => {
             res.status(404).json({error: 'Product not found.'});
         }
     } catch (error) {
-        res.status(500).json({error: 'Failed to delete the product.'});
+        res.status(500).json({error: error.message});
     }
 };
 
@@ -78,7 +78,7 @@ const filterProducts = async (req, res) => {
         const products = await productService.filterProducts(filter);
         res.status(200).json(products);
     } catch (error) {
-        res.status(500).json({error: 'Failed to fetch products.'});
+        res.status(500).json({error: error.message});
     }
 };
 

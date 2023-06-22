@@ -7,23 +7,25 @@ GET http://localhost:3000/products
 POST http://localhost:3000/products
 Content-Type: application/json
 
-{
-  "product": {
-    "name": "SurfBoardTest2",
-    "price": 59.9,
-    "frontImage": "https://picsum.photos/200",
-    "category": "Category",
-    "details": {
-      "size": "XL",
-      "brand":"Lion"
-    }
-  }
-}
+ {"product":{
+     "name": "SurfBoardTest2",
+         "price": 59.9,
+         "frontImage": "https://picsum.photos/200",
+         "category": "Category",
+         "brand": "Lion",
+         "details": [
+         {
+             "size": "XL",
+             "quantityInStock": 10
+         }
+     ]
+ }
+ }
 
 ###
 
 # get product by id
-GET http://localhost:3000/products/6493345dfc9bba4d96521f17
+GET http://localhost:3000/products/649415d249554cbf3cf96c4b
 
 ###
 
@@ -33,8 +35,8 @@ Content-Type: application/json
 
 {
   "product": {
-    "_id": "6493345dfc9bba4d96521f17",
-    "name": "SurfBoardTest2"
+    "_id": "649415d249554cbf3cf96c4b",
+    "name": "SurfBoardTest2Update"
   }
 }
 
@@ -46,8 +48,7 @@ Content-Type: application/json
 
 {
   "product": {
-    "category": "Surfing",
-    "name": "Wetsuit"
+    "name": "SurfBoardTest2Update"
   }
 }
 
@@ -58,7 +59,7 @@ DELETE http://localhost:3000/products
 Content-Type: application/json
 
 {
-  "_id": "6493f42af8c23d1abc6355bf"
+  "_id": "649415d249554cbf3cf96c4b"
 }
 
 

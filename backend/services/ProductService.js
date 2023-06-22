@@ -7,7 +7,8 @@ const createProduct = async (product) => {
             price: product.price,
             frontImage: product.frontImage,
             category: product.category,
-            details: product.details,
+            brand: product.brand,
+            details: [...product.details],
             images: product.images
         });
 
@@ -53,6 +54,8 @@ const createProduct = async (product) => {
         }
     };
 
+
+
 const deleteProduct = async (id) => {
     try {
         const product = await Product.findByIdAndDelete(id);
@@ -67,6 +70,7 @@ const deleteProduct = async (id) => {
         throw new Error("Error in deleting product");
     }
 };
+
 
 const filterProducts = async (filter) => {
     try {

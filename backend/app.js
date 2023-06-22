@@ -18,6 +18,7 @@ mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnif
 
 //Routes
 const ProductRoute = require('./routes/ProductRoute.js')
+const OrderRoute = require('./routes/OrderRoute.js')
 
 const app = express()
 
@@ -25,7 +26,9 @@ app.use(express.static('./frontend'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json())
+
 app.use('/products', ProductRoute);
+app.use('/orders', OrderRoute);
 app.get('*', (req, res) => {
     res.sendFile(__dirname + '/public/notFound.html')
 })

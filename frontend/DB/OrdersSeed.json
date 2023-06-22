@@ -10,14 +10,12 @@
     {
       "product": "647e271a961b8485a84dbdd5",
       "quantity": 1,
-      "size": "S",
-      "unitPrice": 79.99
+      "size": "S"
     },
     {
       "product": "647e271a961b8485a84dbdd7",
       "quantity": 1,
-      "size": "5.0",
-      "unitPrice": 89.99
+      "size": "5.0"
     }
   ],
   "totalPrice": 169.98,
