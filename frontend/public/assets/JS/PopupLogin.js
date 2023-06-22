@@ -1,8 +1,6 @@
 $(document).ready(function() {
-    var popup = null;
-
     $("#login").click(function() {
-        popup = window.open("", "Login Popup", "width=600,height=500");
+        const popup = window.open("", "Login Popup", "width=600,height=500");
         const popupContent = `
       <html>
         <head>
@@ -37,11 +35,7 @@ $(document).ready(function() {
               <label for="password">Password:</label>
               <input type="password" id="password" name="password" required>
               <br>
-              <button id="Enter" type="submit">Log in</button>
-              <script>
-              
-              
-</script>
+              <button id="Enter" type="submit">Enter</button>
             </form>
           </div>
         </body>
@@ -51,7 +45,7 @@ $(document).ready(function() {
         popup.document.write(popupContent);
         popup.document.close();
 
-        $('#Enter').click(function(event) {
+        popup.document.getElementById("Enter").addEventListener("click", function(event) {
             event.preventDefault();
 
             var enteredEmail = popup.document.getElementById("email").value;
@@ -71,7 +65,7 @@ $(document).ready(function() {
                         alert("Login successful!");
                         popup.close();
                     } else {
-                        alert("Login failed!");
+                        popup.alert("Login failed!,wrong password or email!");
                     }
 
                     popup.document.getElementById("email").value = "";
