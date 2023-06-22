@@ -9,7 +9,14 @@ Content-Type: application/json
 
 {
   "product": {
-    "name": "SurfBoardTest2"
+    "name": "SurfBoardTest2",
+    "price": 59.9,
+    "frontImage": "https://picsum.photos/200",
+    "category": "Category",
+    "details": {
+      "size": "XL",
+      "brand":"Lion"
+    }
   }
 }
 
@@ -51,7 +58,7 @@ DELETE http://localhost:3000/products
 Content-Type: application/json
 
 {
-  "_id": "6493345dfc9bba4d96521f17"
+  "_id": "6493f42af8c23d1abc6355bf"
 }
 
 

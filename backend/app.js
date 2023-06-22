@@ -1,13 +1,21 @@
+// Install packages
 const express = require('express')
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const {mongoose} = require('mongoose');
 const newLocal = require('custom-env');
+const bcrypt = require("bcrypt");
+const passport = require("passport");
+const flash = require("express-flash");
+const session = require("express-session");
+const methodOverride = require("method-override");
 newLocal.env(process.env.NODE_ENV, './backend/config');
+
 //connect to mongodb
 mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('connected to mongodb'))
     .catch(err => console.log(err))
+
 //Routes
 const ProductRoute = require('./routes/ProductRoute.js')
 
