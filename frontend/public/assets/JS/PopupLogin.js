@@ -20,6 +20,7 @@ $(document).ready(function() {
               <input type="password" id="password" name="password" required>
               <br>
               <button id="Enter" type="submit">Enter</button>
+              <button class="buttons" id="signUpButton" type="submit" style="background-color: #3b86c4">Sign Up</button>
             </form>
           </div>
         </body>
@@ -60,5 +61,11 @@ $(document).ready(function() {
                 }
             });
         });
+        $(popup.document).find("#signUpButton").click(function(event) {
+            event.preventDefault();
+            popup.close();
+            //go to diffrent html page
+            window.location.href = "./public/signUpPage.html";
+        })
     });
 });
