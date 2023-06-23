@@ -18,6 +18,7 @@ $(document).ready(function() {
               <br>
               <label for="password">Password:</label>
               <input type="password" id="password" name="password" required>
+              <div id="message-container" style="color: red"></div>
               <br>
               <button id="Enter" type="submit">Enter</button>
               <button class="buttons" id="signUpButton" type="submit" style="background-color: #3b86c4">Sign Up</button>
@@ -47,12 +48,14 @@ $(document).ready(function() {
                                                     && user.password === enteredPassword);
 
                     if (loggedInUser) {
-                        alert("Login successful!");
+                        //todo remove after fix the window that says you are loged in
+                        alert("Login successful!-remove after fix the window that says you are logged in");
                         popup.close();
                     } else {
-                        popup.alert("Login failed! Wrong password or email!");
+                        var messageContainer = $(popup.document).find("#message-container");
+                        messageContainer.empty();
+                        messageContainer.append("<p>Login failed: Wrong email or password!</p>");
                     }
-
                     $(popup.document).find("#email").val("");
                     $(popup.document).find("#password").val("");
                 },
