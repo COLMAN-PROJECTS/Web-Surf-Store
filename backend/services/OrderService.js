@@ -52,14 +52,18 @@ const createOrder = async (orderData) => {
     return savedOrder;
 };
 
-const updateOrder = async (updatedOrder) => {
-    // Find the order by ID and update it
-    const order = await Order.findByIdAndUpdate(updatedOrder.id, updatedOrder);
-    if (!order) {
-        throw new Error(`Order with ID ${updatedOrder.id} not found.`);
+const updateOrder = async (orderId, orderData) => {
+    try {
+        // Find the order by ID and update it
+        const {updatedOrder} = await Order.findByIdAndUpdate(orderId, orderData);
+        if (!updatedOrder) {
+            throw new Error(`Order with ID ${orderId} not found.`);
+        }
+        return updatedOrder;
+    } catch (e) {
+        console.log("OrderService:" + e);
     }
-    return order;
-};
+    }
 const getAllOrders = async () => {
     try {
         // Retrieve all orders
@@ -94,7 +98,7 @@ const filterOrders = async (filter) => {
     try {
         // Retrieve all orders that match the filter
         const orders = await Order.find(filter);
-        if (orders)
+        if (orders.length > 0)
             return orders;
     } catch (e) {
         console.log("OderService:" + e);

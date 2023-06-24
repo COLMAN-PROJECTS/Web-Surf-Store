@@ -22,7 +22,7 @@ Content-Type: application/json
     }
   ],
   "shippingAddress": "123 Main St, Tel Aviv, Israel",
-  "paymentMethod": "Credit Card"
+  "paymentMethod": "PayPal"
 }
 
 
@@ -38,11 +38,13 @@ PATCH http://localhost:3000/orders
 Content-Type: application/json
 
 {
-  "product": {
-    "_id": "6493345dfc9bba4d96521f17",
-    "name": "SurfBoardTest2"
-  }
+  "id": "649413868a4ed1705a9b4895",
+  "order":
+{
+  "paymentMethod": "PayPal"
 }
+}
+
 
 ###
 
@@ -50,12 +52,12 @@ Content-Type: application/json
 POST http://localhost:3000/orders/filter
 Content-Type: application/json
 
-{
-  "product": {
-    "category": "Surfing",
-    "name": "Wetsuit"
+
+  {
+    "shippingAddress": "123 Main St, Tel Aviv, Israel",
+    "paymentMethod": "PayPal"
   }
-}
+
 
 ###
 
@@ -64,7 +66,7 @@ DELETE http://localhost:3000/orders
 Content-Type: application/json
 
 {
-  "_id": "6493f42af8c23d1abc6355bf"
+  "_id": "649413868a4ed1705a9b4895"
 }
 
 

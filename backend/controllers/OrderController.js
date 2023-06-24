@@ -18,8 +18,9 @@ const createOrder = async (req, res) => {
 
 const updateOrder = async (req, res) => {
     try {
-        const {order} = req.body
-        const updatedOrder = await OrderService.updateOrder(order);
+        const {id, order} = req.body;
+        console.log(id);
+        const updatedOrder = await OrderService.updateOrder(id, order);
         if (updatedOrder) {
             res.status(200).json(updatedOrder);
         } else {
