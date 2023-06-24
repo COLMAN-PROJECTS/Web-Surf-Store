@@ -68,7 +68,7 @@ $(document).ready(function () {
 
     const tax = (orderSummary * 1.18);
 
-    let total = (tex + shipping);
+    let total = (tax + shipping);
 
     document.getElementById('orderSubtotal').textContent = '$ '+ orderSummary;
     document.getElementById('shipping').textContent = '$ '+ shipping;
@@ -77,6 +77,7 @@ $(document).ready(function () {
 
   }
 
+  //todo connect to the right button after we will make the payment page
   $('#purchaseBtn').click(function() {
     // Create an array to hold the cart items
     const cartItems = [];
@@ -98,6 +99,7 @@ $(document).ready(function () {
     const payload = {
       cart: cartItems,
     };
+    console.log(JSON.stringify(payload));
 
     // Send the AJAX request to the backend
     $.ajax({
