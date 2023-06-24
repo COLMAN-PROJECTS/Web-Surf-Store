@@ -1,15 +1,13 @@
 $(document).ready(function() {
     $('#signup-form').submit(function(event) {
-        event.preventDefault(); // Prevent page reload
+        event.preventDefault();
 
-        // Get form data
         const fullName = $('#fullName').val();
         const email = $('#email').val();
         const password = $('#password').val();
         const address = $('#address').val();
         const phoneNumber = $('#phoneNumber').val();
 
-        // Create user object
         const user = {
             fullName,
             email,
@@ -23,12 +21,20 @@ $(document).ready(function() {
             type: 'POST',
             data: user,
             success: function(response) {
-                alert('Sign up successful!');
+                var successMessage = document.createElement('div');
+                successMessage.textContent = 'Sign up successful!';
+                successMessage.classList.add('success-message');
+                document.body.appendChild(successMessage);
 
-                window.location.href = '../index.html';
+                setTimeout(function() {
+                    window.location.href = '../index.html';
+                }, 5000);
             },
             error: function(error) {
-                alert('Sign up failed. Please try again.');
+                var successMessage = document.createElement('div');
+                successMessage.textContent = 'Sign up failed. Please try again.';
+                successMessage.classList.add('success-message');
+                document.body.appendChild(successMessage);
             }
         });
     });
