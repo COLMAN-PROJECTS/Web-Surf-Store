@@ -42,7 +42,7 @@ const createProduct = async (product) => {
 
     const updateProduct = async (product) => {
         try {
-            const updatedProduct = await Product.findByIdAndUpdate(product._id, product);
+            const updatedProduct = await Product.findByIdAndUpdate(product._id, product, {new: true});
             if (!updatedProduct) {
                 console.log("Product not found");
             }

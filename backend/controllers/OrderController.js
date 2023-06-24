@@ -19,7 +19,6 @@ const createOrder = async (req, res) => {
 const updateOrder = async (req, res) => {
     try {
         const {id, order} = req.body;
-        console.log(id);
         const updatedOrder = await OrderService.updateOrder(id, order);
         if (updatedOrder) {
             res.status(200).json(updatedOrder);

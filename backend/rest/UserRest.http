@@ -1,0 +1,35 @@
+###
+GET http://localhost:3000/profile
+
+###
+GET http://localhost:3000/profile/email/johndoe@example.com
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "fullName": "Israel Israeli",
+  "email": "Israel.Israeli@gmail.com",
+  "password": "123456"
+}
+
+###
+PATCH http://localhost:3000/profile/update/
+Content-Type: application/json
+
+{
+  "id": "647e274b961b8485a84dbdc5",
+  "user": {
+    "fullName": "John Doe",
+    "phone": "0541234567"
+  }
+}
+
+###
+DELETE  http://localhost:3000/profile/delete/
+Content-Type: application/json
+
+{
+  "id": "64973cdce345963e6dc2f155"
+}
