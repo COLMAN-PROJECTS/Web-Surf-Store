@@ -133,12 +133,15 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
     //
     //   filterProduct();
     // })
-    $(document).ready(function() {
+
+
+    let filteredProducts = [];
+
+    $(document).ready(function () {
       let Brands = new Set();
       let Categories = new Set();
       let Sizes = new Set();
-      let price = ['All Price'];
-      let Size = ['All Sizes', 'Small', 'Medium', 'Large', 'X-Large', '5.0', '5.5', '6.0'];
+      let price = ['All Price', '0 - 200', '200 - 500', '500 - 1000', '1000 - 1500'];
 
       let CategoryList = $('#CategoryList');
       let BrandList = $('#BrandList');
@@ -147,29 +150,30 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
 
 
       fetch('/frontend/DB/ProductSeed.json')
-          .then(response => response.json())
-          .then(productSeed => {
-            productSeed.forEach((item) => {
-              Brands.add(item.brand);
-              Categories.add(item.category);
-              //TODO fix the issue where itsnt loading the sizes
-              item.details.forEach((detail) => {
-                Sizes.add(detail.size);});
-              filterProducts();
-            });
-            BrandList.prepend('<option value="All Brands">All Brands</option>');
-            CategoryList.prepend('<option value="All Categories">All Categories</option>');
-            SizeList.prepend('<option value="All Sizes">All Sizes</option>')
-            Brands.forEach((item) => {
-              BrandList.append('<option value="' + item + '">' + item + '</option>');
-            });
-            Categories.forEach((item) => {
-              CategoryList.append('<option value="' + item + '">' + item + '</option>');
-            });
-            SizeList.forEach((item) => {
-              SizeList.append('<option value="' + item + '">' + item + '</option>');});
+        .then(response => response.json())
+        .then(productSeed => {
+          productSeed.forEach((item) => {
+            Brands.add(item.brand);
+            Categories.add(item.category);
+            for (const size of item.details){
+              Sizes.add(size.size);
+            }
             filterProducts();
           });
+          BrandList.prepend('<option value="All Brands">All Brands</option>');
+          CategoryList.prepend('<option value="All Categories">All Categories</option>');
+          SizeList.prepend('<option value="All Sizes">All Sizes</option>')
+          Brands.forEach((item) => {
+            BrandList.append('<option value="' + item + '">' + item + '</option>');
+          });
+          Categories.forEach((item) => {
+            CategoryList.append('<option value="' + item + '">' + item + '</option>');
+          });
+          Sizes.forEach((item) => {
+            SizeList.append('<option value="' + item + '">' + item + '</option>');
+          });
+          filterProducts();
+        });
 
 
       price.forEach((item) => {
@@ -187,29 +191,34 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
         let selectedSize = SizeList.val();
 
         $.ajax({
-          /*
-          url: 'server',
-          type: 'POST',
-          data: json.stringify({
-          category: selectedCategory,
-          brand: selectedBrand,
-          price: selectedPrice,
-          size: selectedSize}),
+          // url: 'Server/filter',
+          // type: 'POST',
+          // data: json.stringify({
+          //   "product":{
+          //     category: selectedCategory,
+          //     brand: selectedBrand,
+          //     price: selectedPrice,
+          //     size: selectedSize
+          //   }
+          // }),
+          //
+          // success: function (response) {
+          //
+          // }
 
-          success: function (response) {
-
-          }
-          */
           method: 'GET',
           url: '/frontend/DB/ProductSeed.json',
           dataType: 'json',
           success: function (products) {
-            let filteredProducts = products.filter((product) => {
+            filteredProducts = products.filter((product) => {
               return (
                 (selectedCategory === 'All Categories' || product.category === selectedCategory) &&
                 (selectedBrand === 'All Brands' || product.brand === selectedBrand) &&
-                (selectedPrice === 'All Price' || product.price.toString() === selectedPrice) &&
-                (selectedSize === 'All Sizes' || product.details.size === selectedSize)
+                (selectedPrice === 'All Price' || (selectedPrice.includes('-') &&
+                    product.price >= parseFloat(selectedPrice.split('-')[0]) &&
+                    product.price <= parseFloat(selectedPrice.split('-')[1])) ||
+                  (selectedPrice === '200+' && product.price >= 200)) &&
+                (selectedSize === 'All Sizes' || product.details.some(detail => detail.size === selectedSize))
               );
             });
 
@@ -219,12 +228,13 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
               $('#productContainer').append("<h1> No products found </h1>");
             } else {
               for (let j = 0; j < filteredProducts.length; j++) {
+                let productId = filteredProducts[j].id;
                 let productImage = filteredProducts[j].frontImage;
                 let productName = filteredProducts[j].name;
                 let productPrice = filteredProducts[j].price;
 
                 let htmlCode = `
-            <div class="col">
+            <div id="productItem_${productId}" class="col">
               <div>
                 <a href="#" target="_blank">
                   <img class="img-fluid" style="height: 200px;" src="${productImage}" width="416" height="200">
@@ -232,7 +242,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
                 <div class="py-4">
                   <h4 class="text-center"><span style="color: rgb(51, 51, 51);">${productPrice}</span></h4>
                   <p class="text-center"><span style="color: rgb(51, 51, 51);">${productName}</span></p>
-                  <button class="btn btn-primary pull-right" type="button" style="margin-bottom: 10px;">
+                  <button id="addToCartBtn_${productId}" class="btn btn-primary pull-right" type="button" style="margin-bottom: 10px;">
                     <i class="fa fa-cart-plus" style="font-size: 23px;margin-right: 9px;padding-top: 0;margin-top: 0;"></i>
                     Add to cart
                   </button>
@@ -240,7 +250,6 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
               </div>
             </div>
           `;
-
                 $('#productContainer').append(htmlCode);
               }
             }
@@ -256,5 +265,21 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
       // Initial product list load
       filterProducts();
     });
+
+    let cartItems = [];
+
+    $(document).on('click', '.addToCartBtn', function () {
+      let buttonId = $(this).attr('id');
+      let productId = buttonId.split('_')[1];
+
+      let product = filteredProducts.find((product) => product.id === productId);
+
+      if (product) {
+        cartItems.push(product);
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        console.log('Product added to cart', product);
+      }
+    });
+
   }()
 }), !1);
