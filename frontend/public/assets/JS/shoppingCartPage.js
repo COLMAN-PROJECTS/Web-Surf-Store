@@ -66,9 +66,9 @@ $(document).ready(function () {
 
     const shipping = 10;
 
-    const tex = (orderSummary * 1.18);
+    const tax = (orderSummary * 1.18);
 
-    let total = (tex + shipping);
+    let total = (tax + shipping);
 
     document.getElementById('orderSubtotal').textContent = '$ '+ orderSummary;
     document.getElementById('shipping').textContent = '$ '+ shipping;
@@ -77,5 +77,55 @@ $(document).ready(function () {
 
   }
 
+  //todo connect to the right button after we will make the payment page
+  $('#purchaseBtn').click(function() {
+    // Create an array to hold the cart items
+    const cartItems = [];
+
+    // Get the cart items from localStorage
+    const dataCart = JSON.parse(localStorage.getItem('cart'));
+
+    // Iterate over each cart item
+    dataCart.forEach(function(item) {
+      const cartItem = {
+        productId: item.id,
+        size: item.size,
+        quantity: 1
+      };
+
+      cartItems.push(cartItem);
+    });
+
+    const payload = {
+      cart: cartItems,
+    };
+    console.log(JSON.stringify(payload));
+
+    // Send the AJAX request to the backend
+    $.ajax({
+      //todo change the url
+      url: '/purchase',
+      type: 'POST',
+      data: JSON.stringify(payload),
+      contentType: 'application/json',
+      success: function(response) {
+        const popup = window.open('', 'Order Confirmation', 'width=400,height=200');
+        popup.document.write('<h1>Order was made successfully!</h1>');
+
+        // Close the pop-up after 5 seconds
+        setTimeout(function() {
+          popup.close();
+          // Clear the cart
+          localStorage.removeItem('cart');
+          // Redirect to the home page
+          window.location.href = '../index.html';
+        }, 5000);
+      },
+      error: function(error) {
+        // Handle the error response from the backend
+        alert('Purchase failed. Please try again.');
+      }
+    });
+  });
 
 }));
