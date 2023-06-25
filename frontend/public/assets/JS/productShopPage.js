@@ -48,7 +48,6 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
 
 
     let filteredProducts = [];
-    let cartItems = [];
 
     $(document).ready(function () {
       let Brands = new Set();
