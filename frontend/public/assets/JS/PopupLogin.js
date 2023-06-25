@@ -9,7 +9,7 @@ $(document).ready(function() {
           <style class="body,popup-container" >
           </style>
         </head>
-        <body>
+        <body class="body">
           <div class="popup-container">
             <h2 class="popup-title">Login</h2>
             <form id="login-form" class="popup-form">
@@ -48,9 +48,14 @@ $(document).ready(function() {
                                                     && user.password === enteredPassword);
 
                     if (loggedInUser) {
-                        //todo remove after fix the window that says you are loged in
-                        alert("Login successful!-remove after fix the window that says you are logged in");
-                        popup.close();
+                        var messageContainer = $(popup.document).find("#message-container");
+                        messageContainer.html("<p>Login successful!</p>");
+
+                        setTimeout(function() {
+                            popup.close();
+                            // window.location.href = './index.html';
+                        }, 2000);
+
                     } else {
                         var messageContainer = $(popup.document).find("#message-container");
                         messageContainer.empty();

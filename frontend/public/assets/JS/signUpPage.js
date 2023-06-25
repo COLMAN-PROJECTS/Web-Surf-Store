@@ -19,16 +19,18 @@ $(document).ready(function() {
         $.ajax({
             url: '/createUser',
             type: 'POST',
-            data: user,
+            data: JSON.stringify(email,password),
             success: function(response) {
-                var successMessage = document.createElement('div');
-                successMessage.textContent = 'Sign up successful!';
-                successMessage.classList.add('success-message');
-                document.body.appendChild(successMessage);
+                if (response===200) {
+                    var successMessage = document.createElement('div');
+                    successMessage.textContent = 'Sign up successful!';
+                    successMessage.classList.add('success-message');
+                    document.body.appendChild(successMessage);
 
-                setTimeout(function() {
-                    window.location.href = '../index.html';
-                }, 5000);
+                    setTimeout(function () {
+                        window.location.href = '../index.html';
+                    }, 5000);
+                }
             },
             error: function(error) {
                 var successMessage = document.createElement('div');
