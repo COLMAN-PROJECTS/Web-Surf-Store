@@ -188,3 +188,8 @@ div.social-links {
   border-radius: 7px;
   border-bottom-color: #fff
 }
+
+.main-container {
+  margin-top: 30px;
+  width: 100%;
+}
