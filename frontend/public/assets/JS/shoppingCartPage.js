@@ -11,20 +11,20 @@ $(document).ready(function () {
 
   const dataCart = JSON.parse(localStorage.getItem('cart'));
 
-  function generateCartItemHTML(imageSrc, productName, category, price, quantity) {
+  function generateCartItemHTML(imageSrc, productName, category, price, size, quantity) {
     return `
     <tr>
       <th scope="row" class="border-0">
         <div class="p-2">
           <img src="${imageSrc}" alt="" width="70" class="img-fluid rounded shadow-sm">
           <div class="ml-3 d-inline-block align-middle">
-<!--          add to the -->
             <h5 class="mb-0"><a href="#" class="text-dark d-inline-block align-middle">${productName}</a></h5>
             <span class="text-muted font-weight-normal font-italic d-block">Category: ${category}</span>
           </div>
         </div>
       </th>
       <td class="border-0 align-middle"><strong>${price}</strong></td>
+      <td class="border-0 align-middle"><strong>${size}</strong></td>
       <td class="border-0 align-middle"><strong>${quantity}</strong></td>
       <td class="border-0 align-middle"><button id="removeBtn" class="text-dark"><i class="fa fa-trash"></i></button></td>
     </tr>
@@ -33,14 +33,33 @@ $(document).ready(function () {
 
   $(document).ready(function() {
     const cartItems = dataCart;
-
     let cartHTML = '';
+
+    cartHTML += `
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Size</th>
+        <th scope="col">Quantity</th>
+        <th scope="col"></th>
+      </tr>
+    `;
+
     if (cartItems && cartItems.length > 0) {
-      cartItems.forEach(function(item) {
-        cartHTML += generateCartItemHTML(item.frontImage, item.name, item.category, item.price, 1);
-      });
+      for (let i = 0; i < cartItems.length; i++) {
+        const cartItem = cartItems[i];
+        const product = cartItem.product;
+        const imageSrc = product.frontImage;
+        const productName = product.name;
+        const category = product.category;
+        const price = '$ ' + product.price;
+        const size = cartItem.size;
+        const quantity = cartItem.quantity;
+
+        cartHTML += generateCartItemHTML(imageSrc, productName, category, price, size, quantity);
+      }
     } else {
-      cartHTML = '<tr><td colspan="4" class="text-center">Your cart is empty.</td></tr>';
+      cartHTML += '<tr><td colspan="4" class="text-center">Your cart is empty.</td></tr>';
     }
 
     $('table tbody').html(cartHTML);
@@ -49,7 +68,7 @@ $(document).ready(function () {
 
   $(document).on('click', '#removeBtn', function() {
     const cartItems = JSON.parse(localStorage.getItem('cart'));
-    const index = $(this).closest('tr').index();
+    const index = $(this).closest('tr').index() - 1;
 
     cartItems.splice(index, 1);
     localStorage.setItem('cart', JSON.stringify(cartItems));
@@ -61,7 +80,7 @@ $(document).ready(function () {
   function calcSummary() {
     let orderSummary = 0;
     dataCart.forEach(function(item) {
-      orderSummary += item.price
+      orderSummary += item.product.price
     });
 
     const shipping = 10;

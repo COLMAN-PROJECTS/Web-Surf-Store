@@ -10,33 +10,29 @@ window.innerWidth < 768 &&
   }),
   document.addEventListener("DOMContentLoaded", function () {
     var wantedProduct = JSON.parse(localStorage.getItem("product"));
+    var cartItems = [];
 
     $(document).ready(function () {
-      // Size dropdown
-      $("#size-drop a").click(function () {
-        let selectedSize = $(this).text();
-        $("#size-drop-text span").text(selectedSize);
-      });
 
-      // Quantity dropdown
-      $("#quantity-drop a").click(function () {
-        let selectedQuantity = $(this).text();
-        $("#quantity-drop-text span").text(selectedQuantity);
-      });
+      $("#addToCartBtn").on('click', addToCart);
 
-      // Add to cart button click event
-      $("#addToCartBtn").click(function () {
-        var selectedSize = $(".size-dropdown .x-drop-btn span").text();
-        var selectedQuantity = $(".quantity-dropdown .x-drop-btn span").text();
-        addToCart(selectedSize, selectedQuantity);
-      });
+      function addToCart() {
+        var selectedSize = $("#size-drop-text span").text();
+        var selectedQuantity = $("#quantity-drop-text span").text();
 
-      // Function to handle adding to cart
-      function addToCart(size, quantity) {
-        // Perform actions with the selected size and quantity
-        console.log("Selected size:", size);
-        console.log("Selected quantity:", quantity);
-        // You can pass the selected size and quantity to another function or store them in variables, etc.
+        if (wantedProduct) {
+          var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+          var cartItem = {
+            product: wantedProduct,
+            size: selectedSize,
+            quantity: selectedQuantity
+          };
+
+          cartItems.push(cartItem);
+          localStorage.setItem('cart', JSON.stringify(cartItems));
+
+          console.log('Product added to cart', wantedProduct);
+        }
       }
 
       var size = Object.keys(wantedProduct.images).length;
@@ -46,7 +42,7 @@ window.innerWidth < 768 &&
           $("<div>").attr("id", imageId).addClass("swiper-slide")
         );
       }
-
+      $('#product-description p').text(wantedProduct.description);
       $('#simple-slider-img1').css('background', 'url(' + wantedProduct.frontImage + ') center center / auto no-repeat').css('background-size', 'contain');
       $('#img-fluid1').find("img").attr("src", wantedProduct.frontImage);
 
@@ -54,16 +50,16 @@ window.innerWidth < 768 &&
       enterImage("simple-slider-img");
 
       function enterImage(labelName) {
-        for (let i = 1; i <= 4; i++) {
-          let imageNum = "image" + i;
+        for (let i = 0; i < 4; i++) {
+          let imageNum = "image" + (i + 1);
           let imageSrc = wantedProduct.images[imageNum];
           if (imageSrc) {
             if (labelName === "img-fluid") {
-              let imageElement = $("#" + labelName + (i + 1));
+              let imageElement = $("#" + labelName + (i + 2));
               imageElement.find("img").attr("src", imageSrc);
             }
             if (labelName === "simple-slider-img") {
-              let imageElement = $("#" + labelName + (i + 1));
+              let imageElement = $("#" + labelName + (i + 2));
               imageElement
                 .css("background", "url(" + wantedProduct.images[imageNum] + ") center center / auto no-repeat")
                 .css("background-size", "contain");
@@ -72,7 +68,20 @@ window.innerWidth < 768 &&
         }
       }
 
-      // Initialize Swiper slider
+      wantedProduct.details.forEach((detail) => {
+        $('#dropdown-menu-size').append($("<a>").addClass("dropdown-item").attr("role", "presentation").text(detail.size));
+      });
+
+      $("#size-drop a").click(function () {
+        let selectedSize = $(this).text();
+        $("#size-drop-text span").text(selectedSize);
+      });
+
+      $("#quantity-drop a").click(function () {
+        let selectedQuantity = $(this).text();
+        $("#quantity-drop-text span").text(selectedQuantity);
+      });
+
       var swiper = new Swiper(".swiper-container", {
         loop: true,
         pagination: {
@@ -84,5 +93,6 @@ window.innerWidth < 768 &&
           prevEl: ".swiper-button-prev",
         },
       });
+
     });
   });

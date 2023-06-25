@@ -182,20 +182,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
         localStorage.setItem('product', JSON.stringify(product));
         console.log('Product added to cart', product);
       }
-
     }
-
-    // function addToCart() {
-    //   let buttonId = $(this).attr('id');
-    //   let productId = buttonId.split('_')[1];
-    //   let product = filteredProducts.find((product) => product._id.$oid === productId);
-    //
-    //   if (product) {
-    //     cartItems.push(product);
-    //     localStorage.setItem('cart', JSON.stringify(cartItems));
-    //     console.log('Product added to cart', product);
-    //   }
-    // }
 
   }()
 }), !1);
