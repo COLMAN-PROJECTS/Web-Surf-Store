@@ -1,3 +1,4 @@
+
 // Install packages
 const express = require('express')
 const bodyParser = require('body-parser');
@@ -22,12 +23,23 @@ const OrderRoute = require('./routes/OrderRoute.js')
 const UserRoute = require('./routes/UserRoute.js')
 
 const app = express()
-
+app.use(flash());
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+    })
+);
 app.use(express.static('./frontend'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(methodOverride("_method"));
 app.use(express.json())
 
+app.use("/auth", require("./routes/AuthRoute"));
 app.use('/products', ProductRoute);
 app.use('/orders', OrderRoute);
 app.use('/profile', UserRoute);

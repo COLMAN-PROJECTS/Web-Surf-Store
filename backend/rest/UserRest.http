@@ -5,11 +5,20 @@ GET http://localhost:3000/profile
 GET http://localhost:3000/profile/email/johndoe@example.com
 
 ###
-POST http://localhost:3000/login
+POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
   "fullName": "Israel Israeli",
+  "email": "Israel.Israeli@gmail.com",
+  "password": "123456"
+}
+
+###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
   "email": "Israel.Israeli@gmail.com",
   "password": "123456"
 }

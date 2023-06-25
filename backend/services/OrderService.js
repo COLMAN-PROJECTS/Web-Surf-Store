@@ -1,6 +1,5 @@
 const Order = require('../models/OrderSchema'); // Assuming you have defined the Order schema
 const Product = require('./ProductService'); // Assuming you have defined the Product schema
-const User = require('../models/UserSchema'); // Assuming you have defined the User schema
 
 
 const createOrder = async (orderData) => {
