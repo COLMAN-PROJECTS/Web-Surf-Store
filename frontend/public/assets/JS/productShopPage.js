@@ -147,7 +147,7 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
                         <div id="productItem_${productId}" class="col">
                           <div>
                             <a id="product-cart_${productId}" href="./productPage.html" target="_blank">
-                              <img class="img-fluid" style="height: 200px;" src="${productImage}" width="416" height="200">
+                              <img class="img-fluid product-image-shop" style="height: 200px;" src="${productImage}" width="416" height="200">
                             </a>
                             <div class="py-4">
                               <h4 class="text-center"><span style="color: rgb(51, 51, 51);">${productPrice}</span></h4>

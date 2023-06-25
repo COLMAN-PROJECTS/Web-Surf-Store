@@ -350,3 +350,9 @@ div.social-links {
   border-radius: 7px;
   border-bottom-color: #fff
 }
+
+.product-image-shop{
+  max-height: 200px;
+  width: auto;
+  margin: 0 100px;
+}
