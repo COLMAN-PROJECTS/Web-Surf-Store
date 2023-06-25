@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>managerArea</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/fonts/font-awesome.css">
+  <link rel="stylesheet" href="assets/CSS/managerAreaPage.css">
+  <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar navbar-light navbar-expand-md sticky-top py-3" style="padding-left: 30px;padding-right: 30px;">
+  <div class="container-fluid"><a class="navbar-brand d-flex align-items-center" href="../index.html"><span><img
+    class="rounded-circle logo-nav" src="assets/images/SurfStore-logo.png">SurfSights</span></a>
+    <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+      class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-uppercase" id="navcol-1">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link active" href="./productShopPage.html">shop</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./beachInfo.html">Beach info</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./shoppingCartPage.html">shopping cart</a></li>
+      </ul>
+      <i class="fa fa-user" style="font-size: 29px;margin-right: 10px;"></i>
+      <button id="login" class="btn bg-white me-3" type="button">Log in</button>
+    </div>
+  </div>
+</nav>
+
+<section id="titleImage" class="section-hero">
+  <div data-bss-scroll-zoom="true" data-bss-scroll-zoom-speed="1">
+    <div class="text-center d-flex flex-column justify-content-center align-items-center my-0 py-3 px-3 hero-content">
+      <h1 id="titleH1" class="display-1 fw-bold hero-h1" style="color: #000000;"></h1>
+    </div>
+  </div>
+</section>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-3">
+      <div class="card">
+        <div class="card-body">
+
+          <h5 class="my-3">My Site</h5>
+          <div class="fm-menu">
+            <div class="list-group list-group-flush">
+              <a href="javascript:;" class="list-group-item py-1">
+                <i class="bx bx-user me-2"></i><span>Users</span></a>
+
+              <a href="javascript:;" class="list-group-item py-1">
+                <i class="bx bx-task me-2"></i><span>Orders</span></a>
+
+              <a href="javascript:;" class="list-group-item py-1"><i
+                class="bx bx-task-x me-2"></i><span>Canceled Orders</span></a>
+
+              <a href="javascript:;" class="list-group-item py-1"><i
+                class="bx bx-bar-chart me-2"></i><span>Product revenue graph</span></a>
+
+              <a href="javascript:;" class="list-group-item py-1"><i
+                class="bx bx-trash-alt me-2"></i><span>Deleted Files</span></a>
+
+              <a href="javascript:;" class="list-group-item py-1">
+                <i class="bx bx-file me-2"></i> <span>Documents</span></a>
+
+              <a href="javascript:;" class="list-group-item py-1"><i
+                class="bx bx-image me-2"></i><span>Images</span></a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="mt-3"></div>
+          <div class="d-flex align-items-center">
+            <div class="fm-file-box bg-light-primary text-primary"><i
+              class="bx bx-image"></i>
+            </div>
+            <div class="flex-grow-1 ms-2">
+              <h6 class="mb-0">Surfboards</h6>
+              <p class="mb-0 text-secondary">get from server</p>
+            </div>
+            <h6 class="text-primary mb-0">$$$</h6>
+          </div>
+          <div class="d-flex align-items-center mt-3">
+            <div class="fm-file-box bg-light-success text-success"><i
+              class="bx bxs-file-doc"></i>
+            </div>
+            <div class="flex-grow-1 ms-2">
+              <h6 class="mb-0">Sups'</h6>
+              <p class="mb-0 text-secondary">get from server</p>
+            </div>
+            <h6 class="text-primary mb-0">$$$</h6>
+          </div>
+          <div class="d-flex align-items-center mt-3">
+            <div class="fm-file-box bg-light-danger text-danger"><i
+              class="bx bx-video"></i>
+            </div>
+            <div class="flex-grow-1 ms-2">
+              <h6 class="mb-0">Wetsuits</h6>
+              <p class="mb-0 text-secondary">get from server</p>
+            </div>
+            <h6 class="text-primary mb-0">$$$</h6>
+          </div>
+          <div class="d-flex align-items-center mt-3">
+            <div class="fm-file-box bg-light-warning text-warning"><i
+              class="bx bx-image"></i>
+            </div>
+            <div class="flex-grow-1 ms-2">
+              <h6 class="mb-0">Accessories</h6>
+              <p class="mb-0 text-secondary">get from server</p>
+            </div>
+            <h6 class="text-primary mb-0">$$$</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-9">
+      <div class="card">
+        <div class="card-body">
+          <div class="fm-search">
+            <div class="mb-0">
+
+            </div>
+          </div>
+          <div class="row mt-3">
+            <!--            <div class="col-12 col-lg-4">-->
+            <!--              <div class="card shadow-none border radius-15">-->
+            <!--                <div class="card-body">-->
+            <!--                  <div class="d-flex align-items-center">-->
+            <!--                    <div class="fm-icon-box radius-15 bg-primary text-white">-->
+            <!--                      <i class="lni lni-google-drive"></i>-->
+            <!--                    </div>-->
+            <!--                    <div class="ms-auto font-24"><i-->
+            <!--                      class="fa fa-ellipsis-h"></i>-->
+            <!--                    </div>-->
+            <!--                  </div>-->
+            <!--                  <h5 class="mt-3 mb-0">Google Drive</h5>-->
+            <!--                  <p class="mb-1 mt-4"><span>45.5 GB</span> <span-->
+            <!--                    class="float-end">50 GB</span>-->
+            <!--                  </p>-->
+            <!--                  <div class="progress" style="height: 7px;">-->
+            <!--                    <div class="progress-bar bg-primary"-->
+            <!--                         role="progressbar"-->
+            <!--                         style="width: 75%;"-->
+            <!--                         aria-valuenow="75"-->
+            <!--                         aria-valuemin="0"-->
+            <!--                         aria-valuemax="100"></div>-->
+            <!--                  </div>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--            <div class="col-12 col-lg-4">-->
+            <!--              <div class="card shadow-none border radius-15">-->
+            <!--                <div class="card-body">-->
+            <!--                  <div class="d-flex align-items-center">-->
+            <!--                    <div class="fm-icon-box radius-15 bg-danger text-white">-->
+            <!--                      <i class="lni lni-dropbox-original"></i>-->
+            <!--                    </div>-->
+            <!--                    <div class="ms-auto font-24"><i-->
+            <!--                      class="fa fa-ellipsis-h"></i>-->
+            <!--                    </div>-->
+            <!--                  </div>-->
+            <!--                  <h5 class="mt-3 mb-0">Dropbox</h5>-->
+            <!--                  <p class="mb-1 mt-4"><span>1,2 GB</span> <span-->
+            <!--                    class="float-end">3 GB</span>-->
+            <!--                  </p>-->
+            <!--                  <div class="progress" style="height: 7px;">-->
+            <!--                    <div class="progress-bar bg-danger"-->
+            <!--                         role="progressbar"-->
+            <!--                         style="width: 45%;"-->
+            <!--                         aria-valuenow="55"-->
+            <!--                         aria-valuemin="0"-->
+            <!--                         aria-valuemax="100"></div>-->
+            <!--                  </div>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--            <div class="col-12 col-lg-4">-->
+            <!--              <div class="card shadow-none border radius-15">-->
+            <!--                <div class="card-body">-->
+            <!--                  <div class="d-flex align-items-center">-->
+            <!--                    <div class="fm-icon-box radius-15 bg-warning text-dark">-->
+            <!--                      <i class="bx bxs-door-open"></i>-->
+            <!--                    </div>-->
+            <!--                    <div class="ms-auto font-24"><i-->
+            <!--                      class="fa fa-ellipsis-h"></i>-->
+            <!--                    </div>-->
+            <!--                  </div>-->
+            <!--                  <h5 class="mt-3 mb-0">OneDrive</h5>-->
+            <!--                  <p class="mb-1 mt-4"><span>2,5 GB</span> <span-->
+            <!--                    class="float-end">3 GB</span>-->
+            <!--                  </p>-->
+            <!--                  <div class="progress" style="height: 7px;">-->
+            <!--                    <div class="progress-bar bg-warning"-->
+            <!--                         role="progressbar"-->
+            <!--                         style="width: 65%;"-->
+            <!--                         aria-valuenow="65"-->
+            <!--                         aria-valuemin="0"-->
+            <!--                         aria-valuemax="100"></div>-->
+            <!--                  </div>-->
+            <!--                </div>-->
+            <!--              </div>-->
+          </div>
+        </div>
+        <!--end row-->
+
+        <h5 style="margin: auto">Folders</h5>
+        <div class="row mt-3">
+          <div class="col-12 col-lg-4">
+            <div class="card shadow-none border radius-15">
+              <div class="card-body">
+                <div class="d-flex align-items-center">
+                  <div class="font-30 text-primary"><i
+                    class="bx bxs-folder"></i>
+                  </div>
+                  <div class="user-groups ms-auto">
+                  </div>
+                </div>
+                <h6 class="mb-0 text-primary">Title Images</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div class="card shadow-none border radius-15">
+              <div class="card-body">
+                <div class="d-flex align-items-center">
+                  <div class="font-30 text-primary"><i
+                    class="bx bxs-folder"></i>
+                  </div>
+                  <div class="user-groups ms-auto">
+                  </div>
+                </div>
+                <h6 class="mb-0 text-primary">Best offer Product</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div class="card shadow-none border radius-15">
+              <div class="card-body">
+                <div class="d-flex align-items-center">
+                  <div class="font-30 text-primary"><i
+                    class="bx bxs-folder"></i>
+                  </div>
+                  <div class="user-groups ms-auto">
+                  </div>
+                </div>
+                <h6 class="mb-0 text-primary">Best offer Product</h6>
+              </div>
+            </div>
+          </div>
+          <!--end row-->
+
+          <h5 id="title-info-table" style="margin-left: 450px">Users/Orders</h5>
+          <div class="d-flex align-items-center">
+          </div>
+
+          <div class="table-responsive mt-3">
+            <table class="table table-striped table-hover table-sm mb-0">
+              <thead>
+              <tr>
+                <th id="table-col1">Name </th>
+                <th id="table-col2">Permissions</th>
+                <th id="table-col3">Email</th>
+                <th id="table-col4">Number of Orders</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <i class="bx bxs-file-pdf me-2 font-24 "></i>
+                    </div>
+                    <div class="font-weight-bold text-danger">
+                      userName/lastOrder
+                    </div>
+                  </div>
+                </td>
+                <td>Admin</td>
+                <td>Eviatar@walla.com</td>
+                <td>8</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<section style="margin: 96px 55px;"></section>
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-4 footer-navigation"><h3><a href="#">Surf Sights</a></h3>
+        <p class="links" style="margin-top: 31px;"><a href="#">Home</a><strong> · </strong><a
+          href="#">Shop</a><strong> · </strong><a href="#">Beach Info</a><strong>
+          · </strong><a href="#">Shopping Cart</a><strong> ·</strong></p>
+        <p class="company-name" style="margin-bottom: 2px;margin-top: 43px;">SurfSights ©
+          2023</p></div>
+      <div class="col-sm-6 col-md-4 footer-contacts">
+        <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+          <p><span class="new-line-span">21 Revolution Street</span> Paris, France</p>
+        </div>
+        <div><i class="fa fa-phone footer-contacts-icon"></i>
+          <p class="footer-center-info email text-start"> +1 555 123456</p></div>
+        <div><i class="fa fa-envelope footer-contacts-icon"></i>
+          <p><a href="#" target="_blank">support@company.com</a></p></div>
+      </div>
+      <div class="col-md-4 footer-about"><h4>About the company</h4>
+        <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis
+          velit, eu auctor lacus vehicula sit amet. </p>
+        <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a
+          href="#"><i class="fa fa-twitter"></i></a><a href="#"><i
+          class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="assets/JS/managerAreaPage.js"></script>
+</body>
+</html>
