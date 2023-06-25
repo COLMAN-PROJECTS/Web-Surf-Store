@@ -72,7 +72,7 @@ $(document).ready(function () {
 
     document.getElementById('orderSubtotal').textContent = '$ '+ orderSummary;
     document.getElementById('shipping').textContent = '$ '+ shipping;
-    document.getElementById('tax').textContent = '$ '+ tex.toFixed(2);
+    document.getElementById('tax').textContent = '$ '+ tax.toFixed(2);
     document.getElementById('total').textContent = '$ '+total.toFixed(2);
 
   }
