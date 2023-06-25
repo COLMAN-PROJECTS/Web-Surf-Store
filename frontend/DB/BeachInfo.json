@@ -1,0 +1,32 @@
+[{
+  "_id": {
+    "$oid": "947e274b961b8485a84dbdc1"
+  },
+  "spot": "Hilton",
+  "location": "url",
+  "video": "url",
+  "description": "The location for surfing in israel",
+  "weather": "url"
+},
+  {
+    "_id": {
+      "$oid": "947e274b961b8485a84dbdc2"
+    },
+    "spot": "Dromi",
+    "location": "url",
+    "video": "url",
+    "description": "the best spot in herzeliya",
+    "weather": "url"
+  }
+,
+  {
+    "_id": {
+      "$oid": "947e274b961b8485a84dbdc3"
+    },
+    "spot": "BackDoor",
+    "location": "url",
+    "video": "url",
+    "description": "the best spot in Haifa",
+    "weather": "url"
+  }
+  ]
