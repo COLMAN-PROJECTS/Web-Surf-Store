@@ -88,14 +88,9 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
           filterProducts();
         });
 
-
       price.forEach((item) => {
         priceList.append('<option value="' + item + '">' + item + '</option>');
       });
-
-      // Size.forEach((item) => {
-      //   SizeList.append('<option value="' + item + '">' + item + '</option>');
-      // });
 
       function filterProducts() {
         let selectedCategory = CategoryList.val();
@@ -151,16 +146,12 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
                 let htmlCode = `
                         <div id="productItem_${productId}" class="col">
                           <div>
-                            <a href="#" target="_blank">
+                            <a id="product-cart_${productId}" href="./productPage.html" target="_blank">
                               <img class="img-fluid" style="height: 200px;" src="${productImage}" width="416" height="200">
                             </a>
                             <div class="py-4">
                               <h4 class="text-center"><span style="color: rgb(51, 51, 51);">${productPrice}</span></h4>
                               <p class="text-center"><span style="color: rgb(51, 51, 51);">${productName}</span></p>
-                              <button id="addToCartBtn_${productId}" class="btn btn-primary pull-right" type="button" style="margin-bottom: 10px;">
-                                <i class="fa fa-cart-plus" style="font-size: 23px;margin-right: 9px;padding-top: 0;margin-top: 0;"></i>
-                                Add to cart
-                              </button>
                             </div>
                           </div>
                         </div>
@@ -171,7 +162,8 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
           },
         });
       }
-      $('#productContainer').on('click', 'button', addToCart);
+
+      $('#productContainer').on('click', 'a', productCartClick);
 
       CategoryList.on('change', filterProducts);
       BrandList.on('change', filterProducts);
@@ -181,17 +173,29 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
       filterProducts();
     });
 
-    function addToCart() {
-      let buttonId = $(this).attr('id');
-      let productId = buttonId.split('_')[1];
-      let product = filteredProducts.find((product) => product._id.$oid === productId);
+    function productCartClick() {
+      let aId = $(this).attr('id');
+      let productId = aId.split('_')[1];
 
+      let product = filteredProducts.find((product) => product._id.$oid === productId);
       if (product) {
-        cartItems.push(product);
-        localStorage.setItem('cart', JSON.stringify(cartItems));
+        localStorage.setItem('product', JSON.stringify(product));
         console.log('Product added to cart', product);
       }
+
     }
+
+    // function addToCart() {
+    //   let buttonId = $(this).attr('id');
+    //   let productId = buttonId.split('_')[1];
+    //   let product = filteredProducts.find((product) => product._id.$oid === productId);
+    //
+    //   if (product) {
+    //     cartItems.push(product);
+    //     localStorage.setItem('cart', JSON.stringify(cartItems));
+    //     console.log('Product added to cart', product);
+    //   }
+    // }
 
   }()
 }), !1);

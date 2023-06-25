@@ -1,10 +1,10 @@
-@font-face {
-  font-family: swiper-icons;
-  src: url(frontend/public/assets/fonts/swiper-icons.woff) format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: auto
-}
+/*@font-face {*/
+/*  font-family: swiper-icons;*/
+/*  src: url(frontend/public/assets/fonts/swiper-icons.woff) format('woff');*/
+/*  font-weight: 400;*/
+/*  font-style: normal;*/
+/*  font-display: auto*/
+/*}*/
 
 .footer-navigation h3 {
   margin: 0 0 20px;
@@ -161,7 +161,7 @@ div.social-links {
 
 .swiper-container-autoheight .swiper-wrapper {
   align-items: flex-start;
-  transition-property: transform, height
+  transition-property: transform, height;
 }
 
 .swiper-container-3d {
