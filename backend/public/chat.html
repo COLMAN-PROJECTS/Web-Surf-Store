@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/styles.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"></script>
+
 </head>
 
 <body>
@@ -49,12 +51,9 @@
 
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"></script>
 <script>
-    // Connect to the Socket.io server
     var socket = io();
 
-    // Function to send a message
     function addReceiverMessage(message) {
         var receiverMessage = `<div class="media w-50 mb-3"><img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="50" class="rounded-circle">
         <div class="media-body ml-3">
@@ -97,13 +96,11 @@
         $('#messageInput').val('');
     });
 
-    // Display received messages
     socket.on('message', function (msg) {
         addReceiverMessage(msg);
 
     });
 
-    // Function to get the current time in the desired format
     function getCurrentTime() {
         var now = new Date();
         var hours = now.getHours();
@@ -124,16 +121,16 @@
         return dateTime;
     }
 
-    // Connect to the Socket.io server
     socket.on('connect', function () {
         console.log('Connected to the server');
     });
 
-    // Disconnect from the Socket.io server
     socket.on('disconnect', function () {
         console.log('Disconnected from the server');
     });
 </script>
+<!--<script src="chat.js"></script>-->
+
 </body>
 
 </html>
