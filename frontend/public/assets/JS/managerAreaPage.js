@@ -16,5 +16,47 @@ window.innerWidth < 768 &&
       $('#titleImage').css('background', backgroundImage);
       $("#titleH1").text('Manage your beach');
     });
+    $(document).ready(function () {
+      $('#productForm').submit(function (e) {
+        e.preventDefault();
 
+        var formData = {
+          name: $('#name').val(),
+          description: $('#description').val(),
+          price: parseFloat($('#price').val()),
+          frontImage: $('#frontImage').val(),
+          category: $('#category').val(),
+          brand: $('#brand').val(),
+          details: [],
+          images: {
+            image1: $('#image1').val(),
+            image2: $('#image2').val(),
+            image3: $('#image3').val(),
+            image4: $('#image4').val()
+          }
+        };
+
+        $('.detailRow').each(function () {
+          var size = $(this).find('.size').val();
+          var quantityInStock = parseInt($(this).find('.quantityInStock').val());
+          formData.details.push({size: size, quantityInStock: quantityInStock});
+        });
+
+        console.log(formData);
+
+        $('#productForm')[0].reset();
+        $('#detailsContainer').children().remove();
+        $('#addDetail').click();
+      });
+
+      $('#addDetail').click(function addDetailRow() {
+        var newRow = '<div class="detailRow">' +
+          '<input type="text" class="size" placeholder="Size">' +
+          '<input type="number" class="quantityInStock" placeholder="Quantity in Stock">' +
+          '</div>';
+        $('#detailsContainer').append(newRow);
+      });
+
+    });
   });
+
