@@ -20,10 +20,10 @@ const getAllUsers = async () => {
     }
 };
 
-const updateUser = async (id, user) => {
+const updateUser = async (id, updatedFields) => {
     try {
-        console.log(id, user);
-        const updatedUser = await User.findByIdAndUpdate(id, user, {new: true});
+        console.log(id, updatedFields);
+        const updatedUser = await User.findByIdAndUpdate(id, updatedFields, {new: true});
         if (updatedUser) {
             return updatedUser;
         }
