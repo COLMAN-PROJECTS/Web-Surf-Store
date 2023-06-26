@@ -5,7 +5,7 @@
     </pattern>
   </defs>
   <g id="Avatar" transform="translate(-52.831 -28)">
-    <circle id="Ellipse_1" data-name="Ellipse 1" cx="55.846" cy="55.846" r="55.846" transform="translate(52.831 28)" fill="#f1f1f1"/>
-    <rect id="_11668749" data-name="11668749" width="98.927" height="98.927" rx="49.463" transform="translate(59.214 40.512)" fill="url(#pattern)"/>
+    <circle id="Ellipse_1"   cx="55.846" cy="55.846" r="55.846" transform="translate(52.831 28)" fill="#f1f1f1"/>
+    <rect id="_11668749" width="98.927" height="98.927" rx="49.463" transform="translate(59.214 40.512)" fill="url(#pattern)"/>
   </g>
 </svg>

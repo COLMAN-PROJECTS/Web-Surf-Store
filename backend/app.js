@@ -64,10 +64,10 @@ app.get('*', (req, res) => {
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.listen(process.env.PORT, () => {
-    console.log('server is running')
-}
-)
-server.listen(8082, () => {
+// app.listen(process.env.PORT, () => {
+//     console.log('server is running')
+// }
+// )
+server.listen(process.env.PORT, () => {
     console.log('server is running')
 })
