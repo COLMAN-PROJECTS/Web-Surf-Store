@@ -1,3 +1,4 @@
+const sanitizedMessage = require('xss');
 function handleBotResponse(message) {
     const lowercaseMessage = message.toLowerCase();
 
@@ -45,7 +46,9 @@ const handleChat = (io) => {
         socket.on('message', (data) => {
             console.log('Received message:', data);
 
-            const botResponse = handleBotResponse(data);
+            const sanitizedData = sanitizedMessage.escapeHtml(data);
+
+            const botResponse = handleBotResponse(sanitizedData);
             socket.emit('message', botResponse);
         });
 
