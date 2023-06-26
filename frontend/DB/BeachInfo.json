@@ -2,31 +2,19 @@
   "_id": {
     "$oid": "947e274b961b8485a84dbdc1"
   },
-  "spot": "Hilton",
-  "location": "url",
-  "video": "url",
-  "description": "The location for surfing in israel",
-  "weather": "url"
+  "spot": "Ashdod",
+  "lat": "31.7922",
+  "long": "34.6497",
+  "description": "The best beach location at the south part of israel"
+
 },
   {
     "_id": {
       "$oid": "947e274b961b8485a84dbdc2"
     },
-    "spot": "Dromi",
-    "location": "url",
-    "video": "url",
-    "description": "the best spot in herzeliya",
-    "weather": "url"
-  }
-,
-  {
-    "_id": {
-      "$oid": "947e274b961b8485a84dbdc3"
-    },
-    "spot": "BackDoor",
-    "location": "url",
-    "video": "url",
-    "description": "the best spot in Haifa",
-    "weather": "url"
+    "spot": "Bat-Yam",
+    "lat": 32.0234,
+    "long": 34.7485,
+    "description": "just 10 min driving from the center of Tel Aviv",
   }
   ]
