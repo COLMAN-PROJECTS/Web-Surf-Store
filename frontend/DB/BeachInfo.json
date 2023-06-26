@@ -3,8 +3,8 @@
     "$oid": "947e274b961b8485a84dbdc1"
   },
   "spot": "Ashdod",
-  "lat": 31.7922,
-  "long": 34.6497,
+  "lat": 31.8009,
+  "long": 34.6324,
   "description": "The best beach location at the south part of israel"
 
 },
@@ -13,8 +13,8 @@
       "$oid": "947e274b961b8485a84dbdc2"
     },
     "spot": "Bat-Yam",
-    "lat": 32.0234,
-    "long": 34.7485,
+    "lat": "32.0234",
+    "long": "34.7485",
     "description": "just 10 min driving from the center of Tel Aviv",
   }
   ]
