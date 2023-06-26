@@ -12,7 +12,6 @@ async function getWeatherData() {
   // Display loading message
   displayLoadingMessage();
 
-
   // Get the user's current location
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(async position => {
