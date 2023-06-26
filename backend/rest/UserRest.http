@@ -11,7 +11,8 @@ Content-Type: application/json
 {
   "fullName": "Israel Israeli",
   "email": "Israel.Israeli@gmail.com",
-  "password": "123456"
+  "password": "123456",
+  "isAdmin": true
 }
 
 ###
@@ -31,7 +32,7 @@ Content-Type: application/json
   "id": "647e274b961b8485a84dbdc5",
   "user": {
     "fullName": "John Doe",
-    "phone": "0541234567"
+    "phone": "0541234567",
   }
 }
 
@@ -40,5 +41,5 @@ DELETE  http://localhost:3000/profile/delete/
 Content-Type: application/json
 
 {
-  "id": "64973cdce345963e6dc2f155"
+  "id": "6497e9ddb05344edf41a6c78"
 }

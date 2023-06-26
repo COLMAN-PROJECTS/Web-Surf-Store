@@ -34,10 +34,11 @@ PATCH http://localhost:3000/products
 Content-Type: application/json
 
 {
+
   "product": {
     "_id": "649415d249554cbf3cf96c4b",
     "name": "SurfBoardTest2Update"
-  }
+}
 }
 
 ###

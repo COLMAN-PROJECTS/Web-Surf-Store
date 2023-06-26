@@ -6,7 +6,7 @@ const getUserByEmail = async (email) => {
 };
 
 const getUserById = async (id) => {
-    return await User.findById(id);
+    return await User.findById(id).populate("orders");
 };
 
 const getAllUsers = async () => {

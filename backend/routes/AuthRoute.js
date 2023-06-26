@@ -36,7 +36,6 @@ router.get("/register", authMiddleware.checkNotAuthenticated, (req, res) => {
 
 router.post(
     "/register",
-    authMiddleware.checkNotAuthenticated,
     authMiddleware.validateFields,
     async (req, res) => {
         try {

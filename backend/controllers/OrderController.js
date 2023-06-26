@@ -42,7 +42,7 @@ const getAllOrders = async (req, res) => {
 const getOrderById = async (req, res) => {
         try {
             const orderId = req.params.id;
-            const order = await OrderService.getOrderById(orderId);
+            const order = (await OrderService.getOrderById(orderId)).populate('profile');
             if (order) {
                 res.status(200).json(order);
             } else {

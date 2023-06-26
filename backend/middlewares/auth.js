@@ -16,7 +16,7 @@ function checkAuthenticated(req, res, next) {
  * @details Middleware to check if user is not authenticated
  */
 function checkNotAuthenticated(req, res, next) {
-  if (!req.isAuthenticated()) {
+  if (req.isAuthenticated()) {
     next();
   }
   res.status(401).json({ error: "User is not authenticated" });
@@ -39,7 +39,7 @@ function validateLogin(req, res, next) {
   }
   req.session.user = { email: email, password: password };
   // TODO: remove after testing
-  console.log("validation success:" + req.session.user);
+  console.log("validation success:" + JSON.stringify(req.session.user));
   next();
 }
 
