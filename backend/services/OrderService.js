@@ -92,6 +92,25 @@ const filterOrders = async (filter) => {
 
     }
 }
+const groupOrdersByField = async (groupByField) => {
+    try {
+        const groupBy = {
+            _id: `$${groupByField}`,
+            count: { $sum: 1 },
+            orders: { $push: "$$ROOT" }
+        };
+
+        const aggregationPipeline = [
+            { $group: groupBy }
+        ];
+
+        const groupedOrders = await Order.aggregate(aggregationPipeline);
+
+        return groupedOrders;
+    } catch (e) {
+        console.log("OrderService: " + e);
+    }
+};
 
 module.exports = {
     createOrder,
@@ -99,5 +118,7 @@ module.exports = {
     getOrderById,
     updateOrder,
     deleteOrder,
-    filterOrders
+    filterOrders,
+    groupOrdersByField
+
 }

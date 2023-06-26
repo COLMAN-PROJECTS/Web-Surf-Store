@@ -1,12 +1,11 @@
+    var socket = io();
+    socket.on('connect', function () {
+        console.log('Connected to the server');
+    });
 
-var socket = io();
-socket.on('connect', function () {
-    console.log('Connected to the server');
-});
-
-socket.on('disconnect', function () {
-    console.log('Disconnected from the server');
-});
+    socket.on('disconnect', function () {
+        console.log('Disconnected from the server');
+    });
 
     function addReceiverMessage(message) {
         var receiverMessage = `<div class="media w-50 mb-3"><img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="50" class="rounded-circle">

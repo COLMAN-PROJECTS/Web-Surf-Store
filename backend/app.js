@@ -25,6 +25,7 @@ mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnif
 const ProductRoute = require('./routes/ProductRoute.js')
 const OrderRoute = require('./routes/OrderRoute.js')
 const UserRoute = require('./routes/UserRoute.js')
+const BeachInfoRoute = require('./routes/BeachInfoRoute.js')
 
 
 const app = express()
