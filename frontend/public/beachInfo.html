@@ -77,9 +77,31 @@
           </section>
         </div>
       </div>
-    </section>
-  </div>
+
+<head>
+  <title>Map Example</title>
+  <style>
+    #map-container {
+      height: 400px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #map {
+
+      height: 400px;
+      width: 50%;
+    }
+  </style>
+</head>
+<body>
+<div id="map-container">
+<div id="map"></div>
 </div>
+</body>
+
+
 <footer>
   <div class="container">
     <div class="row">
@@ -110,11 +132,17 @@
   </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=Aklwgn06CATK6B6p_YjtzO8GCnTMXYdGdHlgvscFh8elmi-15lDJGsjWgwxW-Eh2&callback=initMap'></script>-->
+<!--<script src=“https://maps.googleapis.com/maps/api/js?key=AIzaSyAoQLaZ0-M4dXQcXrYZs77JI610bwF-g5U&callback=initMap&libraries=&v=weekly” async></script>-->
+
 <script src="assets/JS/beachInfo.js"></script>
 <script src="assets/JS/weather.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoQLaZ0-M4dXQcXrYZs77JI610bwF-g5U&callback=initMap" async defer></script>
+<script src="assets/JS/map.js"></script>
 </body>
 </html>
 
