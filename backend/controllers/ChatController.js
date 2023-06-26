@@ -1,15 +1,23 @@
 function handleBotResponse(message) {
     const lowercaseMessage = message.toLowerCase();
 
-    if (lowercaseMessage.includes('hello')) {
+    if (lowercaseMessage.includes('hello' || 'hey' || 'hi')) {
         return 'Hello there! How can I help you today?';
     }
-    if (lowercaseMessage.includes('hours')) {
+    else if (lowercaseMessage.includes('hours')) {
         return 'Our store is open from 9 AM to 6 PM, Sunday to Friday.';
     } else if (lowercaseMessage.includes('location')) {
         return 'Our surf store is located at 123 Surf Avenue, Tel Aviv.';
-    } else if (lowercaseMessage.includes('product availability')) {
+    } else if (lowercaseMessage.includes('product' || 'products' || 'items' || 'stock' || 'available')) {
         return 'We have a wide range of surfboards, wetsuits, and accessories in stock.\nIs there a specific product you are interested in?';
+    } else if (lowercaseMessage.includes('surfboard' || 'surfboards')) {
+        return 'We have a wide range of surfboards in stock.\n you can check out our website for more details.';
+    } else if (lowercaseMessage.includes('wetsuit' || 'wetsuits')) {
+        return 'We have a wide range of wetsuits in stock.\n you can check out our website for more details.';
+    } else if (lowercaseMessage.includes('accessory' || 'accessories')) {
+        return 'We have a wide range of accessories in stock.\n you can check out our website for more details.';
+    } else if (lowercaseMessage.includes('price')) {
+        return 'Our prices range from $100 to $2000, depending on the product.\nIs there a specific product you are interested in?';
     } else if (lowercaseMessage.includes('shipping')) {
         return 'We offer free shipping on all orders above $50. Shipping usually takes 3-5 business days.';
     } else if (lowercaseMessage.includes('returns')) {
@@ -21,7 +29,7 @@ function handleBotResponse(message) {
     } else if (lowercaseMessage.includes('contact')) {
         return 'You can reach our customer support team at support@surfStore.com or call us at +972-54673225.';
     } else {
-        return "I'm sorry, I couldn't understand your question. Please contact our customer support for assistance.";
+        return "I'm sorry, I couldn't understand your question, I'm a new Bot \uD83D\uDE42 \n Please try again. ";
     }
 }
 
