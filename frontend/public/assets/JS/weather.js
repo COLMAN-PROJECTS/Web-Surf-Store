@@ -1,47 +1,49 @@
 function displayLoadingMessage(weatherDiv) {
-  weatherDiv.innerHTML = 'Loading Weather...';
+  weatherDiv.html('Loading Weather...');
 }
 
-async function getWeatherData(latitude, longitude, weatherDiv) {
-  // Display loading message
+function getWeatherData(latitude, longitude, weatherDiv) {
   displayLoadingMessage(weatherDiv);
 
   try {
     const apiKey = 'd639e889ca39c6005b3a6cb8833ff9a3';
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
 
-    // Fetch the weather data
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    $.ajax({
+      url: apiUrl,
+      success: function (data) {
+        const temperature = (data.main.temp / 10).toFixed(1);
+        const description = data.weather[0].description;
+        const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString();
+        const windSpeed = data.wind.speed;
+        const windDirection = data.wind.deg;
 
-    // Extract the relevant weather information
-    const temperature = (data.main.temp / 10).toFixed(1);
-    const description = data.weather[0].description;
-    const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString();
-    const windSpeed = data.wind.speed;
-    const windDirection = data.wind.deg;
-
-    // Update the weatherDiv with the weather information
-    weatherDiv.innerHTML = `Temperature: ${temperature}°C<br>Description: ${description}<br>Sunset Time: ${sunsetTime}<br>Wind Speed: ${windSpeed} m/s<br>Wind Direction: ${windDirection}°`;
+        weatherDiv.html(`Temperature: ${temperature}°C<br>Description: ${description}<br>Sunset Time: ${sunsetTime}<br>Wind Speed: ${windSpeed} m/s<br>Wind Direction: ${windDirection}°`);
+      },
+      error: function () {
+        console.log('Failed to fetch weather data.');
+        weatherDiv.html('Failed to fetch weather data.');
+      }
+    });
   } catch (error) {
     console.log('Error:', error);
-    weatherDiv.innerHTML = 'Failed to fetch weather data.';
+    weatherDiv.html('Failed to fetch weather data.');
   }
 }
 
 function getLocation() {
-  const photoCards = document.querySelectorAll('.photo-card');
+  const photoCards = $('.photo-card');
 
-  photoCards.forEach(photoCard => {
-    const latitude = photoCard.dataset.latitude;
-    const longitude = photoCard.dataset.longitude;
-    const weatherDiv = photoCard.querySelector('.weather-div');
+  photoCards.each(function () {
+    const latitude = $(this).data('latitude');
+    const longitude = $(this).data('longitude');
+    const weatherDiv = $(this).find('.weather-div');
 
     if (latitude && longitude) {
       getWeatherData(latitude, longitude, weatherDiv);
     } else {
       console.log('Latitude and longitude not found.');
-      weatherDiv.innerHTML = 'Failed to get location.';
+      weatherDiv.html('Failed to get location.');
     }
   });
 }
