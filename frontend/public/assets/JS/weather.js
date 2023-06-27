@@ -5,7 +5,6 @@ function displayLoadingMessage() {
 }
 
 async function displayWeatherData(latitude, longitude, weatherDiv) {
-  // first version:
   const apiKey = 'd639e889ca39c6005b3a6cb8833ff9a3';
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
     weatherDiv.html('Loading Weather...');
@@ -28,7 +27,6 @@ async function displayWeatherData(latitude, longitude, weatherDiv) {
 }
 
 function getLocation(weatherDiv) {
-
   $.ajax({
     url: '/frontend/DB/BeachInfo.json',
     dataType: 'json',

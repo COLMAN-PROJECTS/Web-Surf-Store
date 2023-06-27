@@ -1,6 +1,4 @@
 
-
-//API KEY:  AIzaSyAoQLaZ0-M4dXQcXrYZs77JI610bwF-g5U
 function initMap() {
   const defaultZoom = {
     lat: 31.8009,
@@ -17,8 +15,7 @@ function initMap() {
               let marker = new google.maps.Marker({
                 position: {lat: element.lat, lng: element.long},
                 map: map,
-                title: element.spot,
-              })
+                title: element.spot,})
             })
       }})
   }
@@ -32,8 +29,6 @@ function initMap() {
     script.onload = function () {
       initMap();
     }
-
-
     document.body.appendChild(script);
   }
 
