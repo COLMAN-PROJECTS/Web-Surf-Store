@@ -146,5 +146,26 @@ $(document).ready(function () {
       }
     });
   });
+  $(document).on('click','#checkOutBtn', function(){
+
+    var isLoggedIn =JSON.parse(localStorage.getItem("user"))
+    console.log(isLoggedIn)
+
+    if (!isLoggedIn ) {
+      event.preventDefault(); // Prevent the default link behavior (navigating to href)
+      alert("Please log in to proceed."); // Display an alert message
+      // Redirect to login page or show login form
+      // For example:
+    }
+
+    else{
+      if (dataCart.length > 0) {
+      window.location.href = "paymentPage.html";
+      }
+      else{
+        alert("Please add items to your cart");
+      }
+    }
+  })
 
 }));
