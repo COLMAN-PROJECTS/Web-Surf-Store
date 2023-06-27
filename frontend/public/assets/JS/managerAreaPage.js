@@ -96,13 +96,12 @@ function populateTable(colTitles, data) {
 function enableRowEditing(row) {
     row.addClass('edit-mode');
 
-    var cells = row.find('td:not(:last-child)');
+    var cells = row.find('td:not(:first-child):not(:last-child)');
 
     cells.each(function () {
         var cell = $(this);
         var input = $('<input>').val(cell.val());
-
-        cell.html(input);
+        cell.append(input);
     });
 
     var editButton = row.find('#edit-button');
@@ -121,25 +120,24 @@ function enableRowEditing(row) {
                 var input = cell.find('input');
                 var col = row.closest('tbody').prev('thead').find('th').eq(cell.index()).text();
                 var originalValue = cell.text();
-
-                // Get the updated value before replacing the cell contents
                 var updatedValue = input.val();
-                var updatedText = input.text();
-                alert(updatedValue)
-
-                // Only update the value if it has changed
                 if (originalValue !== updatedValue) {
                     updatedData[col] = updatedValue;
                 }
+                else {
+                    updatedData[col] = originalValue;
+                }
 
-                // Replace the input element with the updated value
-                cell.html(updatedText).text(updatedText).val(updatedText);
+                cell.text(cell.val());
             });
 
             //for testing
-            alert('Row updated successfully');
             row.removeClass('edit-mode');
             editButton.text('\u{1F504}');
+            if (Object.keys(updatedData).length > 0) {
+                console.log(JSON.stringify(updatedData));
+            }
+            alert('Row updated successfully');
 
             // Send the update request if there are changes
             if (Object.keys(updatedData).length > 0) {
@@ -150,13 +148,18 @@ function enableRowEditing(row) {
                     data: { _id: rowId, ...updatedData },
                     dataType: 'json',
                     success: function (response) {
-                        // Check if the row was successfully updated
                         if (response.status === '200') {
-                            alert('Row updated successfully');
-                            // Lock the row for editing by removing the 'edit-mode' class
                             row.removeClass('edit-mode');
-                            // Change the button's text back to 'Edit'
                             editButton.text('\u{1F504}');
+
+                            var updatedRowData = response.data;
+                            cells.each(function () {
+                                var cell = $(this);
+                                var columnName = row.closest('tbody').prev('thead').find('th').eq(cell.index()).text();
+                                var updatedValue = updatedRowData[columnName];
+                                cell.text(updatedValue);
+                            });
+                            alert('Row updated successfully');
                         }
                     },
                     error: function (error) {
@@ -181,8 +184,7 @@ function enableRowEditing(row) {
 
 function deleteRow(row) {
     var rowId = row.find('td:first-child').val();
-    console.log(rowId)
-
+    alert("Item deleted successfully with id: " + rowId);
     $.ajax({
         url: '/frontend/DB/OrdersSeed.json',
         type: 'DELETE',
