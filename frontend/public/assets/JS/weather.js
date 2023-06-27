@@ -2,24 +2,22 @@ function displayLoadingMessage() {
   let weatherDiv = $('#weather-div');
   weatherDiv.html('Loading Weather...');
   getLocation(weatherDiv);
-  // alert('Loading Weather...');
 }
 
 async function displayWeatherData(latitude, longitude, weatherDiv) {
   // first version:
   const apiKey = 'd639e889ca39c6005b3a6cb8833ff9a3';
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+    weatherDiv.html('Loading Weather...');
   $.ajax({
       url: apiUrl,
       dataType: 'json',
     success: function (data) {
-      alert(1)
       const temperature = (data.main.temp / 10).toFixed(1);
       const description = data.weather[0].description;
       const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString();
       const windSpeed = data.wind.speed;
       const windDirection = data.wind.deg;
-      alert(windSpeed)
       weatherDiv.html(`Temperature: ${temperature}°C<br>Description: ${description}<br>Sunset Time: ${sunsetTime}<br>Wind Speed: ${windSpeed} m/s<br>Wind Direction: ${windDirection}°`);
     },
     error: function () {
@@ -27,25 +25,6 @@ async function displayWeatherData(latitude, longitude, weatherDiv) {
       weatherDiv.html('Failed to fetch weather data.(2)');
     }
   });
-
-  //second version:
-  // const apiKey = 'd639e889ca39c6005b3a6cb8833ff9a3';
-  // const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
-  //
-  // $.getJSON(apiUrl)
-  //     .done(function(data) {
-  //       const temperature = (data.main.temp / 10).toFixed(1);
-  //       const description = data.weather[0].description;
-  //       const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString();
-  //       const windSpeed = data.wind.speed;
-  //       const windDirection = data.wind.deg;
-  //       weatherDiv.html(`Temperature: ${temperature}°C<br>Description: ${description}<br>Sunset Time: ${sunsetTime}<br>Wind Speed: ${windSpeed} m/s<br>Wind Direction: ${windDirection}°`);
-  //     })
-  //     .fail(function() {
-  //       console.log('Failed to fetch weather data.');
-  //       weatherDiv.html('Failed to fetch weather data.(2)');
-  //     });
-
 }
 
 function getLocation(weatherDiv) {
@@ -80,12 +59,10 @@ function getLocation(weatherDiv) {
       </div>
     </div>
   `;
-        // alert(spotName+':  '+element.lat+' , '+element.long)
-
 
         $('#beach-container').append(htmlCode);
         let weatherDiv = $('.weather-div').last();
-        displayWeatherData(element.lat, element.long, weatherDiv);
+        displayWeatherData(element.lat, element.long, weatherDiv).then(null);
       });
     },
     error: function () {
@@ -94,36 +71,5 @@ function getLocation(weatherDiv) {
     }
   })
 }
-  // photoDetails.each(function () {
-  //   const beachCard = $(this);
-  //
-  //   $.ajax({
-  //     url: './DB/BeachInfo.json',
-  //     dataType: 'json',
-  //     success: function (data) {
-  //       const spotName = beachCard.find('h1').text();
-  //
-  //         // alert(spotName);
-  //       const beachLocation = data.find(item => item.spot === spotName);
-  //       if (beachLocation) {
-  //         const latitude = beachLocation.lat;
-  //         const longitude = beachLocation.long;
-  //           getWeatherData(latitude, longitude, weatherDiv);
-  //       }
-  //       else {
-  //         alert('error with beachlocation.');
-  //         console.log('Location not found in the database.');
-  //         weatherDiv.html('Location not found.');
-  //       }
-  //     },
-  //     error: function () {
-  //         alert('error with function.');
-  //       console.log('Failed to fetch location data from the database.');
-  //       weatherDiv.html('Failed to fetch location data.');
-  //     }
-  //   });
-  // });
 
-
-// getLocation()
 displayLoadingMessage();
