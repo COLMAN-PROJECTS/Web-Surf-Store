@@ -36,62 +36,55 @@
 </section>
 
 
-<div class="row">
-  <div class="col">
-    <section>
-      <div class="container-fluid" style="height: 230px; margin-top: 20px; width: 1050px;">
-        <div class="photo-card" style="height: 240px; margin-left: 2px; margin-right: 2px; width: 1000px;" data-latitude="31.7922" data-longitude="34.6497">
-          <div class="photo-background" style="width: 424px;">
-            <div>
-              <iframe width="400" height="238" src="https://www.youtube.com/embed/1sl7o94YvEA?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-          <div class="photo-details">
-            <h1>Ashdod</h1>
-            <p>The best spot for surfing at the south district.&nbsp; </p>
-            <div class="weather-div" style="color: white"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</div>
+<!--<div class="row">-->
+<!--  <div class="col">-->
+<!--    <section>-->
+<!--      <div class="container-fluid" style="height: 230px; margin-top: 20px; width: 1050px;">-->
+<!--        <div class="photo-card" style="height: 240px; margin-left: 2px; margin-right: 2px; width: 1000px;" data-latitude="31.7922" data-longitude="34.6497">-->
+<!--          <div class="photo-background" style="width: 424px;">-->
+<!--            <div>-->
+<!--              <iframe width="400" height="238" src="https://www.youtube.com/embed/1sl7o94YvEA?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="photo-details">-->
+<!--            <h1>Ashdod</h1>-->
+<!--            <p>The best spot for surfing at the south district.&nbsp; </p>-->
+<!--            <div class="weather-div" style="color: white"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
+<!--  </div>-->
+<!--</div>-->
 
-      <div class="row">
-        <div class="col">
-          <section>
-            <div class="container-fluid" style="height: 270px; margin-top: 20px; width: 1050px;">
-              <div class="photo-card" style="height: 240px; margin-left: 2px; margin-right: 2px; width: 1000px;" data-latitude="32.0234" data-longitude="34.7485">
-                <div class="photo-background" style="width: 424px;">
-                  <div>
-                    <iframe width="400" height="238" src="https://www.youtube.com/embed/GBGYGJAXDKw?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
-                  </div>
-                </div>
-                <div class="photo-details">
-                  <h1>Bat-Yam</h1>
-                  <p>The beautiful city of Bat Yam, located on the Mediterranean coast.</p>
-                  <div class="weather-div" style="color: white"></div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
+<!--      <div class="row">-->
+<!--        <div class="col">-->
+<!--          <section>-->
+<!--            <div class="container-fluid" style="height: 270px; margin-top: 20px; width: 1050px;">-->
+<!--              <div class="photo-card" style="height: 240px; margin-left: 2px; margin-right: 2px; width: 1000px;" data-latitude="32.0234" data-longitude="34.7485">-->
+<!--                <div class="photo-background" style="width: 424px;">-->
+<!--                  <div>-->
+<!--                    <iframe width="400" height="238" src="https://www.youtube.com/embed/GBGYGJAXDKw?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="photo-details">-->
+<!--                  <h1>Bat-Yam</h1>-->
+<!--                  <p>The beautiful city of Bat Yam, located on the Mediterranean coast.</p>-->
+<!--                  <div class="weather-div" style="color: white"></div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </section>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<div id="beach-container"></div>
 
 <head>
   <title>Map Example</title>
   <style>
-    #map-container {
-      height: 400px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    #map {
-      height: 400px;
-      width: 50%;
-    }
+    #map-container { height: 450px;width: 100%;display: flex;justify-content: center;align-items: center;}
+    #map {height: 400px;width: 50%;}
   </style>
 </head>
 <body>
@@ -137,10 +130,7 @@
 
 <script src="assets/JS/beachInfo.js"></script>
 <script src="assets/JS/weather.js"></script>
-
 <script src="assets/JS/map.js"></script>
-<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoQLaZ0-M4dXQcXrYZs77JI610bwF-g5U&callback=initMap" async defer></script>-->
-<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoQLaZ0-M4dXQcXrYZs77JI610bwF-g5U" async defer></script>-->
 </body>
 </html>
 
