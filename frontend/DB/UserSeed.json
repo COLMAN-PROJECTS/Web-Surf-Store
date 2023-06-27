@@ -6,6 +6,7 @@
   "email": "johndoe@example.com",
   "password": "1234",
   "phone": "1234567890",
+  "address": "Tel Aviv",
   "isAdmin": true
 },
   {
@@ -16,7 +17,9 @@
     "email": "eviatard@example.com",
     "password":"1234",
     "phone": "1234567891",
-    "orders": [{"_id":"647e2a7e961b8485a84oocb1"}]
+    "address": "Jerusalem",
+    "orders": [{"_id":"647e2a7e961b8485a84oocb1"}],
+    "isAdmin": false
 
   },
   {
@@ -27,7 +30,9 @@
     "email": "matand@example.com",
     "password": "1234",
     "phone": "1234567892",
-    "orders": [{"_id":"647e2a7e961b8485a84oocb3"}]
+    "address": "Haifa",
+    "orders": [{"_id":"647e2a7e961b8485a84oocb3"}],
+    "isAdmin": false
   },
   {
     "_id": {
@@ -37,7 +42,9 @@
     "email": "dand@example.com",
     "password": "1234",
     "phone": "1234567893",
-    "orders": [{"_id":"647e2a7e961b8485a84oocb2"}]
+    "address": "Ashdod",
+    "orders": [{"_id":"647e2a7e961b8485a84oocb2"}],
+    "isAdmin": false
 
   }]
 
