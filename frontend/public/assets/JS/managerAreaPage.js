@@ -8,60 +8,18 @@ window.innerWidth < 768 &&
             e.removeAttribute("data-bss-parallax-bg"),
             e.removeAttribute("data-bss-scroll-zoom");
     }),
-    document.addEventListener("DOMContentLoaded", function () { //TODO: not needed?
-        $(document).ready(function () {
-            let imageUrl = 'assets/images/managerArea/image-title-manager.jpeg';
-            let backgroundImage = 'url(' + imageUrl + ') center / cover';
-
-            $('#titleImage').css('background', backgroundImage);
-            $("#titleH1").text('Manage your store');
-        });
-        $(document).ready(function () { //TODO: not needed?
 
 
-            $('#productForm').hide();
-            $('#productForm').submit(function (e) {
-                e.preventDefault();
+    $(document).ready(function () {
+        let imageUrl = 'assets/images/managerArea/image-title-manager.jpeg';
+        let backgroundImage = 'url(' + imageUrl + ') center / cover';
 
-                var formData = {
-                    name: $('#name').val(),
-                    description: $('#description').val(),
-                    price: parseFloat($('#price').val()),
-                    frontImage: $('#frontImage').val(),
-                    category: $('#category').val(),
-                    brand: $('#brand').val(),
-                    details: [],
-                    images: {
-                        image1: $('#image1').val(),
-                        image2: $('#image2').val(),
-                        image3: $('#image3').val(),
-                        image4: $('#image4').val()
-                    }
-                };
-
-                $('.detailRow').each(function () {
-                    var size = $(this).find('.size').val();
-                    var quantityInStock = parseInt($(this).find('.quantityInStock').val());
-                    formData.details.push({size: size, quantityInStock: quantityInStock});
-                });
-
-                console.log(formData);
-
-                $('#productForm')[0].reset();
-                $('#detailsContainer').children().remove();
-                $('#addDetail').click();
-            });
-
-            $('#addDetail').click(function addDetailRow() {
-                var newRow = '<div class="detailRow">' +
-                    '<input type="text" class="size" placeholder="Size">' +
-                    '<input type="number" class="quantityInStock" placeholder="Quantity in Stock">' +
-                    '</div>';
-                $('#detailsContainer').append(newRow);
-            });
-            getDataForTable()
-        });
+        $('#titleImage').css('background', backgroundImage);
+        $("#titleH1").text('Manage your store');
+        addProduct()
+        getDataForTable()
     });
+
 
 function populateTable(colTitles, data) {
     var table = $('#manager-table');
@@ -81,7 +39,9 @@ function populateTable(colTitles, data) {
     data.forEach(function (item) {
         var row = $("<tr></tr>");
         Object.values(item).forEach(function (value) {
-
+            if (typeof value === 'object' && value !== null) {
+                value = '\u{1F4CB}';
+            }
             var cell = $("<td></td>").text(value);
             row.append(cell);
         });
@@ -92,6 +52,8 @@ function populateTable(colTitles, data) {
 
 function getDataForTable() {
     $('.list-group-item').click(function () {
+        $('#productForm').hide();
+        $('#manager-table').show();
         var listItemText = $(this).text().trim();
 
         if (listItemText === 'Products') {
@@ -138,10 +100,10 @@ function getDataForTable() {
                 dataType: 'json',
                 success: function (users) {
                     const dataWithoutId = users.map(function (users) {
-                        const {_id, __v, password, ...rest} = users;
+                        const {_id, __v, password, orders, ...rest} = users;
                         return rest;
                     })
-                    const colTitles = Object.keys(users[0]).filter(key => key !== '_id' && key !== '__v' && key !== 'password');
+                    const colTitles = Object.keys(users[0]).filter(key => key !== '_id' && key !== '__v' && key !== 'password' && key !== 'orders');
 
                     console.log(colTitles);
                     populateTable(colTitles, dataWithoutId);
@@ -149,5 +111,84 @@ function getDataForTable() {
             })
         }
     })
+}
+
+function addProduct() {
+
+    $('#productForm').submit(function (e) {
+        e.preventDefault();
+        // Your form submission logic here
+    });
+
+    $('#add-button').click(function () {
+        $('#productForm').empty();
+        $('#manager-table').hide()
+        $('#productForm').show();
+        createLabelAndInput('Name:', 'text', 'name', 'Name');
+        createLabelAndInput('Description:', 'textarea', 'description', 'Description');
+        createLabelAndInput('Price:', 'number', 'price', 'Price');
+        createLabelAndInput('Front Image:', 'text', 'frontImage', 'Front Image URL');
+        createLabelAndInput('Category:', 'text', 'category', 'Category');
+        createLabelAndInput('Brand:', 'text', 'brand', 'Brand');
+        createDetailRow();
+
+        createLabelAndInput('Image 1:', 'text', 'image1', 'Image 1 URL');
+        createLabelAndInput('Image 2:', 'text', 'image2', 'Image 2 URL');
+        createLabelAndInput('Image 3:', 'text', 'image3', 'Image 3 URL');
+        createLabelAndInput('Image 4:', 'text', 'image4', 'Image 4 URL');
+
+        var submitButton = $('<button></button>').attr({
+            type: 'button',
+            id: 'submitForm',
+            class: 'btn btn-primary'
+        }).text('Submit');
+        $('#productForm').append(submitButton);
+
+    });
+
+    function createLabelAndInput(labelText, inputType, inputId, inputPlaceholder) {
+        var label = $('<label></label>').text(labelText);
+        var input = $('<input>').attr({
+            type: inputType,
+            id: inputId,
+            placeholder: inputPlaceholder,
+            required: true
+        });
+        label.append(input);
+        $('#productForm').append(label, '<br>');
+    }
+
+
+    function createDetailRow() {
+        var addDetailButton = $('<button></button>').attr({
+            type: 'button',
+            id: 'addDetail',
+            class: 'btn btn-primary btn-sm'
+        }).text('Add details');
+        $('#productForm').append(addDetailButton);
+        reCreateRow();
+        function reCreateRow() {
+            var detailRow = $('<div class="detailRow"></div>');
+            var sizeInput = $('<input></input>').attr({
+                type: 'text',
+                class: 'size',
+                placeholder: 'Size',
+                required: true
+            });
+            var quantityInput = $('<input></input>').attr({
+                type: 'number',
+                class: 'quantityInStock',
+                placeholder: 'Quantity in Stock',
+                required: true
+            });
+            detailRow.append(sizeInput, quantityInput);
+            $('#productForm').append(detailRow);
+            detailRow.insertBefore('#addDetail');
+        }
+            addDetailButton.click(function () {
+                reCreateRow()
+            });
+
+    }
 }
 

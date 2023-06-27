@@ -255,3 +255,16 @@ button[type="submit"] {
 .list-group-item:nth-child(odd) {
   background-color: ghostwhite;
 }
+td .emoji {
+  display: flex;
+  align-items: normal;
+  justify-content: center;
+}
+
+#add-button{
+  margin-left: 10px;
+}
+
+#addDetail{
+margin-top: 5px;
+}
