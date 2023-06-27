@@ -32,6 +32,9 @@ function populateTable(colTitles, data) {
     var headerRow = $("<tr></tr>");
     colTitles.forEach(function (title) {
         var headerCell = $("<th></th>").text(title);
+        if (title === '_id') {
+            headerCell.text('ID')
+        }
         headerRow.append(headerCell);
     });
     tableHead.append(headerRow);
@@ -41,6 +44,9 @@ function populateTable(colTitles, data) {
         Object.values(item).forEach(function (value) {
             if (typeof value === 'object' && value !== null) {
                 value = '\u{1F4CB}';
+            }
+            if (headerRow.title === 'ID') { //TODO: fix this
+                value = '###';
             }
             var cell = $("<td></td>").text(value);
             row.append(cell);
@@ -82,11 +88,10 @@ function getDataForTable() {
                 dataType: 'json',
                 success: function (orders) {
                     const dataWithoutId = orders.map(function (orders) {
-                        const {_id, __v, user, ...rest} = orders;
-                        const fullName = orders.user.fullName //TODO: check if this works after changing the DB
-                        return {fullName, ...rest};
+                        const { __v, user, ...rest} = orders;
+                        return rest;
                     })
-                    const colTitles = Object.keys(orders[0]).filter(key => key !== '_id' && key !== '__v');
+                    const colTitles = Object.keys(orders[0]).filter(key => key !== 'user' && key !== '__v');
 
                     console.log(colTitles);
                     populateTable(colTitles, dataWithoutId);
