@@ -21,6 +21,8 @@ window.innerWidth < 768 &&
     });
 
 
+
+
 function populateTable(colTitles, data) {
     var table = $('#manager-table');
     var tableHead = $('#manager-table-thead');
@@ -31,7 +33,8 @@ function populateTable(colTitles, data) {
 
     var headerRow = $("<tr></tr>");
     colTitles.forEach(function (title) {
-        var headerCell = $("<th></th>").text(title);
+        var viewableTitle = setTitles(title);
+        var headerCell = $("<th></th>").text(viewableTitle);
         if (title === '_id') {
             headerCell.text('');
         }
@@ -49,11 +52,16 @@ function populateTable(colTitles, data) {
                 row.append(cell);
             } else {
                 if (typeof value === 'object' && value !== null) {
-                    value = '\u{1F4CE}';
-                } else if (typeof value === 'string' && value.length > 15) {
-                    value = value.substring(0, 20) + '...';
+                    var txt = '\u{1F4CE}';
+                    value = JSON.stringify(value);
+                    cell = $("<td></td>").text(txt).val(value);
+                } else if (typeof value === 'string' && value.length > 30) {
+                    txt = value.substring(0, 30) + '...';
+                    cell = $("<td></td>").text(txt).val(value);
                 }
-                cell = $("<td></td>").text(value);
+                else {
+                    cell = $("<td></td>").text(value).val(value)
+                }
                 row.append(cell);
             }
         });
@@ -86,17 +94,99 @@ function populateTable(colTitles, data) {
 }
 
 function enableRowEditing(row) {
-    // TODO: Implement the logic to enable editing of the row
-    // You can use row.find('td') to access the cells of the row and make them editable
+    row.addClass('edit-mode');
+
+    var cells = row.find('td:not(:last-child)');
+
+    cells.each(function () {
+        var cell = $(this);
+        var input = $('<input>').val(cell.val());
+
+        cell.html(input);
+    });
+
+    var editButton = row.find('#edit-button');
+
+    editButton.text('\u2714');
+
+    editButton.click(function () {
+        if (row.hasClass('edit-mode')) {
+
+            var rowId = row.find('td:first-child').val();
+            var updatedData = {};
+
+            // Get updated data
+            cells.each(function () {
+                var cell = $(this);
+                var input = cell.find('input');
+                var col = row.closest('tbody').prev('thead').find('th').eq(cell.index()).text();
+                var originalValue = cell.text();
+
+                // Get the updated value before replacing the cell contents
+                var updatedValue = input.val();
+                var updatedText = input.text();
+                alert(updatedValue)
+
+                // Only update the value if it has changed
+                if (originalValue !== updatedValue) {
+                    updatedData[col] = updatedValue;
+                }
+
+                // Replace the input element with the updated value
+                cell.html(updatedText).text(updatedText).val(updatedText);
+            });
+
+            //for testing
+            alert('Row updated successfully');
+            row.removeClass('edit-mode');
+            editButton.text('\u{1F504}');
+
+            // Send the update request if there are changes
+            if (Object.keys(updatedData).length > 0) {
+                // Send the PATCH request to update the row
+                $.ajax({
+                    url: '/frontend/DB/OrdersSeed.json',
+                    type: 'PATCH',
+                    data: { _id: rowId, ...updatedData },
+                    dataType: 'json',
+                    success: function (response) {
+                        // Check if the row was successfully updated
+                        if (response.status === '200') {
+                            alert('Row updated successfully');
+                            // Lock the row for editing by removing the 'edit-mode' class
+                            row.removeClass('edit-mode');
+                            // Change the button's text back to 'Edit'
+                            editButton.text('\u{1F504}');
+                        }
+                    },
+                    error: function (error) {
+                        // Handle the error
+                        console.error('Error updating row:', error);
+                    }
+                });
+            } else {
+                // No changes to update
+                alert('No changes to update');
+            }
+        } else {
+            // Enable editing
+            enableRowEditing(row);
+        }
+    });
 }
+
+
+
+
 
 function deleteRow(row) {
     var rowId = row.find('td:first-child').val();
+    console.log(rowId)
 
     $.ajax({
         url: '/frontend/DB/OrdersSeed.json',
         type: 'DELETE',
-        data: {id: rowId},
+        data: {_id: rowId},
         dataType: 'json',
         success: function (response) {
             alert(response)
@@ -331,6 +421,33 @@ function productButtons() {
     }).text('New Product');
     $('#product-buttons').append(newButton);
     productButtons.hide()
+}
+
+function setTitles(title) {
+var titleMapper = {
+    'fullName': 'Full Name',
+    'email': 'Email',
+    'phone': 'Phone',
+    'address': 'Address',
+    'isAdmin': 'Admin',
+    'products': 'Products',
+    'totalPrice': 'Total Price',
+    'shippingAddress': 'Shipping Address',
+    'paymentMethod': 'Payment Method',
+    'name': 'Name',
+    'description': 'Description',
+    'price': 'Price',
+    'category': 'Category',
+    'brand': 'Brand',
+    'details': 'Details',
+    'images': 'Images',
+}
+
+    if (titleMapper.hasOwnProperty(title)) {
+        return titleMapper[title];
+    } else {
+        return title;
+    }
 }
 
 
