@@ -225,24 +225,7 @@ textarea {
   margin-bottom: 5px;
 }
 
-button[type="submit"],
-button[type="button"] {
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
 
-button[type="submit"]:hover,
-button[type="button"]:hover {
-  background-color: #0056b3;
-}
-
-button[type="submit"] {
-  width: 100%;
-  margin-bottom: 20px;
-}
 
 .error {
   color: red;
@@ -268,3 +251,18 @@ td .emoji {
 #addDetail{
 margin-top: 5px;
 }
+
+#delete-button{
+  margin-left: 10px;
+}
+
+.ml-1, .mr-1 {
+  vertical-align: middle;
+  height: max-content;
+  width: max-content;
+}
+
+
+
+
+

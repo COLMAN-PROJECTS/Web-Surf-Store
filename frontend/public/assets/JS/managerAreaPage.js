@@ -33,28 +33,86 @@ function populateTable(colTitles, data) {
     colTitles.forEach(function (title) {
         var headerCell = $("<th></th>").text(title);
         if (title === '_id') {
-            headerCell.text('ID')
+            headerCell.text('');
         }
         headerRow.append(headerCell);
     });
+    headerRow.append("<th></th>"); // Add a column for buttons
     tableHead.append(headerRow);
 
     data.forEach(function (item) {
         var row = $("<tr></tr>");
-        Object.values(item).forEach(function (value) {
-            if (typeof value === 'object' && value !== null) {
-                value = '\u{1F4CB}';
+        Object.entries(item).forEach(function ([key, value]) {
+            if (key === '_id') {
+                var emoji = '\u{1F4CB}';
+                var cell = $("<td></td>").text(emoji).val(Object.values(value)[0]);
+                row.append(cell);
+            } else {
+                if (typeof value === 'object' && value !== null) {
+                    value = '\u{1F4CE}';
+                } else if (typeof value === 'string' && value.length > 15) {
+                    value = value.substring(0, 20) + '...';
+                }
+                cell = $("<td></td>").text(value);
+                row.append(cell);
             }
-            if (headerRow.title === 'ID') { //TODO: fix this
-                value = '###';
-            }
-            var cell = $("<td></td>").text(value);
-            row.append(cell);
         });
+
+        var buttonsCell = $("<td></td>");
+        var editButton = $('<button></button>').attr({
+            type: 'button',
+            class: 'btn btn-sm btn-outline-info mr-1',
+            id: 'edit-button',
+        }).text('\u{1F504}');
+        var deleteButton = $('<button></button>').attr({
+            type: 'button',
+            class: 'btn btn-sm btn-outline-danger ml-1',
+            id: 'delete-button',
+        }).text('\uD83D\uDDD1');
+
+        // Attach event handlers to the buttons
+        editButton.click(function () {
+            enableRowEditing(row);
+        });
+
+        deleteButton.click(function () {
+            deleteRow(row);
+        });
+
+        buttonsCell.append(editButton, deleteButton);
+        row.append(buttonsCell);
         tableBody.append(row);
     });
-
 }
+
+function enableRowEditing(row) {
+    // TODO: Implement the logic to enable editing of the row
+    // You can use row.find('td') to access the cells of the row and make them editable
+}
+
+function deleteRow(row) {
+    var rowId = row.find('td:first-child').val();
+
+    $.ajax({
+        url: '/frontend/DB/OrdersSeed.json',
+        type: 'DELETE',
+        data: {id: rowId},
+        dataType: 'json',
+        success: function (response) {
+            alert(response)
+            if (response.status === '200')
+            {
+                alert('Row deleted successfully');
+                row.remove();
+            }
+        },
+        error: function (error) {
+            // Handle the error
+            console.error('Error deleting row:', error);
+        }
+    });
+}
+
 
 function getDataForTable() {
     $('.list-group-item').click(function () {
@@ -69,10 +127,10 @@ function getDataForTable() {
                 dataType: 'json',
                 success: function (products) {
                     const dataWithoutId = products.map(function (products) {
-                        const {_id, __v, details, images, frontImage, description, ...rest} = products;
+                        const {__v, details, images, frontImage, description, ...rest} = products;
                         return rest;
                     })
-                    const colTitles = Object.keys(products[0]).filter(key => key !== '_id' && key !== '__v' && key !== 'details' && key !== 'images' && key !== 'frontImage' && key !== 'description');
+                    const colTitles = Object.keys(products[0]).filter(key => key !== '__v' && key !== 'details' && key !== 'images' && key !== 'frontImage' && key !== 'description');
                     addProduct()
                     console.log(colTitles);
                     populateTable(colTitles, dataWithoutId);
@@ -88,7 +146,7 @@ function getDataForTable() {
                 dataType: 'json',
                 success: function (orders) {
                     const dataWithoutId = orders.map(function (orders) {
-                        const { __v, user, ...rest} = orders;
+                        const {__v, user, ...rest} = orders;
                         return rest;
                     })
                     const colTitles = Object.keys(orders[0]).filter(key => key !== 'user' && key !== '__v');
@@ -107,10 +165,10 @@ function getDataForTable() {
                 dataType: 'json',
                 success: function (users) {
                     const dataWithoutId = users.map(function (users) {
-                        const {_id, __v, password, orders, ...rest} = users;
+                        const {__v, password, orders, ...rest} = users;
                         return rest;
                     })
-                    const colTitles = Object.keys(users[0]).filter(key => key !== '_id' && key !== '__v' && key !== 'password' && key !== 'orders');
+                    const colTitles = Object.keys(users[0]).filter(key => key !== '__v' && key !== 'password' && key !== 'orders');
 
                     console.log(colTitles);
                     populateTable(colTitles, dataWithoutId);
