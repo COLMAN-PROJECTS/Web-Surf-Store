@@ -19,32 +19,6 @@ function initMap() {
                 map: map,
                 title: element.spot,
               })
-              let videoUrl=element.video;
-              let beachDescription=element.description;
-              let spotName=element.spot;
-              var htmlCode = `
-    <div class="row">
-      <div class="col">
-        <section>
-          <div class="container-fluid" style="height: 230px; margin-top: 20px; width: 1050px;">
-            <div class="photo-card" style="height: 240px; margin-left: 2px; margin-right: 2px; width: 1000px;">
-              <div class="photo-background" style="width: 424px;">
-                <div>
-                  <iframe width="400" height="238" src=${videoUrl} frameborder="0" allowfullscreen></iframe>
-                </div>
-              </div>
-              <div class="photo-details">
-                <h1>${spotName}</h1>
-                <p>${beachDescription} </p>
-                <div class="weather-div" style="color: white"></div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  `;
-              $('#beach-container').append(htmlCode);
             })
       }})
   }
