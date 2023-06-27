@@ -16,7 +16,6 @@
     "email": "eviatard@example.com",
     "password":"1234",
     "phone": "1234567891",
-    "address": "123 Main St",
     "orders": [{"_id":"647e2a7e961b8485a84oocb1"}]
 
   },
