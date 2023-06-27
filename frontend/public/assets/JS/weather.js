@@ -5,13 +5,13 @@ function displayLoadingMessage() {
   // alert('Loading Weather...');
 }
 
-function displayWeatherData(latitude, longitude, weatherDiv) {
+async function displayWeatherData(latitude, longitude, weatherDiv) {
   // first version:
   const apiKey = 'd639e889ca39c6005b3a6cb8833ff9a3';
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
   $.ajax({
-    url: apiUrl,
-    dataType: 'json',
+      url: apiUrl,
+      dataType: 'json',
     success: function (data) {
       alert(1)
       const temperature = (data.main.temp / 10).toFixed(1);
