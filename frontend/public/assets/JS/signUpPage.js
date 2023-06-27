@@ -27,6 +27,18 @@ $(document).ready(function() {
                     successMessage.classList.add('success-message');
                     document.body.appendChild(successMessage);
 
+                  const userWithoutPassword = {
+                    _id: user._id,
+                    fullName: user.fullName,
+                    email: user.email,
+                    phone: user.phone,
+                    address: user.address,
+                    orders: user.orders,
+                    isAdmin: user.isAdmin
+                  };
+
+                  localStorage.setItem("user", JSON.stringify(userWithoutPassword));
+
                     setTimeout(function () {
                         window.location.href = '../index.html';
                     }, 5000);

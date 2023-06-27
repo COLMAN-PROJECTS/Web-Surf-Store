@@ -51,6 +51,18 @@ $(document).ready(function() {
                         var messageContainer = $(popup.document).find("#message-container");
                         messageContainer.html("<p>Login successful!</p>");
 
+                      const userWithoutPassword = {
+                        _id: loggedInUser._id,
+                        fullName: loggedInUser.fullName,
+                        email: loggedInUser.email,
+                        phone: loggedInUser.phone,
+                        address: loggedInUser.address,
+                        orders: loggedInUser.orders,
+                        isAdmin: loggedInUser.isAdmin
+                      };
+
+                      localStorage.setItem("user", JSON.stringify(userWithoutPassword));
+
                         setTimeout(function() {
                             popup.close();
                             // window.location.href = './index.html';
