@@ -11,12 +11,12 @@ window.innerWidth < 768 &&
 
 
     $(document).ready(function () {
+        productButtons();
         let imageUrl = 'assets/images/managerArea/image-title-manager.jpeg';
         let backgroundImage = 'url(' + imageUrl + ') center / cover';
 
         $('#titleImage').css('background', backgroundImage);
         $("#titleH1").text('Manage your store');
-        addProduct()
         getDataForTable()
     });
 
@@ -52,7 +52,7 @@ function populateTable(colTitles, data) {
 
 function getDataForTable() {
     $('.list-group-item').click(function () {
-        $('#productForm').hide();
+        $('#form-container').hide();
         $('#manager-table').show();
         var listItemText = $(this).text().trim();
 
@@ -67,7 +67,7 @@ function getDataForTable() {
                         return rest;
                     })
                     const colTitles = Object.keys(products[0]).filter(key => key !== '_id' && key !== '__v' && key !== 'details' && key !== 'images' && key !== 'frontImage' && key !== 'description');
-
+                    addProduct()
                     console.log(colTitles);
                     populateTable(colTitles, dataWithoutId);
                 }
@@ -75,6 +75,7 @@ function getDataForTable() {
         }
 
         if (listItemText === 'Orders') {
+            $('#product-buttons').hide();
             $.ajax({
                 url: '/frontend/DB/OrdersSeed.json',
                 type: 'GET',
@@ -94,6 +95,7 @@ function getDataForTable() {
         }
 
         if (listItemText === 'Users') {
+            $('#product-buttons').hide();
             $.ajax({
                 url: '/frontend/DB/UserSeed.json',
                 type: 'GET',
@@ -114,81 +116,158 @@ function getDataForTable() {
 }
 
 function addProduct() {
-
-    $('#productForm').submit(function (e) {
+    $('#product-buttons').show()
+    $('#form-container').submit(function (e) {
         e.preventDefault();
-        // Your form submission logic here
     });
 
-    $('#add-button').click(function () {
-        $('#productForm').empty();
+    $('#new-button').click(function () {
+        $('#product-buttons').hide();
+        $('#form-container').empty();
         $('#manager-table').hide()
-        $('#productForm').show();
-        createLabelAndInput('Name:', 'text', 'name', 'Name');
-        createLabelAndInput('Description:', 'textarea', 'description', 'Description');
-        createLabelAndInput('Price:', 'number', 'price', 'Price');
-        createLabelAndInput('Front Image:', 'text', 'frontImage', 'Front Image URL');
-        createLabelAndInput('Category:', 'text', 'category', 'Category');
-        createLabelAndInput('Brand:', 'text', 'brand', 'Brand');
+        $('#form-container').show();
+        createLabelAndInput('Name:', 'text', 'name', 'Name', true);
+        createLabelAndInput('Description:', 'textarea', 'description', 'Description', false);
+        createLabelAndInput('Price:', 'number', 'price', 'Price', true);
+        createLabelAndInput('Front Image:', 'text', 'frontImage', 'Front Image URL', true);
+        createLabelAndInput('Category:', 'text', 'category', 'Category', true);
+        createLabelAndInput('Brand:', 'text', 'brand', 'Brand', true);
         createDetailRow();
 
-        createLabelAndInput('Image 1:', 'text', 'image1', 'Image 1 URL');
-        createLabelAndInput('Image 2:', 'text', 'image2', 'Image 2 URL');
-        createLabelAndInput('Image 3:', 'text', 'image3', 'Image 3 URL');
-        createLabelAndInput('Image 4:', 'text', 'image4', 'Image 4 URL');
+        createLabelAndInput('Image 1:', 'text', 'image1', 'Image 1 URL', false);
+        createLabelAndInput('Image 2:', 'text', 'image2', 'Image 2 URL', false);
+        createLabelAndInput('Image 3:', 'text', 'image3', 'Image 3 URL', false);
+        createLabelAndInput('Image 4:', 'text', 'image4', 'Image 4 URL', false);
 
         var submitButton = $('<button></button>').attr({
             type: 'button',
             id: 'submitForm',
             class: 'btn btn-primary'
         }).text('Submit');
-        $('#productForm').append(submitButton);
+        $('#form-container').append(submitButton);
 
+        $('#submitForm').click(function () {
+                var form = $('#form-container')[0];
+                if (form.checkValidity() === false) {
+                    form.reportValidity();
+                    return false;
+                } else {
+                    var product = {
+                        name: $('#name').val(),
+                        description: $('#description').val(),
+                        price: parseFloat($('#price').val()),
+                        frontImage: $('#frontImage').val(),
+                        category: $('#category').val(),
+                        brand: $('#brand').val(),
+                        details: [],
+                        images: {
+                            image1: $('#image1').val(),
+                            image2: $('#image2').val(),
+                            image3: $('#image3').val(),
+                            image4: $('#image4').val()
+                        }
+                    };
+                    $('.detailRow').each(function () {
+                        var size = $(this).find('.size').val();
+                        var quantityInStock = parseInt($(this).find('.quantityInStock').val());
+                        var detail = {
+                            size: size,
+                            quantityInStock: quantityInStock
+                        };
+                        product.details.push(detail);
+                    });
+
+                    console.log(product);
+                    $.ajax({
+                        url: '/frontend/DB/ProductSeed.json',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: JSON.stringify(product),
+                        contentType: 'application/json',
+                        success: function (response) {
+                            console.log('Product created successfully:', response);
+                        },
+                        error: function (error) {
+                            console.log('Error creating product:', error);
+                        }
+                    });
+                    $('#form-container').hide();
+
+
+                }
+            }
+        )
+        ;
+    });
+}
+
+
+function createLabelAndInput(labelText, inputType, inputId, inputPlaceholder, isRequired) {
+    var label = $('<label></label>').text(labelText);
+    var input = $('<input>').attr({
+        type: inputType,
+        id: inputId,
+        placeholder: inputPlaceholder,
+        required: isRequired,
+        autocomplete: 'off',
+        maxLength: 30,
+    });
+    label.append(input);
+    $('#form-container').append(label, '<br>');
+}
+
+
+function createDetailRow() {
+    var addDetailButton = $('<button></button>').attr({
+        type: 'button',
+        id: 'addDetail',
+        class: 'btn btn-primary btn-sm'
+    }).text('Add details');
+    $('#form-container').append(addDetailButton);
+    reCreateRow();
+
+    function reCreateRow() {
+        var detailRow = $('<div class="detailRow"></div>');
+        var sizeInput = $('<input></input>').attr({
+            type: 'text',
+            class: 'size',
+            placeholder: 'Size',
+            required: true,
+            maxLength: 30
+
+        });
+        var quantityInput = $('<input></input>').attr({
+            type: 'number',
+            class: 'quantityInStock',
+            placeholder: 'Quantity in Stock',
+            required: true,
+            maxLength: 30
+        });
+        detailRow.append(sizeInput, quantityInput);
+        $('#form-container').append(detailRow);
+        detailRow.insertBefore('#addDetail');
+    }
+
+    addDetailButton.click(function () {
+        reCreateRow()
     });
 
-    function createLabelAndInput(labelText, inputType, inputId, inputPlaceholder) {
-        var label = $('<label></label>').text(labelText);
-        var input = $('<input>').attr({
-            type: inputType,
-            id: inputId,
-            placeholder: inputPlaceholder,
-            required: true
-        });
-        label.append(input);
-        $('#productForm').append(label, '<br>');
-    }
-
-
-    function createDetailRow() {
-        var addDetailButton = $('<button></button>').attr({
-            type: 'button',
-            id: 'addDetail',
-            class: 'btn btn-primary btn-sm'
-        }).text('Add details');
-        $('#productForm').append(addDetailButton);
-        reCreateRow();
-        function reCreateRow() {
-            var detailRow = $('<div class="detailRow"></div>');
-            var sizeInput = $('<input></input>').attr({
-                type: 'text',
-                class: 'size',
-                placeholder: 'Size',
-                required: true
-            });
-            var quantityInput = $('<input></input>').attr({
-                type: 'number',
-                class: 'quantityInStock',
-                placeholder: 'Quantity in Stock',
-                required: true
-            });
-            detailRow.append(sizeInput, quantityInput);
-            $('#productForm').append(detailRow);
-            detailRow.insertBefore('#addDetail');
-        }
-            addDetailButton.click(function () {
-                reCreateRow()
-            });
-
-    }
 }
+
+function productButtons() {
+    var productButtons = $('<div></div>').attr({
+        id: 'product-buttons'
+    });
+    $('#manager-table').append(productButtons);
+    productButtons.insertBefore('#manager-table');
+
+    var newButton = $('<button></button>').attr({
+        type: 'button',
+        id: 'new-button',
+        class: 'btn btn-primary btn-sm'
+    }).text('New Product');
+    $('#product-buttons').append(newButton);
+    productButtons.hide()
+}
+
 
