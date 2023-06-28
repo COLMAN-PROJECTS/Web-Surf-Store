@@ -1,78 +1,45 @@
-const userService = require('../services/userService');
+const userService = require("../services/UserService");
 
+const getUserById = async (req, res, next) => {
+    const { id } = req.params;
+    const user = (await userService.getUserById(id)).populate("orders").populate('products');
+    res.send(user);
+};
 
-// Create a new user
-const createUser = async (req, res) => {
-    try {
-        const { username, email, password, address, phoneNumber } = req.body;
-        const user = await userService.createUser(username, email, password, address, phoneNumber);
-        res.status(201).json(user);
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to create the user.' });
+const getUserByEmail = async (req, res, next) => {
+    const { email } = req.params;
+    const user = await userService.getUserByEmail(email).populate("orders").populate('products');;
+    if (user) {
+        res.send(user);
+    } else {
+        res.send(null);
     }
 };
 
-// Get all users
-const getAllUsers = async (req, res) => {
-    try {
-        const users = await userService.getAllUsers();
-        res.json(users);
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch users.' });
-    }
+const getAllUsers = async (req, res, next) => {
+    const users = await userService.getAllUsers().populate("orders").populate('products');;
+    res.send(users);
 };
 
-// Get a user by ID
-const getUserById = async (req, res) => {
-    try {
-        const userId = req.params.id;
-        const user = await userService.getUserById(userId);
-        if (user) {
-            res.json(user);
-        } else {
-            res.status(404).json({ error: 'User not found.' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch the user.' });
+const updateUser = async (req, res, next) => {
+    const { id, user } = req.body;
+    const updatedUser = await userService.updateUser(id, user);
+    if (!updatedUser) {
+        res.status(400).json({ error: "Invalid email format." });
     }
+    res.send(updatedUser);
 };
 
-// Update a user
-const updateUser = async (req, res) => {
-    try {
-        const userId = req.params.id;
-        const { username, email, password, address, phoneNumber } = req.body;
-        const updatedUser = await userService.updateUser(userId, username, email, password, address, phoneNumber);
-        if (updatedUser) {
-            res.json(updatedUser);
-        } else {
-            res.status(404).json({ error: 'User not found.' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to update the user.' });
-    }
-};
-
-// Delete a user
-const deleteUser = async (req, res) => {
-    try {
-        const userId = req.params.id;
-
-        const deletedUser = await userService.deleteUser(userId);
-        if (deletedUser) {
-            res.json(deletedUser);
-        } else {
-            res.status(404).json({ error: 'User not found.' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to delete the user.' });
-    }
+const deleteUser = async (req, res, next) => {
+    const { id } = req.body;
+    const user = await userService.deleteUser(id);
+    res.send(user);
 };
 
 module.exports = {
-    createUser,
-    getAllUsers,
-    getUserById,
     updateUser,
-    deleteUser
+    getUserById,
+    getUserByEmail,
+    getAllUsers,
+    deleteUser,
 };

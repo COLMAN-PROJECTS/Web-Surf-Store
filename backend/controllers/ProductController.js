@@ -20,7 +20,7 @@ const getAllProducts = async (req, res) => {
         const products = await productService.getAllProducts();
         res.status(200).json(products);
     } catch (error) {
-        res.status(500).json({error: 'Failed to fetch products.'});
+        res.status(500).json({error: error.message});
     }
 };
 
@@ -28,14 +28,14 @@ const getAllProducts = async (req, res) => {
 const getProductById = async (req, res) => {
     try {
         const productId = req.params.id;
-        const product = await productService.getProductById(productId);
+        const product = (await productService.getProductById(productId));
         if (product) {
             res.status(200).json(product);
         } else {
             res.status(404).json({error: 'Product not found.'});
         }
     } catch (error) {
-        res.status(500).json({error: 'Failed to fetch the product.'});
+        res.status(500).json({error: error.message});
     }
 };
 
@@ -51,7 +51,7 @@ const updateProduct = async (req, res) => {
             }
         } catch
             (error) {
-            res.status(500).json({error: 'Failed to update the product.'});
+            res.status(500).json({error: error.message});
         }
     }
 ;
@@ -67,7 +67,37 @@ const deleteProduct = async (req, res) => {
             res.status(404).json({error: 'Product not found.'});
         }
     } catch (error) {
-        res.status(500).json({error: 'Failed to delete the product.'});
+        res.status(500).json({error: error.message});
+    }
+};
+
+// Filter products
+const filterProducts = async (req, res) => {
+    try {
+        const filter = req.body;
+        const products = await productService.filterProducts(filter);
+        res.status(200).json(products);
+    } catch (error) {
+        res.status(500).json({error: error.message});
+    }
+};
+
+const groupBy = async (req, res) => {
+    const { field } = req.params;
+
+    try {
+        const result = await productService.aggregate([
+            {
+                $group: {
+                    _id: `$${field}`,
+                    count: { $sum: 1 },
+                },
+            },
+        ]);
+
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
     }
 };
 
@@ -76,5 +106,7 @@ module.exports = {
     getAllProducts,
     getProductById,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    filterProducts,
+    groupBy
 };

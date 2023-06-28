@@ -10,3 +10,4 @@
 /backend/config/.env
 /backend/config/.env.test
 /backend/config/.env.local
+/backend/config/config

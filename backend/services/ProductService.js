@@ -7,7 +7,8 @@ const createProduct = async (product) => {
             price: product.price,
             frontImage: product.frontImage,
             category: product.category,
-            details: product.details,
+            brand: product.brand,
+            details: [...product.details],
             images: product.images
         });
 
@@ -41,7 +42,7 @@ const createProduct = async (product) => {
 
     const updateProduct = async (product) => {
         try {
-            const updatedProduct = await Product.findByIdAndUpdate(product._id, product);
+            const updatedProduct = await Product.findByIdAndUpdate(product._id, product, {new: true});
             if (!updatedProduct) {
                 console.log("Product not found");
             }
@@ -52,6 +53,8 @@ const createProduct = async (product) => {
             throw  new Error("Error in updating product");
         }
     };
+
+
 
 const deleteProduct = async (id) => {
     try {
@@ -69,11 +72,40 @@ const deleteProduct = async (id) => {
 };
 
 
+const filterProducts = async (filter) => {
+    try {
+        const {product} = filter;
+        return await Product.find(product);
+    }catch (error) {
+        throw  new Error("Error in filtering products");
+    }
+}
+
+const groupByField = async (field) => {
+    try {
+        const result = await Product.aggregate([
+            {
+                $group: {
+                    _id: `$${field}`,
+                    count: { $sum: 1 },
+                },
+            },
+        ]);
+
+        return result;
+    } catch (error) {
+        throw new Error('Failed to group by field');
+    }
+};
+
+
 
 module.exports = {
         createProduct,
         getAllProducts,
         getProductById,
         updateProduct,
-        deleteProduct
+        deleteProduct,
+        filterProducts,
+        groupByField
     };
