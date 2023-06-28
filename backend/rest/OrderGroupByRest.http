@@ -1,1 +1,2 @@
-GET http://localhost:3000/orders/groupBy/products.product.category
+GET http://localhost:3000/orders/groupBy/category
+

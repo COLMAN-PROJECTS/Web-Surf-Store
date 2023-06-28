@@ -83,9 +83,7 @@ const filterOrders = async (req, res) => {
 const groupByField = async (req, res) => {
     try {
         const { field } = req.params;
-        const result = await OrderService.groupByField([
-            { $group: { _id: `$${field}`, count: { $sum: 1 } } },
-        ]);
+        const result = await OrderService.groupByField(field);
 
         res.json(result);
     } catch (error) {

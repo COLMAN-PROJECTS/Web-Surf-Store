@@ -100,38 +100,37 @@ const filterOrders = async (filter) => {
 
     }
 }
-const groupByField = async (groupByField) => {
+const groupByField = async (field) => {
     try {
-        const groupBy = {
-            _id: groupByField,
-            count: { $sum: 1 },
-            orders: { $push: "$$ROOT" }
-        };
-
-        const aggregationPipeline = [
-            { $group: groupBy },
-            { $lookup: { from: 'users', localField: 'orders.user', foreignField: '_id', as: 'orders.user' } },
-            { $unwind: '$orders' },
-            { $unwind: '$orders.products' },
-            { $lookup: { from: 'products', localField: 'orders.products.product', foreignField: '_id', as: 'orders.products.product' } },
-            { $unwind: '$orders.products.product' },
+        const pipeline = [
+            {
+                $lookup: {
+                    from: "products",
+                    localField: "products.product",
+                    foreignField: "_id",
+                    as: "productInfo"
+                }
+            },
+            {
+                $unwind: "$productInfo"
+            },
             {
                 $group: {
-                    _id: '$_id',
-                    count: { $first: '$count' },
-                    orders: { $push: '$orders' }
+                    _id: `$productInfo.${field}`,
+                    count: { $sum: 1 }
                 }
             }
         ];
-        console.log(aggregationPipeline);
 
-        const groupedOrders = await Order.aggregate(aggregationPipeline);
-        console.log(groupedOrders);
-        return groupedOrders;
-    } catch (e) {
-        console.log("OrderService: " + e);
+        const result = await Order.aggregate(pipeline);
+        return result;
+    } catch (error) {
+        throw new Error('Error occurred while aggregating orders by field');
     }
 };
+
+
+
 
 
 module.exports = {
