@@ -3,6 +3,7 @@ const BeachInfoService = require('../services/BeachInfoService');
 const createBeachInfo = async (req, res) => {
     try {
         const beachInfoData = req.body;
+        console.log(beachInfoData);
         const beachInfo = await BeachInfoService.createBeachInfo(beachInfoData);
         if (beachInfo) {
             res.status(200).json(beachInfo);

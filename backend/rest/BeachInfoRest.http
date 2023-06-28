@@ -1,0 +1,11 @@
+POST http://localhost:3000/beachInfo/create
+Content-Type: application/json
+
+{
+  "spot": "Bat-Yam",
+  "lat": 32.0298,
+  "long": 34.74088,
+  "description": "Just 10 min driving from the center of Tel Aviv",
+  "video": "https://www.youtube.com/embed/GBGYGJAXDKw?autoplay=1&mute=1"
+}
+
