@@ -79,11 +79,24 @@ const filterOrders = async (req, res) => {
     }
 };
 
+const groupByField = async (req, res) => {
+    try {
+        const { field } = req.params;
+        const result = await OrderService.aggregate([
+            { $group: { _id: `$${field}`, count: { $sum: 1 } } },
+        ]);
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
 module.exports = {
     createOrder,
     updateOrder,
     getAllOrders,
     getOrderById,
     deleteOrder,
-    filterOrders
+    filterOrders,
+    groupByField
 }

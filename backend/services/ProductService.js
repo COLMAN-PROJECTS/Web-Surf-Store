@@ -81,6 +81,23 @@ const filterProducts = async (filter) => {
     }
 }
 
+const groupByField = async (field) => {
+    try {
+        const result = await Product.aggregate([
+            {
+                $group: {
+                    _id: `$${field}`,
+                    count: { $sum: 1 },
+                },
+            },
+        ]);
+
+        return result;
+    } catch (error) {
+        throw new Error('Failed to group by field');
+    }
+};
+
 
 
 module.exports = {
@@ -89,5 +106,6 @@ module.exports = {
         getProductById,
         updateProduct,
         deleteProduct,
-        filterProducts
+        filterProducts,
+        groupByField
     };

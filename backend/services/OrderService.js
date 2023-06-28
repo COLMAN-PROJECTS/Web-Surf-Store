@@ -92,7 +92,8 @@ const filterOrders = async (filter) => {
 
     }
 }
-const groupOrdersByField = async (groupByField) => {
+
+const groupByField = async (groupByField) => {
     try {
         const groupBy = {
             _id: `$${groupByField}`,
@@ -119,6 +120,6 @@ module.exports = {
     updateOrder,
     deleteOrder,
     filterOrders,
-    groupOrdersByField
+    groupByField
 
 }

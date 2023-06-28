@@ -82,11 +82,31 @@ const filterProducts = async (req, res) => {
     }
 };
 
+const groupBy = async (req, res) => {
+    const { field } = req.params;
+
+    try {
+        const result = await productService.aggregate([
+            {
+                $group: {
+                    _id: `$${field}`,
+                    count: { $sum: 1 },
+                },
+            },
+        ]);
+
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
 module.exports = {
     createProduct,
     getAllProducts,
     getProductById,
     updateProduct,
     deleteProduct,
-    filterProducts
+    filterProducts,
+    groupBy
 };
