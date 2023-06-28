@@ -1,6 +1,4 @@
-window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-disabled-mobile]")).forEach((function (e) {
-  e.classList.remove("animated"), e.removeAttribute("data-bss-hover-animate"), e.removeAttribute("data-aos"), e.removeAttribute("data-bss-parallax-bg"), e.removeAttribute("data-bss-scroll-zoom")
-})), document.addEventListener("DOMContentLoaded", (function () {
+
 $(document).ready(function () {
   let imageUrl = 'assets/images/productShop/sup-head.jpeg';
   let backgroundImage = 'url(' + imageUrl + ') center / cover';
@@ -81,7 +79,7 @@ $(document).ready(function () {
   function calcSummary() {
     let orderSummary = 0;
     dataCart.forEach(function(item) {
-      orderSummary += item.product.price
+      orderSummary += item.product.price * item.quantity;
     });
 
     const shipping = 10;
@@ -196,4 +194,4 @@ $(document).ready(function () {
     }
   }
 
-}));
+
