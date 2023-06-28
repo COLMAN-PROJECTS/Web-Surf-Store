@@ -2,13 +2,13 @@ const userService = require("../services/UserService");
 
 const getUserById = async (req, res, next) => {
     const { id } = req.params;
-    const user = await userService.getUserById(id);
+    const user = (await userService.getUserById(id)).populate("orders").populate('products');
     res.send(user);
 };
 
 const getUserByEmail = async (req, res, next) => {
     const { email } = req.params;
-    const user = await userService.getUserByEmail(email);
+    const user = await userService.getUserByEmail(email).populate("orders").populate('products');;
     if (user) {
         res.send(user);
     } else {
@@ -17,7 +17,7 @@ const getUserByEmail = async (req, res, next) => {
 };
 
 const getAllUsers = async (req, res, next) => {
-    const users = await userService.getAllUsers();
+    const users = await userService.getAllUsers().populate("orders").populate('products');;
     res.send(users);
 };
 

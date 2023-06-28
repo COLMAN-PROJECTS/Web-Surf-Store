@@ -32,7 +32,7 @@ const updateOrder = async (req, res) => {
 
 const getAllOrders = async (req, res) => {
     try {
-        const orders = await OrderService.getAllOrders();
+        const orders = await OrderService.getAllOrders().populate('profile').populate('products');
         res.status(200).json(orders);
     } catch (error) {
         res.status(500).json({error: error.message});
@@ -42,7 +42,7 @@ const getAllOrders = async (req, res) => {
 const getOrderById = async (req, res) => {
         try {
             const orderId = req.params.id;
-            const order = (await OrderService.getOrderById(orderId)).populate('profile');
+            const order = (await OrderService.getOrderById(orderId)).populate('profile').populate('products');
             if (order) {
                 res.status(200).json(order);
             } else {
