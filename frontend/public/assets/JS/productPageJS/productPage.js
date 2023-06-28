@@ -44,7 +44,7 @@ window.innerWidth < 768 &&
       }
       $('#product-description p').text(wantedProduct.description);
       $('#simple-slider-img1').css('background', 'url(' + wantedProduct.frontImage + ') center center / auto no-repeat').css('background-size', 'contain');
-      $('#img-fluid1').find("img").attr("src", wantedProduct.frontImage);
+      $('#img-fluid1').find("a").attr("href",wantedProduct.frontImage).attr("target","_blank").find("img").attr("src", wantedProduct.frontImage);
 
       enterImage("img-fluid");
       enterImage("simple-slider-img");
@@ -57,7 +57,7 @@ window.innerWidth < 768 &&
             if (labelName === "img-fluid") {
               let imageElement = $("#" + labelName + (i + 2));
               imageElement.find("a").attr("href",imageSrc).attr("target","_blank");
-              imageElement.attr("href",imageSrc).attr("target","_blank").find("img").attr("src", imageSrc);
+              imageElement.find("img").attr("src", imageSrc);
             }
             if (labelName === "simple-slider-img") {
               let imageElement = $("#" + labelName + (i + 2));
