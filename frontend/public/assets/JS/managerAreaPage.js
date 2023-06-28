@@ -1,16 +1,30 @@
- $(document).ready(function () {
-        productButtons();
-        initializeImageTitle()
-        getDataForTable()
+$(document).ready(function () {
+    productButtons();
+    initializeImageTitle()
+    getDataForTable()
+    // loadGroupByData('products.product.category?field=SurfBoards')
+    // loadGroupByData('category?field=wetsuits')
+    // loadGroupByData('category?field=sups')
+    // loadGroupByData('category?field=accessories')
+    $('.list-group-item#statistics').click(function () {
+        $('#manager-table').hide(); // Hide the table
+        $('#product-buttons').hide();
+        $('#graph-container').empty().show(); // Show the graph container
+
+        // Remove any existing graphs
+
+        // Load and display the D3.js graphs
+        loadGraphs();
     });
+});
 
 
 function initializeImageTitle() {
-  let imageUrl = 'assets/images/managerArea/image-title-manager.jpeg';
-  let backgroundImage = 'url(' + imageUrl + ') center / cover';
+    let imageUrl = 'assets/images/managerArea/image-title-manager.jpeg';
+    let backgroundImage = 'url(' + imageUrl + ') center / cover';
 
-  $('#titleImage').css('background', backgroundImage);
-  $("#titleH1").text('Manage your store');
+    $('#titleImage').css('background', backgroundImage);
+    $("#titleH1").text('Manage your store');
 }
 
 function populateTable(colTitles, data) {
@@ -45,11 +59,10 @@ function populateTable(colTitles, data) {
                     var txt = '\u{1F4CE}';
                     value = JSON.stringify(value);
                     cell = $("<td></td>").text(txt).val(value);
-                } else if (typeof value === 'string' && value.length > 30) {
-                    txt = value.substring(0, 30) + '...';
+                } else if (typeof value === 'string' && value.length > 17) {
+                    txt = value.substring(0, 20) + '...';
                     cell = $("<td></td>").text(txt).val(value);
-                }
-                else {
+                } else {
                     cell = $("<td></td>").text(value).val(value)
                 }
                 row.append(cell);
@@ -113,8 +126,7 @@ function enableRowEditing(row) {
                 var updatedValue = input.val();
                 if (originalValue !== updatedValue) {
                     updatedData[col] = updatedValue;
-                }
-                else {
+                } else {
                     updatedData[col] = originalValue;
                 }
 
@@ -135,7 +147,7 @@ function enableRowEditing(row) {
                 $.ajax({
                     url: '/frontend/DB/OrdersSeed.json',
                     type: 'PATCH',
-                    data: { _id: rowId, ...updatedData },
+                    data: {_id: rowId, ...updatedData},
                     dataType: 'json',
                     success: function (response) {
                         if (response.status === '200') {
@@ -169,9 +181,6 @@ function enableRowEditing(row) {
 }
 
 
-
-
-
 function deleteRow(row) {
     var rowId = row.find('td:first-child').val();
     alert("Item deleted successfully with id: " + rowId);
@@ -182,8 +191,7 @@ function deleteRow(row) {
         dataType: 'json',
         success: function (response) {
             alert(response)
-            if (response.status === '200')
-            {
+            if (response.status === '200') {
                 alert('Row deleted successfully');
                 row.remove();
             }
@@ -416,24 +424,24 @@ function productButtons() {
 }
 
 function setTitles(title) {
-var titleMapper = {
-    'fullName': 'Full Name',
-    'email': 'Email',
-    'phone': 'Phone',
-    'address': 'Address',
-    'isAdmin': 'Admin',
-    'products': 'Products',
-    'totalPrice': 'Total Price',
-    'shippingAddress': 'Shipping Address',
-    'paymentMethod': 'Payment Method',
-    'name': 'Name',
-    'description': 'Description',
-    'price': 'Price',
-    'category': 'Category',
-    'brand': 'Brand',
-    'details': 'Details',
-    'images': 'Images',
-}
+    var titleMapper = {
+        'fullName': 'Full Name',
+        'email': 'Email',
+        'phone': 'Phone',
+        'address': 'Address',
+        'isAdmin': 'Admin',
+        'products': 'Products',
+        'totalPrice': 'Total Price',
+        'shippingAddress': 'Shipping Address',
+        'paymentMethod': 'Payment Method',
+        'name': 'Name',
+        'description': 'Description',
+        'price': 'Price',
+        'category': 'Category',
+        'brand': 'Brand',
+        'details': 'Details',
+        'images': 'Images',
+    }
 
     if (titleMapper.hasOwnProperty(title)) {
         return titleMapper[title];
@@ -441,5 +449,65 @@ var titleMapper = {
         return title;
     }
 }
+//
+// function loadGroupByData(groupByField) {
+//     $.ajax({
+//         url: 'http://localhost:3000/orders/groupBy/' + groupByField,
+//         method: 'GET',
+//         dataType: 'json',
+//         application: 'json',
+//         success: function (response) {
+//             response.forEach(function (group) {
+//                 console.log(group);
+//                 var groupDiv = $('<div>').addClass('d-flex align-items-center mt-3');
+//                 var fileBox = $('<div>').addClass('fm-file-box').addClass(getFileBoxClass(group._id));
+//                 var icon = $('<i>').addClass(getIconClass(group._id));
+//                 fileBox.append(icon);
+//                 var infoDiv = $('<div>').addClass('flex-grow-1 ms-2');
+//                 var title = $('<h6>').addClass('mb-0').text(group._id);
+//                 var count = $('<p>').addClass('mb-0 text-secondary').text('Count: ' + group.count);
+//                 infoDiv.append(title, count);
+//                 var totalPrice = $('<h6>').addClass('text-primary mb-0').text('$' + group.totalPrice);
+//                 groupDiv.append(fileBox, infoDiv, totalPrice);
+//
+//                 $('.card-body').append(groupDiv);
+//             });
+//         },
+//         error: function (error) {
+//             console.error('Error loading groupBy data:', error);
+//         }
+//     });
+// }
+//
+//
+//     function getFileBoxClass(groupByField) {
+//         switch (groupByField) {
+//             case 'Surfboards':
+//                 return 'bg-light-primary text-primary';
+//             case "Sups'":
+//                 return 'bg-light-success text-success';
+//             case 'Wetsuits':
+//                 return 'bg-light-danger text-danger';
+//             case 'Accessories':
+//                 return 'bg-light-warning text-warning';
+//             default:
+//                 return '';
+//         }
+//     }
+//
+//     function getIconClass(groupByField) {
+//         switch (groupByField) {
+//             case 'Surfboards':
+//             case 'Accessories':
+//                 return 'bx bx-image';
+//             case "Sups'":
+//                 return 'bx bxs-file-doc';
+//             case 'Wetsuits':
+//                 return 'bx bx-video';
+//             default:
+//                 return '';
+//         }
+//     }
+
 
 

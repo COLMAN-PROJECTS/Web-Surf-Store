@@ -1,5 +1,6 @@
 const OrderService = require('../services/OrderService');
-
+const User = require('../models/UserSchema');
+const Product = require('../models/ProductSchema');
 
 const createOrder = async (req, res) => {
     try {
@@ -32,7 +33,7 @@ const updateOrder = async (req, res) => {
 
 const getAllOrders = async (req, res) => {
     try {
-        const orders = await OrderService.getAllOrders().populate('profile').populate('products');
+        const orders = await OrderService.getAllOrders()
         res.status(200).json(orders);
     } catch (error) {
         res.status(500).json({error: error.message});
@@ -42,7 +43,7 @@ const getAllOrders = async (req, res) => {
 const getOrderById = async (req, res) => {
         try {
             const orderId = req.params.id;
-            const order = (await OrderService.getOrderById(orderId)).populate('profile').populate('products');
+            const order = (await OrderService.getOrderById(orderId))
             if (order) {
                 res.status(200).json(order);
             } else {
@@ -82,9 +83,10 @@ const filterOrders = async (req, res) => {
 const groupByField = async (req, res) => {
     try {
         const { field } = req.params;
-        const result = await OrderService.aggregate([
+        const result = await OrderService.groupByField([
             { $group: { _id: `$${field}`, count: { $sum: 1 } } },
         ]);
+
         res.json(result);
     } catch (error) {
         res.status(500).json({ error: 'Internal server error' });

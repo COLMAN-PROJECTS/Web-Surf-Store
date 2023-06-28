@@ -3,7 +3,7 @@ const router = express.Router();
 const orderController = require("../controllers/orderController");
 const isAdmin = require('../middlewares/isAdminMiddleWare');
 
-router.get('/', isAdmin, orderController.getAllOrders);
+router.get('/',isAdmin, orderController.getAllOrders);
 router.post('/',isAdmin, orderController.createOrder);
 router.get('/:id',isAdmin, orderController.getOrderById);
 router.patch('/',isAdmin, orderController.updateOrder)

@@ -1,17 +1,30 @@
 const User = require("../models/UserSchema");
+const Order = require("../models/OrderSchema");
+const Product = require("../models/ProductSchema");
 
 const getUserByEmail = async (email) => {
-    const user = await User.findOne({ email: email }).populate("orders");
+    const user = await User.findOne({ email: email }).populate('orders').populate({
+        path: 'orders.products',
+        model: Product
+    });
+
     return user;
 };
 
 const getUserById = async (id) => {
-    return await User.findById(id).populate("orders");
+    const user = await User.findById(id).populate('orders').populate({
+        path: 'orders.products',
+        model: Product
+    });
+    return user;
 };
 
 const getAllUsers = async () => {
     try {
-        const users = await User.find();
+        const users = await User.find().populate('orders').populate({
+            path: 'orders.products',
+            model: Product
+        });
         if (users) {
             return users;
         }

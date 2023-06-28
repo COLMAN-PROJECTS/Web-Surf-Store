@@ -57,7 +57,11 @@ const updateOrder = async (orderId, order) => {
     }
 const getAllOrders = async () => {
     try {
-        const orders = await Order.find();
+        const orders = await Order.find().populate({
+            path: 'user',
+            select: '-isAdmin -password'
+        })
+            .populate({ path: 'products.product', model: 'Product' });
         if (orders)
             return orders;
     } catch (e) {
@@ -67,7 +71,11 @@ const getAllOrders = async () => {
 };
 
 const getOrderById = async (orderId) => {
-    const order = await Order.findById(orderId);
+    const order = await Order.findById(orderId).populate({
+        path: 'user',
+        select: '-isAdmin -password'
+    })
+        .populate({ path: 'products.product', model: 'Product' });
     if (!order) {
         console.log(`Order with ID ${orderId} not found.`);
     }
@@ -92,26 +100,39 @@ const filterOrders = async (filter) => {
 
     }
 }
-
 const groupByField = async (groupByField) => {
     try {
         const groupBy = {
-            _id: `$${groupByField}`,
+            _id: groupByField,
             count: { $sum: 1 },
             orders: { $push: "$$ROOT" }
         };
 
         const aggregationPipeline = [
-            { $group: groupBy }
+            { $group: groupBy },
+            { $lookup: { from: 'users', localField: 'orders.user', foreignField: '_id', as: 'orders.user' } },
+            { $unwind: '$orders' },
+            { $unwind: '$orders.products' },
+            { $lookup: { from: 'products', localField: 'orders.products.product', foreignField: '_id', as: 'orders.products.product' } },
+            { $unwind: '$orders.products.product' },
+            {
+                $group: {
+                    _id: '$_id',
+                    count: { $first: '$count' },
+                    orders: { $push: '$orders' }
+                }
+            }
         ];
+        console.log(aggregationPipeline);
 
         const groupedOrders = await Order.aggregate(aggregationPipeline);
-
+        console.log(groupedOrders);
         return groupedOrders;
     } catch (e) {
         console.log("OrderService: " + e);
     }
 };
+
 
 module.exports = {
     createOrder,
