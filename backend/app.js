@@ -56,6 +56,7 @@ app.use("/auth", require("./routes/AuthRoute"));
 app.use('/products', ProductRoute);
 app.use('/orders', OrderRoute);
 app.use('/profile', UserRoute);
+app.use('/beachInfo', BeachInfoRoute);
 app.get('/chat', (req, res) => {
     res.sendFile(__dirname + '/public/chat.html')
 })

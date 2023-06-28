@@ -9,7 +9,7 @@ router.get('/:id',productController.getProductById);
 router.patch('/', isAdmin,productController.updateProduct)
 router.delete('/', isAdmin, productController.deleteProduct);
 router.post('/filter', productController.filterProducts)
-router.get('/products/groupBy/:field', productController.groupBy);
+router.get('/groupBy/:field', productController.groupBy);
 
 
 

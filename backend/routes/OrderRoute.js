@@ -9,7 +9,7 @@ router.get('/:id',isAdmin, orderController.getOrderById);
 router.patch('/',isAdmin, orderController.updateOrder)
 router.delete('/',isAdmin, orderController.deleteOrder);
 router.post('/filter', isAdmin, orderController.filterOrders)
-router.get('/orders/groupBy/:field', orderController.groupByField);
+router.get('/groupBy/:field', orderController.groupByField);
 
 
 module.exports = router;
