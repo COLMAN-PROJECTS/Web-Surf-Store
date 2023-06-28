@@ -1,11 +1,3 @@
-$(document).ready((function () {
-  $("#list").click((function (e) {
-    e.preventDefault(), $("#products .item").addClass("list-group-item")
-  })), $("#grid").click((function (e) {
-    e.preventDefault(), $("#products .item").removeClass("list-group-item"), $("#products .item").addClass("grid-group-item")
-  }))
-}));
-
 
 let filteredProducts = [];
 
