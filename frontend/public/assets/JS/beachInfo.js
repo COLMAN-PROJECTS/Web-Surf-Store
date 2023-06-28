@@ -1,7 +1,7 @@
 
   $(document).ready(function () {
-    btnOrganized();
     initializeImageTitle();
+    btnOrganized();
   });
 
 function initializeImageTitle() {
