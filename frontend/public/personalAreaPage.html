@@ -38,22 +38,25 @@
   </div>
 </section>
 
-<section class="card-section-imagia" style="padding-bottom: 0px;margin-top: 28px;"><h1>Hey</h1>
-  <h2>Name of the client</h2>
+<section class="card-section-image" style="margin-top: 28px;"><h1>Hey</h1>
+  <h2 id="user-name"></h2>
   <div class="container">
     <div class="row" style="height: 345px;margin: -11px;">
       <div class="col-sm-6 col-md-4" style="margin-left: 450px;height: 345px;">
-        <div class="card-container-imagia" style="height: 345px;">
-          <div class="card-imagia">
-            <div class="front-imagia" style="height: 335px;">
-              <div class="cover-imagia cover-gradient"></div>
-              <div class="user-imagia"><img class="img-circle" alt=""
-                                            src="https://unsplash.it/120/120?image=64">
+        <div class="card-container-image" style="height: 345px;">
+          <div class="card-image">
+            <div class="front-image" style="height: 335px;">
+              <div class="cover-image cover-gradient"></div>
+              <div class="user-image"><img
+                src="https://api.dicebear.com/6.x/adventurer/svg"
+                alt="avatar"
+              />
               </div>
-              <div class="content-imagia"><h3 class="name-imagia">Name</h3>
-                <p class="subtitle-imagia">address</p>
-                <p class="text-center"><em>detailes on the
-                  client&nbsp;</em></p></div>
+              <div class="content-image"><h3 id="user-name2" class="name-image">Name</h3>
+                <p id="user-email" class="text-center"><em> </em></p>
+                <p id="user-address" class="subtitle-image"> </p>
+                <p id="user-phone" class="subtitle-image"> </p>
+              </div>
             </div>
           </div>
         </div>
@@ -70,25 +73,18 @@
           </div>
           <div class="card-body">
             <div class="table-responsive table mb-0 pt-3 pe-2">
-              <table class="table table-striped table-sm my-0 mydatatable">
+              <table id="order-table" class="table table-striped table-sm my-0 mydatatable">
                 <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>Order Num</th>
+                  <th>Quantity of products</th>
+                  <th>Total Price</th>
+                  <th>Shipment address</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                  <td>Airi Satou</td>
-                  <td>Accountant</td>
-                  <td>Tokyo</td>
-                  <td>33</td>
-                  <td>2008/11/28</td>
-                  <td>$162,700</td>
+
                 </tr>
                 </tbody>
               </table>

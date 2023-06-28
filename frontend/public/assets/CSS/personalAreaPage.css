@@ -159,18 +159,18 @@ div.social-links {
   border-bottom-color: #fff
 }
 
-.card-section-imagia {
+.card-section-image {
   padding: 60px 0 30px;
   background: #f1f1f1
 }
 
-.card-section-imagia > h1 {
+.card-section-image > h1 {
   font-size: 48px;
   text-align: center;
   margin: 0 0 10px
 }
 
-.card-section-imagia > h2 {
+.card-section-image > h2 {
   font-size: 24px;
   text-align: center;
   margin: 0 0 60px;
@@ -178,7 +178,7 @@ div.social-links {
   text-transform: uppercase
 }
 
-.card-container-imagia {
+.card-container-image {
   -webkit-perspective: 1500px;
   -moz-perspective: 1500px;
   -o-perspective: 1500px;
@@ -186,7 +186,7 @@ div.social-links {
   margin-bottom: 30px
 }
 
-.card-imagia {
+.card-image {
   -webkit-transition: -webkit-transform .5s;
   -moz-transition: -moz-transform .5s;
   -o-transition: -o-transform .5s;
@@ -198,7 +198,7 @@ div.social-links {
   position: relative
 }
 
-.back-imagia, .front-imagia {
+.back-image, .front-image {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
@@ -211,11 +211,11 @@ div.social-links {
   padding-bottom: 46px
 }
 
-.front-imagia {
+.front-image {
   z-index: 2
 }
 
-.back-imagia {
+.back-image {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
@@ -223,28 +223,28 @@ div.social-links {
   z-index: 3
 }
 
-.back-imagia, .card-container-imagia, .front-imagia {
+.back-image, .card-container-image, .front-image {
   width: 100%;
   height: 420px;
   border-radius: 4px
 }
 
-.card-imagia .cover-imagia {
+.card-image .cover-image {
   height: 120px;
   overflow: hidden;
   border-radius: 4px 4px 0 0
 }
 
-.card-imagia .cover-imagia img {
+.card-image .cover-image img {
   width: 100%;
   height: auto
 }
 
-.card-imagia .cover-imagia.cover-gradient {
+.card-image .cover-image.cover-gradient {
   background: #fff radial-gradient(circle at 50% 100%, #adcace 0, #89bece 33%, #34a1c8 66%, #036ead 100%);
 }
 
-.card-imagia .user-imagia {
+.card-image .user-image {
   border-radius: 50%;
   display: block;
   height: 130px;
@@ -253,25 +253,25 @@ div.social-links {
   width: 120px
 }
 
-.card-imagia .user-imagia img {
+.card-image .user-image img {
   background: #fff;
   border: 5px solid #fff;
   width: 100%
 }
 
-.card-imagia .content-imagia {
+.card-image .content-image {
   background-color: rgba(0, 0, 0, 0);
   box-shadow: none;
   padding: 10px 20px 20px
 }
 
-.content-back-imagia {
+.content-back-image {
   display: flex;
   align-items: center;
   height: 100%
 }
 
-.card-imagia .name-imagia {
+.card-image .name-image {
   font-size: 22px;
   line-height: 26px;
   margin: 0;
@@ -279,13 +279,13 @@ div.social-links {
   text-transform: capitalize
 }
 
-.card-imagia .subtitle-imagia {
+.card-image .subtitle-image {
   color: #aaa;
   text-align: center;
   margin-bottom: 15px
 }
 
-.card-imagia .footer-imagia {
+.card-image .footer-image {
   width: 100%;
   color: #aaa;
   padding: 10px 0;
@@ -295,27 +295,27 @@ div.social-links {
   border-top: 1px solid #eee
 }
 
-.card-imagia .footer-imagia .social-imagia a {
+.card-image .footer-image .social-image a {
   margin: 0 7px;
   font-size: 18px
 }
 
 @media screen and (-ms-high-contrast: active),(-ms-high-contrast: none) {
-  .back-imagia, .front-imagia {
+  .back-image, .front-image {
     -ms-backface-visibility: visible;
     backface-visibility: visible
   }
 
-  .back-imagia {
+  .back-image {
     visibility: hidden;
     -ms-transition: .2s cubic-bezier(.92, .01, .83, .67)
   }
 
-  .front-imagia {
+  .front-image {
     z-index: 4
   }
 
-  .card-container-imagia:hover .back-imagia {
+  .card-container-image:hover .back-image {
     z-index: 5;
     visibility: visible
   }
