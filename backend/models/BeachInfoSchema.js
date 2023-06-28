@@ -12,3 +12,4 @@ const BeachInfoSchema = new Schema({
 const BeachInfo = mongoose.model('BeachInfo', BeachInfoSchema);
 
 module.exports = BeachInfo;
+

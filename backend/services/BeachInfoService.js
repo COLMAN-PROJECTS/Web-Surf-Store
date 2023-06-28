@@ -2,10 +2,12 @@ const BeachInfo = require('../models/BeachInfoSchema');
 
 const createBeachInfo = async (beachInfoData) => {
     const beachInfo = new BeachInfo({
-        // name: beachInfoData.name,
-        // location: beachInfoData.location,
-        // description: beachInfoData.description,
-        // image: beachInfoData.image
+        spot: beachInfoData.spot,
+        lat: beachInfoData.lat,
+        long: beachInfoData.long,
+        description: beachInfoData.description,
+        video: beachInfoData.video
+
     });
 
     const savedBeachInfo = await beachInfo.save();
@@ -14,7 +16,7 @@ const createBeachInfo = async (beachInfoData) => {
 
 const updateBeachInfo = async (beachInfoId, beachInfo) => {
     try {
-        const updatedBeachInfo = await BeachInfo.findByIdAndUpdate(beachInfoId, beachInfo, { new: true });
+        const updatedBeachInfo = await BeachInfo.findByIdAndUpdate(beachInfoId, beachInfo, {new: true});
         if (!updatedBeachInfo) {
             throw new Error(`Beach info with ID ${beachInfoId} not found.`);
         }
