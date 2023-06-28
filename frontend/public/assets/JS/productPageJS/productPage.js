@@ -56,7 +56,8 @@ window.innerWidth < 768 &&
           if (imageSrc) {
             if (labelName === "img-fluid") {
               let imageElement = $("#" + labelName + (i + 2));
-              imageElement.find("img").attr("src", imageSrc);
+              imageElement.find("a").attr("href",imageSrc).attr("target","_blank");
+              imageElement.attr("href",imageSrc).attr("target","_blank").find("img").attr("src", imageSrc);
             }
             if (labelName === "simple-slider-img") {
               let imageElement = $("#" + labelName + (i + 2));
