@@ -12,16 +12,18 @@ window.innerWidth < 768 &&
 
     $(document).ready(function () {
         productButtons();
-        let imageUrl = 'assets/images/managerArea/image-title-manager.jpeg';
-        let backgroundImage = 'url(' + imageUrl + ') center / cover';
-
-        $('#titleImage').css('background', backgroundImage);
-        $("#titleH1").text('Manage your store');
+        initializeImageTitle()
         getDataForTable()
     });
 
 
+function initializeImageTitle() {
+  let imageUrl = 'assets/images/managerArea/image-title-manager.jpeg';
+  let backgroundImage = 'url(' + imageUrl + ') center / cover';
 
+  $('#titleImage').css('background', backgroundImage);
+  $("#titleH1").text('Manage your store');
+}
 
 function populateTable(colTitles, data) {
     var table = $('#manager-table');

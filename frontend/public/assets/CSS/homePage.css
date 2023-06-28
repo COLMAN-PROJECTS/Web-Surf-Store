@@ -327,6 +327,12 @@ li.active {
   background: #00B16A;
 }
 
+.navbar-btn span a{
+  font-family: "Apple Braille", sans-serif;
+  font-size: 15px;
+  text-transform: none;
+}
+
 .block {
   display: block;
   position: relative;

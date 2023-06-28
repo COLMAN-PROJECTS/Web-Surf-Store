@@ -32,6 +32,7 @@ $(document).ready(function () {
   }
 
   $(document).ready(function() {
+    btnOrganized();
     const cartItems = dataCart;
     let cartHTML = '';
 
@@ -167,5 +168,32 @@ $(document).ready(function () {
       }
     }
   })
+
+  function btnOrganized() {
+    let isLogin = localStorage.getItem('user') !== null;
+    if (isLogin) {
+      $('#login').hide();
+      $('#logOut').show().click(function () {
+        localStorage.removeItem('user');
+        $('#login').show();
+        $('#logOut').hide();
+        $('#managerBtn').hide();
+        $('#clientBtn').hide();
+      });
+      if (JSON.parse(localStorage.getItem('user')).isAdmin) {
+        $('#managerBtn').show();
+        $('#clientBtn').hide();
+      } else {
+        $('#managerBtn').hide();
+        $('#clientBtn').show().click(function () {
+          window.location.href = 'personalAreaPage.html';
+        });
+      }
+    } else {
+      $('#logOut').hide();
+      $('#managerBtn').hide();
+      $('#clientBtn').hide();
+    }
+  }
 
 }));

@@ -13,15 +13,19 @@ window.innerWidth < 768 &&
   }),
   document.addEventListener("DOMContentLoaded", function () {
     $(document).ready(function () {
-      let imageUrl = 'assets/images/personalArea/imageTitlePersonal.jpeg';
-      let backgroundImage = 'url(' + imageUrl + ') center / cover';
-
-      $('#titleImage').css('background', backgroundImage);
-      $("#titleH1").text('Your Private Beach');
+      initializeImageTitle();
       setUpUser();
       setUpTable();
     });
   });
+
+function initializeImageTitle() {
+  let imageUrl = 'assets/images/personalArea/imageTitlePersonal.jpeg';
+  let backgroundImage = 'url(' + imageUrl + ') center / cover';
+
+  $('#titleImage').css('background', backgroundImage);
+  $("#titleH1").text('Your Private Beach');
+}
 
 function setUpUser() {
   if (meUser) {

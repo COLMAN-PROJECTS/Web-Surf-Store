@@ -62,6 +62,7 @@ $(document).ready(function() {
                       };
 
                       localStorage.setItem("user", JSON.stringify(userWithoutPassword));
+                      btnOrganized();
 
                         setTimeout(function() {
                             popup.close();
@@ -87,5 +88,29 @@ $(document).ready(function() {
             //go to diffrent html page
             window.location.href = "./public/signUpPage.html";
         })
+      function btnOrganized() {
+        let isLogin = localStorage.getItem('user') !== null;
+        if (isLogin) {
+          $('#login').hide();
+          $('#logOut').show().click(function () {
+            localStorage.removeItem('user');
+            $('#login').show();
+            $('#logOut').hide();
+            $('#managerBtn').hide();
+            $('#clientBtn').hide();
+          });
+          if (JSON.parse(localStorage.getItem('user')).isAdmin) {
+            $('#managerBtn').show();
+            $('#clientBtn').hide();
+          } else {
+            $('#managerBtn').hide();
+            $('#clientBtn').show();
+          }
+        } else {
+          $('#logOut').hide();
+          $('#managerBtn').hide();
+          $('#clientBtn').hide();
+        }
+      }
     });
 });

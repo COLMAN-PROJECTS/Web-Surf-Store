@@ -30,14 +30,6 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
       }
     }
 
-    $(document).ready(function () {
-      let imageUrl = 'assets/images/productShop/sup-head.jpeg';
-      let backgroundImage = 'url(' + imageUrl + ') center / cover';
-
-      $('#titleImage').css('background', backgroundImage);
-      $("#titleH1").text('Discover, Shop, and Surf the Best');
-    })
-
     $(document).ready((function () {
       $("#list").click((function (e) {
         e.preventDefault(), $("#products .item").addClass("list-group-item")
@@ -50,6 +42,9 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
     let filteredProducts = [];
 
     $(document).ready(function () {
+      btnOrganized();
+      initializeImageTitle();
+
       let Brands = new Set();
       let Categories = new Set();
       let Sizes = new Set();
@@ -180,6 +175,41 @@ window.innerWidth < 768 && [].slice.call(document.querySelectorAll("[data-bss-di
       if (product) {
         localStorage.setItem('product', JSON.stringify(product));
         console.log('Product added to cart', product);
+      }
+    }
+
+    function initializeImageTitle() {
+      let imageUrl = 'assets/images/productShop/sup-head.jpeg';
+      let backgroundImage = 'url(' + imageUrl + ') center / cover';
+
+      $('#titleImage').css('background', backgroundImage);
+      $("#titleH1").text('Discover, Shop, and Surf the Best');
+    }
+
+    function btnOrganized() {
+      let isLogin = localStorage.getItem('user') !== null;
+      if (isLogin) {
+        $('#login').hide();
+        $('#logOut').show().click(function () {
+          localStorage.removeItem('user');
+          $('#login').show();
+          $('#logOut').hide();
+          $('#managerBtn').hide();
+          $('#clientBtn').hide();
+        });
+        if (JSON.parse(localStorage.getItem('user')).isAdmin) {
+          $('#managerBtn').show();
+          $('#clientBtn').hide();
+        } else {
+          $('#managerBtn').hide();
+          $('#clientBtn').show().click(function () {
+            window.location.href = 'personalAreaPage.html';
+          });
+        }
+      } else {
+        $('#logOut').hide();
+        $('#managerBtn').hide();
+        $('#clientBtn').hide();
       }
     }
 
