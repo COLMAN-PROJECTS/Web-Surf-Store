@@ -39,7 +39,7 @@ function setUpTable() {
     type: 'GET',
     dataType: 'json',
     success: function (orders) {
-      const meOrders = orders.filter(order => order.user === meUser._id.$oid);
+      const meOrders = orders.filter(order => order.user._id && order.user._id.$oid === meUser._id.$oid);
 
       const orderTable = $('#order-table tbody');
       let orderNum = 0;
@@ -48,6 +48,7 @@ function setUpTable() {
         orderNum++;
         const orderRow = `<tr>
           <td>Order ${orderNum}</td>
+          <td>${order.createdAt.$date}</td>
           <td>${order.products.length}</td>
           <td>${order.totalPrice}</td>
           <td>${order.shippingAddress}</td>
@@ -55,6 +56,7 @@ function setUpTable() {
         orderTable.append(orderRow);
 
         const titleProduct = `<tr style="font-size: 12px">
+          <th>Product Image</th>
           <th>Product Name</th>
           <th>Product Price</th>
           <th>Product Size</th>
@@ -64,8 +66,9 @@ function setUpTable() {
 
         order.products.forEach(product => {
           const productRow = `<tr style="font-size: 12px">
-            <td>${product.product}</td>
-            <td>${product.unitPrice}</td>
+            <td><img class="image-product" src="${product.product.frontImage}" alt="Product Image"></td>
+            <td>${product.product.name}</td>
+            <td>${product.product.price}</td>
             <td>${product.size}</td>
             <td>${product.quantity}</td>
           </tr>`;
