@@ -17,9 +17,9 @@ $(document).ready(function() {
         };
 
         $.ajax({
-            url: '/createUser',
+            url: 'http://localhost:3000/auth/register',
             type: 'POST',
-            data: JSON.stringify(email,password),
+            data: JSON.stringify(user),
             success: function(response) {
                 if (response===200) {
                     var successMessage = document.createElement('div');
