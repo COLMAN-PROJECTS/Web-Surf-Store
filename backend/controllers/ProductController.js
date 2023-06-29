@@ -86,14 +86,7 @@ const groupBy = async (req, res) => {
     const { field } = req.params;
 
     try {
-        const result = await productService.aggregate([
-            {
-                $group: {
-                    _id: `$${field}`,
-                    count: { $sum: 1 },
-                },
-            },
-        ]);
+        const result = await productService.groupByField(field);
 
         res.status(200).json(result);
     } catch (error) {

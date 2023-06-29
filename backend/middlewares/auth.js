@@ -47,20 +47,20 @@ function validateLogin(req, res, next) {
  * @details Middleware to validate fields
  */
 function validateFields(req, res, next) {
-  const { fullName, email, password } = req.body;
+  const { user } = req.body;
   console.log(req.body)
 
-  if (!fullName || !email || !password) {
+  if (!user.fullName || !user.email || !user.password) {
     return res.json({ error: "Missing fields" });
   }
 
   const nameRegex = /^[a-zA-Z0-9\s]+$/;
-  if (!nameRegex.test(fullName)) {
+  if (!nameRegex.test(user.fullName)) {
     return res.json({ error: "Invalid name format" });
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
+  if (!emailRegex.test(user.email)) {
     return res.json({ error: "Invalid email format" });
   }
   next();

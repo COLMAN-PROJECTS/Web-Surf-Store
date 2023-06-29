@@ -30,13 +30,13 @@ $(document).ready(function() {
         popup.document.write(popupContent);
         popup.document.close();
 
-        $(popup.document).find("#Enter").click(function(event) {
+        $(popup.document).find('#Enter').click(function(event) {
             event.preventDefault();
             var enteredEmail = $(popup.document).find("#email").val();
             var enteredPassword = $(popup.document).find("#password").val();
 
             $.ajax({
-                url: "./DB/UserSeed.json",
+                url: "http://localhost:3000/auth/login",
                 dataType: "json",
                 type: "POST",
                 data: {
@@ -44,6 +44,7 @@ $(document).ready(function() {
                     password: enteredPassword
                 },
                 success: function(userData) {
+                    console.log(userData);
                     var loggedInUser = userData.find(user => user.email === enteredEmail
                                                     && user.password === enteredPassword);
 
