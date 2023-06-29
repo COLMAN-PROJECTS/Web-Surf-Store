@@ -28,7 +28,9 @@ async function displayWeatherData(latitude, longitude, weatherDiv) {
 
 function getLocation(weatherDiv) {
   $.ajax({
-    url: '/frontend/DB/BeachInfo.json',
+    url: 'http://localhost:3000/beachInfo',
+    type: 'GET',
+    application: 'json',
     dataType: 'json',
     success: function (data) {
       data.forEach(function (element) {
