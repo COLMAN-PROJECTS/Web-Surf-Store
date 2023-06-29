@@ -16,6 +16,7 @@ $(document).ready(function () {
   let SizeList = $('#SizeList');
 
 
+
   fetch('/frontend/DB/ProductSeed.json')
     .then(response => response.json())
     .then(productSeed => {
@@ -53,26 +54,17 @@ $(document).ready(function () {
     let selectedSize = SizeList.val();
 
     $.ajax({
-      // url: 'Server/filter',
-      // type: 'POST',
-      // data: json.stringify({
-      //   "product":{
-      //     category: selectedCategory,
-      //     brand: selectedBrand,
-      //     price: selectedPrice,
-      //     size: selectedSize
-      //   }
-      // }),
-      //
-      // success: function (response) {
-      //
-      // }
-
-      method: 'GET',
-      url: '/frontend/DB/ProductSeed.json',
-      dataType: 'json',
+      url: 'http://localhost:3000/products/filter',
+      type: 'POST',
+        contentType: 'application/json',
+      data:JSON.stringify(
+        {
+          category: selectedCategory,
+          brand: selectedBrand,
+          price: selectedPrice,
+          size: selectedSize
+      }),
       success: function (products) {
-
         $('#productContainer').empty();
 
         filteredProducts = products.filter((product) => {

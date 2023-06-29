@@ -8,8 +8,10 @@ $(document).ready(function () {
 function initializeBestOffers() {
   $('#bestOffers h1').text('Our Best Offers');
   $.ajax({
-    url: '/frontend/DB/ProductSeed.json',
+    url: 'http://localhost:3000/products',
+    type: 'GET',
     dataType: 'json',
+    application: 'json',
     success: function (product) {
       for (let j = 0; j < 3; j++) {
         let productImageId = '#bestOffersImg' + (j + 1);

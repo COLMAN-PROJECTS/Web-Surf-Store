@@ -7,7 +7,9 @@ function initMap() {
   const map = new google.maps.Map($('#map')[0],{zoom: 17.56, center: defaultZoom});
 
   $.ajax({
-    url: '/frontend/DB/BeachInfo.json',
+    url: 'http://localhost:3000/beachInfo',
+    type: 'GET',
+    application: 'json',
     dataType: 'json',
       success: function (data) {
         data.forEach(
