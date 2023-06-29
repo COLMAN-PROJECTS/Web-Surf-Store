@@ -29,7 +29,7 @@ function validateLogin(req, res, next) {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.send({ error: "Missing email and/or password" });
+    return res.json({ error: "Missing email and/or password" });
   }
 
   // Email validation

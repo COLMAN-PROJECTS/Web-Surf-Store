@@ -22,10 +22,11 @@ router.get("/login", authMiddleware.checkNotAuthenticated, (req, res) => {
 });
 
 router.post(
-    "/login",
+    "/loginReq",
     authMiddleware.validateLogin,
     passport.authenticate("local"),
     (req, res) => {
+        console.log(req.body)
         res.sendStatus(200);
     }
 );
@@ -47,7 +48,7 @@ router.post(
                 password: hashedPassword,
             });
             await user.save();
-            res.redirect("/login");
+            res.redirect("/loginReq");
         } catch {
             res.redirect("/register");
         }

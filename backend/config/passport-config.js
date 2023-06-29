@@ -4,6 +4,7 @@ const userServices = require("../services/UserService");
 
 async function initialize(passport, email, id) {
     const authenticateUser = async (email, password, done) => {
+        console.log("email: " + email);
         const user = await userServices.getUserByEmail(email);
         if (user == null) {
             return done(null, false, { message: "No user with that email" });

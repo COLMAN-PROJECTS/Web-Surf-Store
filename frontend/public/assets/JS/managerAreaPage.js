@@ -6,13 +6,11 @@ $(document).ready(function () {
 
 
     $('.list-group-item#statistics').click(function () {
-        $('#manager-table').hide(); // Hide the table
+        $('#manager-table').hide();
         $('#product-buttons').hide();
-        $('#graph-container').empty().show(); // Show the graph container
+        $('#graph-container').empty().show();
 
-        // Remove any existing graphs
 
-        // Load and display the D3.js graphs
         loadGraphs();
     });
 });

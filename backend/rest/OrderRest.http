@@ -8,7 +8,7 @@ POST http://localhost:3000/orders
 Content-Type: application/json
 
 {
-  "user": "647e274b961b8485a84dbdc8",
+  "user": "649883a6a725e5210808890d",
   "products": [
     {
       "product": "647e271a961b8485a84dbde4",

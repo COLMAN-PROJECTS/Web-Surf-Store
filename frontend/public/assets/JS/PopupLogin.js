@@ -36,7 +36,7 @@ $(document).ready(function() {
             var enteredPassword = $(popup.document).find("#password").val();
 
             $.ajax({
-                url: "http://localhost:3000/auth/login",
+                url: "http://localhost:3000/auth/loginReq",
                 dataType: "json",
                 type: "POST",
                 data: {
@@ -44,7 +44,7 @@ $(document).ready(function() {
                     password: enteredPassword
                 },
                 success: function(userData) {
-                    console.log(userData);
+                    console.log(this.success);
                     var loggedInUser = userData.find(user => user.email === enteredEmail
                                                     && user.password === enteredPassword);
 
@@ -67,7 +67,6 @@ $(document).ready(function() {
 
                         setTimeout(function() {
                             popup.close();
-                            // window.location.href = './index.html';
                         }, 2000);
 
                     } else {

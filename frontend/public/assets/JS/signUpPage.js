@@ -22,7 +22,7 @@ $(document).ready(function() {
             data: JSON.stringify(user),
             contentType: 'application/json',
             success: function(response) {
-                if (response===200) {
+                if (response) {
                     var successMessage = document.createElement('div');
                     successMessage.textContent = 'Sign up successful!';
                     successMessage.classList.add('success-message');
