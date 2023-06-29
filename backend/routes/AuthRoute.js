@@ -39,14 +39,14 @@ router.post(
     authMiddleware.validateFields,
     async (req, res) => {
         try {
-            const {user} = req.body;
-            const hashedPassword = await bcrypt.hash(user.password, 10);
-            const newUser = new User({
-                fullName: user.fullName,
-                email: user.email,
+            const {fullName, email, password} = req.body;
+            const hashedPassword = await bcrypt.hash(password, 10);
+            const user = new User({
+                fullName: fullName,
+                email: email,
                 password: hashedPassword,
             });
-            await newUser.save();
+            await user.save();
             res.redirect("/login");
         } catch {
             res.redirect("/register");
