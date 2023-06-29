@@ -3,7 +3,7 @@ $(document).ready(function () {
     initializeImageTitle()
     getDataForTable()
     loadGroupByData('category');
-    $('#manager-table').show();
+
 
     $('.list-group-item#statistics').click(function () {
         $('#manager-table').hide(); // Hide the table
@@ -205,6 +205,7 @@ function deleteRow(row) {
 
 function getDataForTable() {
     $('.list-group-item').click(function () {
+        $('#table-container-title').hide();
         $('#form-container').hide();
         $('#manager-table').show();
         var listItemText = $(this).text().trim();

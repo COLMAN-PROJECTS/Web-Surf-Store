@@ -20,6 +20,8 @@ mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnif
     .then(() => console.log('connected to mongodb'))
     .catch(err => console.log(err))
 
+const app = express()
+app.use(cors());
 
 //Routes
 const ProductRoute = require('./routes/ProductRoute.js')
@@ -28,7 +30,6 @@ const UserRoute = require('./routes/UserRoute.js')
 const BeachInfoRoute = require('./routes/BeachInfoRoute.js')
 
 
-const app = express()
 app.use(flash());
 app.use(
     session({
@@ -63,13 +64,9 @@ app.get('/chat', (req, res) => {
 app.get('*', (req, res) => {
     res.sendFile(__dirname + '/public/notFound.html')
 })
-app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-// app.listen(process.env.PORT, () => {
-//     console.log('server is running')
-// }
-// )
+
 server.listen(process.env.PORT, () => {
     console.log('server is running')
 })
