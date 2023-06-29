@@ -112,16 +112,18 @@
                   </div>
                   <div class="col-sm-4">
                     <div class="form-group mb-4">
-                      <label id="CVV" class="label-input" data-toggle="tooltip" title="Three-digits code on the back of your card">CVV
+                      <label class="label-input" data-toggle="tooltip" title="Three-digits code on the back of your card">CVV
                         <i class="fa fa-question-circle"></i>
                       </label>
-                      <input type="text" required class="form-control">
+                      <input id="CVV" type="text" required class="form-control">
                     </div>
                   </div>
 
 
                 </div>
                 <button id="confirmBtn" type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm">Confirm</button>
+                <label id="orderCompleted" class="label-input" style="display: none">Order completed</label>
+                <label id="orderNotCompleted" class="label-input" style="display: none">Order not completed</label>
               </form>
             </div>
             <!-- End -->
