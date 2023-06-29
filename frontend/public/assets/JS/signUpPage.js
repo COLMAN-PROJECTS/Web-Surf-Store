@@ -20,6 +20,7 @@ $(document).ready(function() {
             url: 'http://localhost:3000/auth/register',
             type: 'POST',
             data: JSON.stringify(user),
+            contentType: 'application/json',
             success: function(response) {
                 if (response===200) {
                     var successMessage = document.createElement('div');
