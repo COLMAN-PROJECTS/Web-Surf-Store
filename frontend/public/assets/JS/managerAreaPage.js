@@ -2,10 +2,9 @@ $(document).ready(function () {
     productButtons();
     initializeImageTitle()
     getDataForTable()
-    // loadGroupByData('products.product.category?field=SurfBoards')
-    // loadGroupByData('category?field=wetsuits')
-    // loadGroupByData('category?field=sups')
-    // loadGroupByData('category?field=accessories')
+    loadGroupByData('category');
+    $('#manager-table').show();
+
     $('.list-group-item#statistics').click(function () {
         $('#manager-table').hide(); // Hide the table
         $('#product-buttons').hide();
@@ -449,65 +448,56 @@ function setTitles(title) {
         return title;
     }
 }
-//
-// function loadGroupByData(groupByField) {
-//     $.ajax({
-//         url: 'http://localhost:3000/orders/groupBy/' + groupByField,
-//         method: 'GET',
-//         dataType: 'json',
-//         application: 'json',
-//         success: function (response) {
-//             response.forEach(function (group) {
-//                 console.log(group);
-//                 var groupDiv = $('<div>').addClass('d-flex align-items-center mt-3');
-//                 var fileBox = $('<div>').addClass('fm-file-box').addClass(getFileBoxClass(group._id));
-//                 var icon = $('<i>').addClass(getIconClass(group._id));
-//                 fileBox.append(icon);
-//                 var infoDiv = $('<div>').addClass('flex-grow-1 ms-2');
-//                 var title = $('<h6>').addClass('mb-0').text(group._id);
-//                 var count = $('<p>').addClass('mb-0 text-secondary').text('Count: ' + group.count);
-//                 infoDiv.append(title, count);
-//                 var totalPrice = $('<h6>').addClass('text-primary mb-0').text('$' + group.totalPrice);
-//                 groupDiv.append(fileBox, infoDiv, totalPrice);
-//
-//                 $('.card-body').append(groupDiv);
-//             });
-//         },
-//         error: function (error) {
-//             console.error('Error loading groupBy data:', error);
-//         }
-//     });
-// }
-//
-//
-//     function getFileBoxClass(groupByField) {
-//         switch (groupByField) {
-//             case 'Surfboards':
-//                 return 'bg-light-primary text-primary';
-//             case "Sups'":
-//                 return 'bg-light-success text-success';
-//             case 'Wetsuits':
-//                 return 'bg-light-danger text-danger';
-//             case 'Accessories':
-//                 return 'bg-light-warning text-warning';
-//             default:
-//                 return '';
-//         }
-//     }
-//
-//     function getIconClass(groupByField) {
-//         switch (groupByField) {
-//             case 'Surfboards':
-//             case 'Accessories':
-//                 return 'bx bx-image';
-//             case "Sups'":
-//                 return 'bx bxs-file-doc';
-//             case 'Wetsuits':
-//                 return 'bx bx-video';
-//             default:
-//                 return '';
-//         }
-//     }
+
+function loadGroupByData(groupByField) {
+    $.ajax({
+        url: 'http://localhost:3000/orders/groupBy/' + groupByField,
+        method: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (response) {
+            console.log('GroupBy data loaded successfully:', response);
+            response.forEach(function (group) {
+                renderGroup(group);
+            });
+        },
+        error: function (error) {
+            console.log('Error loading groupBy data:', error);
+        }
+    });
+}
+
+    function renderGroup(group) {
+        var groupDiv = $('<div>').addClass('d-flex align-items-center mt-3');
+        var fileBox = $('<div>').addClass('fm-file-box').addClass(getFileBoxClass(group._id));
+        var icon = $('<i>').addClass('bx bx-image');
+        fileBox.append(icon);
+        var infoDiv = $('<div>').addClass('flex-grow-1 ms-2');
+        var title = $('<h6>').addClass('mb-0').text(group._id);
+        var count = $('<p>').addClass('mb-0 text-secondary').text('Count: ' + group.count);
+        infoDiv.append(title, count);
+        var totalPrice = $('<h6>').addClass('text-primary mb-0').text('$' + group.totalPrice);
+        groupDiv.append(fileBox, infoDiv, totalPrice);
+
+        $('#grouby-card').append(groupDiv);
+    }
+
+
+    function getFileBoxClass(groupByField) {
+        switch (groupByField) {
+            case 'Surfboards':
+                return 'bg-light-primary text-primary';
+            case "SUP":
+                return 'bg-light-success text-success';
+            case 'Wetsuits':
+                return 'bg-light-danger text-danger';
+            case 'Accessories':
+                return 'bg-light-warning text-warning';
+            default:
+                return 'bg-light-info text-info';
+        }
+    }
+
 
 
 

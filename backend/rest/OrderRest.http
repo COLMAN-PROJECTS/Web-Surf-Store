@@ -11,18 +11,13 @@ Content-Type: application/json
   "user": "647e274b961b8485a84dbdc8",
   "products": [
     {
-      "product": "647e24aa961b8485a84dbdbb",
+      "product": "647e271a961b8485a84dbde4",
       "quantity": 1,
-      "size": "5.0"
-    },
-    {
-      "product": "647e271a961b8485a84dbdc4",
-      "quantity": 1,
-      "size": "XL"
+      "size": "11.0"
     }
   ],
   "shippingAddress": "123 Main St, Tel Aviv, Israel",
-  "paymentMethod": "PayPal"
+  "paymentMethod": "Credit Card"
 }
 
 
@@ -53,10 +48,9 @@ POST http://localhost:3000/orders/filter
 Content-Type: application/json
 
 
-  {
-    "shippingAddress": "123 Main St, Tel Aviv, Israel",
-    "paymentMethod": "PayPal"
-  }
+{
+  "paymentMethod": "PayPal"
+}
 
 
 ###

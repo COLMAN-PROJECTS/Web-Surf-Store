@@ -14,7 +14,7 @@ const createOrder = async (orderData) => {
     let totalPrice = 0;
 
     for (const product of order.products) {
-        const { product: productId, quantity, size } = product;
+        const {product: productId, quantity, size} = product;
 
         const foundProduct = await Product.getProductById(productId);
         if (!foundProduct) {
@@ -39,14 +39,14 @@ const createOrder = async (orderData) => {
 
     order.totalPrice = totalPrice;
     const savedOrder = await order.save();
-     const updatedUser = await User.updateUser(savedOrder.user, {$push: {orders: savedOrder._id}}, {new: true})
+    const updatedUser = await User.updateUser(savedOrder.user, {$push: {orders: savedOrder._id}}, {new: true})
     console.log(updatedUser);
     return savedOrder;
 };
 
 const updateOrder = async (orderId, order) => {
     try {
-        const updatedOrder = await Order.findByIdAndUpdate(orderId, order, { new: true });
+        const updatedOrder = await Order.findByIdAndUpdate(orderId, order, {new: true});
         if (!updatedOrder) {
             throw new Error(`Order with ID ${orderId} not found.`);
         }
@@ -54,14 +54,14 @@ const updateOrder = async (orderId, order) => {
     } catch (e) {
         console.log("OrderService:" + e);
     }
-    }
+}
 const getAllOrders = async () => {
     try {
         const orders = await Order.find().populate({
             path: 'user',
             select: '-isAdmin -password'
         })
-            .populate({ path: 'products.product', model: 'Product' });
+            .populate({path: 'products.product', model: 'Product'});
         if (orders)
             return orders;
     } catch (e) {
@@ -75,7 +75,7 @@ const getOrderById = async (orderId) => {
         path: 'user',
         select: '-isAdmin -password'
     })
-        .populate({ path: 'products.product', model: 'Product' });
+        .populate({path: 'products.product', model: 'Product'});
     if (!order) {
         console.log(`Order with ID ${orderId} not found.`);
     }
@@ -91,8 +91,13 @@ const deleteOrder = async (orderId) => {
 }
 
 const filterOrders = async (filter) => {
+    console.log(filter);
     try {
-        const orders = await Order.find(filter);
+        const orders = await Order.find(filter).populate({
+            path: 'user',
+            select: '-isAdmin -password'
+        })
+            .populate({path: 'products.product', model: 'Product'});
         if (orders.length > 0)
             return orders;
     } catch (e) {
@@ -117,7 +122,8 @@ const groupByField = async (field) => {
             {
                 $group: {
                     _id: `$productInfo.${field}`,
-                    count: { $sum: 1 }
+                    count: {$sum: 1},
+                    totalPrice: {$sum: "$totalPrice"}
                 }
             }
         ];
@@ -128,9 +134,6 @@ const groupByField = async (field) => {
         throw new Error('Error occurred while aggregating orders by field');
     }
 };
-
-
-
 
 
 module.exports = {
