@@ -1,4 +1,8 @@
 $(document).ready(function () {
+  $("#login").hide();
+  $("#logOut").hide();
+  $("#managerBtn").hide();
+  $("#clientBtn").hide();
     productButtons();
     initializeImageTitle()
     getDataForTable()
