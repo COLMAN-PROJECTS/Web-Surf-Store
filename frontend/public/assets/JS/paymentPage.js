@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
   initializeImageTitle();
 });
@@ -18,14 +19,16 @@ function initializeImageTitle() {
     data: JSON.stringify(orderData),
     success: function (data) {
       console.log("Order sent successfully");
+      alert("Order sent successfully")
         $("#orderCompleted").show();
       setTimeout(function () {
         window.location.href = './index.html'
       }, 5000);
-
     },
+
     error: function (data) {
       console.log("Error sending order");
+      alert("Error sending order")
       $("#orderNotCompleted").show();
       setTimeout(function () {
         $("#orderNotCompleted").hide();
@@ -39,6 +42,8 @@ function initializeImageTitle() {
     var MM = $("#MM").val();
     var YY = $("#YY").val();
     var CVV = $("#CVV").val();
+
+
 
     // Perform basic validation tests
     if (userName.trim() === "") {
@@ -82,6 +87,7 @@ function initializeImageTitle() {
 
 
   $("#confirmBtn").click(function() {
+
 
     if (validateForm()) {
       var paymentDetails = {
