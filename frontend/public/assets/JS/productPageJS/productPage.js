@@ -31,6 +31,8 @@ window.innerWidth < 768 &&
           cartItems.push(cartItem);
           localStorage.setItem('cart', JSON.stringify(cartItems));
 
+          showPopupMessage('Product added to cart');
+
           console.log('Product added to cart', wantedProduct);
         }
       }
@@ -97,3 +99,13 @@ window.innerWidth < 768 &&
 
     });
   });
+
+function showPopupMessage(message) {
+  var popupMessage = $('<div>').attr('id', 'popup-message');
+  popupMessage.insertAfter('#addToCart-container');
+  popupMessage.text(message).show();
+
+  setTimeout(function() {
+    popupMessage.fadeOut();
+  }, 1000);
+}
