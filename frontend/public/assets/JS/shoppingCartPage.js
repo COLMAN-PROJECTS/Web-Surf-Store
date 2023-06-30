@@ -97,10 +97,8 @@ $(document).ready(function () {
 
   //todo connect to the right button after we will make the payment page
   $('#purchaseBtn').click(function() {
-    // Create an array to hold the cart items
     const cartItems = [];
 
-    // Get the cart items from localStorage
     const dataCart = JSON.parse(localStorage.getItem('cart'));
 
     // Iterate over each cart item

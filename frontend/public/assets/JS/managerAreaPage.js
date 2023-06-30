@@ -165,16 +165,13 @@ function enableRowEditing(row) {
                         }
                     },
                     error: function (error) {
-                        // Handle the error
                         console.error('Error updating row:', error);
                     }
                 });
             } else {
-                // No changes to update
                 alert('No changes to update');
             }
         } else {
-            // Enable editing
             enableRowEditing(row);
         }
     });
@@ -197,7 +194,6 @@ function deleteRow(row) {
             }
         },
         error: function (error) {
-            // Handle the error
             console.error('Error deleting row:', error);
         }
     });
