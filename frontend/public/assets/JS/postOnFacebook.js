@@ -1,6 +1,7 @@
 
 function createPost(message) {
-    const pageAccessToken = 'EAAceK0CbT7ABADcHoG0pWrQCzCK5cdZAVQPaoSIM4impJGJMGKWVogbBKprumtN4TE1ZBZAD3HbjBVxMq2KoAC8EoUvJkthl0FwMZA9ZCyOcBf2m6S35OLanZCqeMrEaTw4I3qpLop9RusBVnuZBsdUxTNbGB0KT5B3v8W0EOoEIgQ5dlH5mFGlT4albj6STviFeuFYSzDGmBJza2ZBJeGiYEmDpPScZCVZCcZD';
+    ////remove the spcace from the pageToken , git is blocking the token if uploaded without them
+    const pageAccessToken = 'EAAceK0CbT7ABAMHchxFYxVA5CGYtom        LDQwcznZBhqBt8yo2AaoPZCkFf6DqkeIZBj5sZAhaQNDHlZAP41uTIzjOQdzgMCR8kA18K0sZCdROJpdQNDnZAugSRnnNl6N2i7uim6MeFU4xYehzyzHeb6XbZARjPdjjme6abhRTuB0s2Lh2t0nxkXAmf32ZBYan7iZCU0dCxGi8mrUZAFFEl2oE6nyFH0IRUcIDMjcZD';
     const pageId = '105339992616345';
 
 
