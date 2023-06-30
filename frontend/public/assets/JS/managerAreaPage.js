@@ -13,7 +13,7 @@ $(document).ready(function () {
         $('#manager-table').hide();
         $('#product-buttons').hide();
         $('#graph-container').empty();
-        loadGraphs(graphTest2, 'Total Sell profit');
+        loadGraphs(graphTest, 'Total Sell profit');
         $('#graph-container').show();
     });
 });
@@ -228,7 +228,7 @@ function getDataForTable() {
 
         if (listItemText === 'Orders') {
             $('#product-buttons').hide();
-            $('#graph-container').hide()
+            $('#graph-container').hide();
             $.ajax({
                 url: '/frontend/DB/OrdersSeed.json',
                 type: 'GET',
@@ -247,7 +247,8 @@ function getDataForTable() {
         }
 
         if (listItemText === 'Users') {
-            $('#product-buttons').hide();
+          $('#graph-container').hide();
+          $('#product-buttons').hide();
             $.ajax({
                 url: '/frontend/DB/UserSeed.json',
                 type: 'GET',
@@ -458,6 +459,10 @@ function loadGroupByData(groupByField) {
         success: function (response) {
             console.log('GroupBy data loaded successfully:', response);
             response.forEach(function (group) {
+                graphTest.push({
+                  name: group._id,
+                  frequency: group.totalPrice,
+                },);
                 renderGroup(group);
             });
         },
@@ -499,46 +504,6 @@ function loadGroupByData(groupByField) {
     }
 
 var graphTest = [];
-graphTest.push({
-    name: 'Surfboards',
-  frequency: 250
-}, {
-    name: 'SUP',
-  frequency: 1250
-}, {
-    name: 'Wetsuits',
-  frequency: 1000
-}, {
-    name: 'Accessories',
-  frequency: 500
-}, {
-    name: 'Other',
-  frequency: 100
-})
-
-var graphTest2 = [];
-graphTest2.push({
-  name: 'Eviatar',
-  frequency: 250
-}, {
-  name: 'Moshiko',
-  frequency: 1250
-}, {
-  name: 'Nadav',
-  frequency: 1000
-}, {
-  name: 'Pini',
-  frequency: 500
-}, {
-  name: 'Dor',
-  frequency: 100
-}, {
-  name: 'asdgas',
-  frequency: 2050
-}, {
-  name: 'asgassww',
-  frequency: 400
-})
 
     function loadGraphs(data, value) {
       const width = 500;
