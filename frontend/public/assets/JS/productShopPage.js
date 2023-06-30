@@ -35,9 +35,11 @@ $(document).ready(function () {
 
 function productCartClick() {
     let aId = $(this).attr('id');
+    console.log(aId);
     let productId = aId.split('_')[1];
 
-    let product = filteredProducts.find((product) => product._id.$oid === productId);
+    let product = filteredProducts.find((product) => product._id === productId);
+    console.log(product);
     if (product) {
         localStorage.setItem('product', JSON.stringify(product));
         console.log('Product added to cart', product);
@@ -149,7 +151,7 @@ function filterProducts() {
                 $('#productContainer').append("<h1> No products found </h1>");
             } else {
                 for (let j = 0; j < filteredProducts.length; j++) {
-                    let productId = filteredProducts[j]._id.$oid;
+                    let productId = filteredProducts[j]._id;
                     let productImage = filteredProducts[j].frontImage;
                     let productName = filteredProducts[j].name;
                     let productPrice = filteredProducts[j].price;
