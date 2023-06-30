@@ -128,6 +128,14 @@ const groupByField = async (field) => {
                     count: {$sum: 1},
                     totalPrice: {$sum: "$totalPrice"}
                 }
+            },
+            {
+                $project: {
+                    _id: 1,
+                    count: 1,
+                    totalPrice: {$round: ["$totalPrice", 2]}
+                }
+
             }
         ];
 

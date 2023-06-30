@@ -3,7 +3,7 @@ const Order = require("../models/OrderSchema");
 const Product = require("../models/ProductSchema");
 
 const getUserByEmail = async (email) => {
-    const user = await User.findOne({ email: email }).select('-password').populate('orders')
+    const user = await User.findOne({ email: email }).populate('orders')
         .populate({
             path: 'orders',
             populate: {

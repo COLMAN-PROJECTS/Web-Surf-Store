@@ -43,8 +43,11 @@ $(document).ready(function() {
                     email: enteredEmail,
                     password: enteredPassword
                 },
-                success: function(userData) {
-                    console.log(this.success);
+                success: function(response) {
+                    if (response.status === 200) {
+                        var userData = response.data;
+                    }
+                    console.log("userData: " + userData);
                     var loggedInUser = userData.find(user => user.email === enteredEmail
                                                     && user.password === enteredPassword);
 
@@ -78,7 +81,7 @@ $(document).ready(function() {
                     $(popup.document).find("#password").val("");
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    alert("Error fetching user data: " + errorThrown);
+                    console.log("Error fetching user data: " + errorThrown);
                 }
             });
         });

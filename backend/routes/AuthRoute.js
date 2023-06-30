@@ -2,9 +2,10 @@ const express = require("express");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const User = require("../models/UserSchema");
+const UserService = require("../services/UserService");
 const authMiddleware = require("../middlewares/auth");
-const router = express.Router();
 const initializePassport = require("../config/passport-config");
+const router = express.Router();
 
 initializePassport(
     passport,
@@ -16,19 +17,17 @@ router.get("/", authMiddleware.checkAuthenticated, (req, res) => {
 });
 
 router.get("/login", authMiddleware.checkNotAuthenticated, (req, res) => {
-    res.sendFile("frontend/index.html")
-
-    //TODO: path to login page
+    res.sendStatus(200)
 });
 
 router.post(
     "/loginReq",
     authMiddleware.validateLogin,
     passport.authenticate("local"),
-    (req, res) => {
-        console.log(req.body)
-        res.sendStatus(200);
-    }
+    async (req, res) => {
+        const user = await UserService.getUserByEmail(req.body.email);
+        console.log(user);
+        res.status(200).json(user);}
 );
 
 router.get("/register", authMiddleware.checkNotAuthenticated, (req, res) => {
@@ -48,7 +47,7 @@ router.post(
                 password: hashedPassword,
             });
             await user.save();
-            res.redirect("/loginReq");
+            res.redirect("/login");
         } catch {
             res.redirect("/register");
         }

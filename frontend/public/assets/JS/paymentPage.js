@@ -14,7 +14,8 @@ function initializeImageTitle() {
   $.ajax({
     type: "POST",
     url: "http://localhost:3000/orders",
-    data: orderData,
+    contentType: "application/json",
+    data: JSON.stringify(orderData),
     success: function (data) {
       console.log("Order sent successfully");
         $("#orderCompleted").show();
@@ -85,7 +86,7 @@ function initializeImageTitle() {
     if (validateForm()) {
       var paymentDetails = {
         //get user identification
-        user:localStorage.getItem('user.id'),
+        user:localStorage.getItem('user._id'),
         products: localStorage.getItem("products"),
         shippingAddress: localStorage.getItem("shippingAddress"),
         paymentMethod: 'Credit Card',
@@ -99,3 +100,4 @@ function initializeImageTitle() {
       sendOrder(paymentDetails);
     }
   });
+
