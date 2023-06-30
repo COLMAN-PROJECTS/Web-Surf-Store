@@ -1,4 +1,8 @@
 $(document).ready(function () {
+  $("#login").hide();
+  $("#logOut").hide();
+  $("#managerBtn").hide();
+  $("#clientBtn").hide();
     productButtons();
     initializeImageTitle()
     getDataForTable()
@@ -8,10 +12,9 @@ $(document).ready(function () {
     $('.list-group-item#statistics').click(function () {
         $('#manager-table').hide();
         $('#product-buttons').hide();
-        $('#graph-container').empty().show();
-
-
-        loadGraphs();
+        $('#graph-container').empty();
+        loadGraphs(graphTest2, 'Total Sell profit');
+        $('#graph-container').show();
     });
 });
 
@@ -209,7 +212,8 @@ function getDataForTable() {
         var listItemText = $(this).text().trim();
 
         if (listItemText === 'Products') {
-            $.ajax({
+          $('#graph-container').hide()
+          $.ajax({
                 url: '/frontend/DB/ProductSeed.json',
                 type: 'GET',
                 dataType: 'json',
@@ -228,6 +232,7 @@ function getDataForTable() {
 
         if (listItemText === 'Orders') {
             $('#product-buttons').hide();
+            $('#graph-container').hide()
             $.ajax({
                 url: '/frontend/DB/OrdersSeed.json',
                 type: 'GET',
@@ -495,6 +500,103 @@ function loadGroupByData(groupByField) {
             default:
                 return 'bg-light-info text-info';
         }
+    }
+
+var graphTest = [];
+graphTest.push({
+    name: 'Surfboards',
+  frequency: 250
+}, {
+    name: 'SUP',
+  frequency: 1250
+}, {
+    name: 'Wetsuits',
+  frequency: 1000
+}, {
+    name: 'Accessories',
+  frequency: 500
+}, {
+    name: 'Other',
+  frequency: 100
+})
+
+var graphTest2 = [];
+graphTest2.push({
+  name: 'Eviatar',
+  frequency: 250
+}, {
+  name: 'Moshiko',
+  frequency: 1250
+}, {
+  name: 'Nadav',
+  frequency: 1000
+}, {
+  name: 'Pini',
+  frequency: 500
+}, {
+  name: 'Dor',
+  frequency: 100
+}, {
+  name: 'asdgas',
+  frequency: 2050
+}, {
+  name: 'asgassww',
+  frequency: 400
+})
+
+    function loadGraphs(data, value) {
+      const width = 500;
+      const height = 500;
+      const marginTop = 30;
+      const marginRight = 0;
+      const marginBottom = 30;
+      const marginLeft = 40;
+
+      // Declare the x (horizontal position) scale.
+      const x = d3.scaleBand()
+        .domain(d3.groupSort(data, ([d]) => - (d.frequency/100), (d) => d.name)) // descending frequency
+        .range([marginLeft, width - marginRight])
+        .padding(0.1);
+
+      // Declare the y (vertical position) scale.
+      const y = d3.scaleLinear()
+        .domain([0, d3.max(data, (d) => (d.frequency/100))])
+        .range([height - marginBottom, marginTop]);
+
+      // Create the SVG container.
+      const svg = d3.select("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("viewBox", [0, 0, width, height])
+        .attr("style", "max-width: 100%; height: auto;");
+
+      // Add a rect for each bar.
+      svg.append("g")
+        .attr("fill", "steelblue")
+        .selectAll()
+        .data(data)
+        .join("rect")
+        .attr("x", (d) => x(d.name))
+        .attr("y", (d) => y(d.frequency/100))
+        .attr("height", (d) => y(0) - y(d.frequency/100))
+        .attr("width", x.bandwidth());
+
+      // Add the x-axis and label.
+      svg.append("g")
+        .attr("transform", `translate(0,${height - marginBottom})`)
+        .call(d3.axisBottom(x).tickSizeOuter(0));
+
+      // Add the y-axis and label, and remove the domain line.
+      svg.append("g")
+        .attr("transform", `translate(${marginLeft},0)`)
+        .call(d3.axisLeft(y).tickFormat((y) => (y * 100).toFixed()))
+        .call(g => g.select(".domain").remove())
+        .call(g => g.append("text")
+          .attr("x", - marginLeft)
+          .attr("y", 10)
+          .attr("fill", "currentColor")
+          .attr("text-anchor", "start")
+          .text("↑ " + value + " (%)"));
     }
 
 
