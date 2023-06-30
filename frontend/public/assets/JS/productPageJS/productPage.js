@@ -17,10 +17,11 @@ window.innerWidth < 768 &&
       $("#addToCartBtn").on('click', addToCart);
 
       function addToCart() {
+
         var selectedSize = $("#size-drop-text span").text();
         var selectedQuantity = $("#quantity-drop-text span").text();
 
-        if (wantedProduct) {
+        if (wantedProduct && selectedSize !== 'Size' && selectedQuantity !== 'Quantity') {
           var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
           var cartItem = {
             product: wantedProduct,
@@ -34,6 +35,8 @@ window.innerWidth < 768 &&
           showPopupMessage('Product added to cart');
 
           console.log('Product added to cart', wantedProduct);
+        }else{
+          showPopupMessage('Please select size and quantity');
         }
       }
 
@@ -45,6 +48,7 @@ window.innerWidth < 768 &&
         );
       }
       $('#product-description p').text(wantedProduct.description);
+      $('#product-price').text(wantedProduct.price + " $");
       $('#simple-slider-img1').css('background', 'url(' + wantedProduct.frontImage + ') center center / auto no-repeat').css('background-size', 'contain');
       $('#img-fluid1').find("a").attr("href",wantedProduct.frontImage).attr("target","_blank").find("img").attr("src", wantedProduct.frontImage);
 
