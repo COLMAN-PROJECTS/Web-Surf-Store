@@ -82,7 +82,9 @@ $(document).ready(function () {
       orderSummary += item.product.price * item.quantity;
     });
 
-    const shipping = 10;
+    let shipping = 0;
+    if(orderSummary > 0)
+      shipping =  10
 
     const tax = (orderSummary * 1.18);
 
@@ -149,10 +151,8 @@ $(document).ready(function () {
     console.log(isLoggedIn)
 
     if (!isLoggedIn ) {
-      event.preventDefault(); // Prevent the default link behavior (navigating to href)
-      alert("Please log in to proceed."); // Display an alert message
-      // Redirect to login page or show login form
-      // For example:
+      event.preventDefault();
+      alert("Please log in to proceed.");
     }
 
     else{
