@@ -270,7 +270,7 @@ function getDataForTable() {
         url: 'http://localhost:3000/orders',
         type: 'GET',
         dataType: 'json',
-        contentType: 'application/json',
+        contentType: 'application/json' ,
         success: function (orders) {
           const dataWithoutId = orders.map(function (orders) {
             const {__v, user, ...rest} = orders;
