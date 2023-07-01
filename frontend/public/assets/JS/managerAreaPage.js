@@ -64,9 +64,7 @@ function populateTable(colTitles, data) {
     var row = $("<tr></tr>");
     Object.entries(item).forEach(function ([key, value]) {
       if (key === '_id') {
-        var emoji = '\u{1F4CB}';
-        var cell = $("<td></td>").text(emoji).val(Object.values(value)[0]);
-        row.append(cell);
+        row.data('id', value);
       } else {
         if (typeof value === 'object' && value !== null) {
           var txt = '\u{1F4CE}';
@@ -193,12 +191,12 @@ function enableRowEditing(row) {
 
 
 function deleteRow(row) {
-  var rowId = row.find('td:first-child').val();
+  var rowId = row.data('id');
   alert("Item deleted successfully with id: " + rowId);
 
   if(workingTable === 'Orders') {
     $.ajax({
-      url: '/frontend/DB/OrdersSeed.json',
+      url: 'http://localhost:3000/orders',
       type: 'DELETE',
       data: {_id: rowId},
       dataType: 'json',
@@ -252,7 +250,7 @@ function getDataForTable() {
         contentType: 'application/json',
         success: function (products) {
           const dataWithoutId = products.map(function (products) {
-            const {_id,__v, details, images, frontImage, description, ...rest} = products;
+            const {__v, details, images, frontImage, description, ...rest} = products;
             return rest;
           })
           const colTitles = Object.keys(products[0]).filter(key => key !== '__v' && key !== 'details' && key !== 'images' && key !== 'frontImage' && key !== 'description');
