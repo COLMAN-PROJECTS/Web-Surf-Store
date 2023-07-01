@@ -360,3 +360,9 @@ div.social-links {
 #titleImage{
   margin: 0 auto 80px 0;
 }
+
+.navbar-btn span a{
+  font-family: "Apple Braille", sans-serif;
+  font-size: 15px;
+  text-transform: none;
+}
