@@ -256,7 +256,7 @@ div.social-links {
 }
 
 .swiper-button-prev:after, .swiper-container-rtl .swiper-button-next:after {
-  content: 'p'
+  content: '<'
 }
 
 .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
@@ -265,7 +265,7 @@ div.social-links {
 }
 
 .swiper-button-next:after, .swiper-container-rtl .swiper-button-prev:after {
-content: 'next'
+content: '>'
 }
 
 .swiper-button-next.swiper-button-white, .swiper-button-prev.swiper-button-white {

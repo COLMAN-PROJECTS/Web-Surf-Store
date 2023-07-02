@@ -26,6 +26,7 @@ router.post(
     passport.authenticate("local"),
     async (req, res) => {
         const user = await UserService.getUserByEmail(req.body.email);
+
         console.log(user);
         res.status(200).json(user);}
 );
