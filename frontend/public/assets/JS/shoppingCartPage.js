@@ -86,7 +86,7 @@ $(document).ready(function () {
     if(orderSummary > 0)
       shipping =  10
 
-    const tax = (orderSummary * 1.18);
+    const tax = (orderSummary * 0.18);
 
     let total = (tax + shipping);
 
