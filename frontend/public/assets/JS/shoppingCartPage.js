@@ -157,6 +157,7 @@ $(document).ready(function () {
 
     else{
       if (dataCart.length > 0) {
+        localStorage.setItem('products', JSON.stringify(dataCart));
       window.location.href = "paymentPage.html";
       }
       else{
