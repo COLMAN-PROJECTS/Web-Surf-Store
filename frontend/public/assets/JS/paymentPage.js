@@ -43,8 +43,6 @@ function initializeImageTitle() {
     var YY = $("#YY").val();
     var CVV = $("#CVV").val();
 
-
-
     // Perform basic validation tests
     if (userName.trim() === "") {
       console.log("wrong details");
@@ -81,17 +79,12 @@ function initializeImageTitle() {
       }, 2500);
       return false;
     }
-
     return true;
   }
 
-
   $("#confirmBtn").click(function() {
-
-
     if (validateForm()) {
       var paymentDetails = {
-        //get user identification
         user:localStorage.getItem('user._id'),
         products: localStorage.getItem("products"),
         shippingAddress: localStorage.getItem("shippingAddress"),
@@ -104,6 +97,7 @@ function initializeImageTitle() {
       };
       console.log(paymentDetails);
       sendOrder(paymentDetails);
+      createPost('check this out!!'+localStorage.getItem('user._id')+ ' just bought products from us')
     }
   });
 

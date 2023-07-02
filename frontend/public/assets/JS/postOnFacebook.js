@@ -1,6 +1,6 @@
 
 function createPost(message) {
-    ////remove the spcace from the pageToken , git is blocking the token if uploaded without them
+    ////remove the space from the pageToken , git is blocking the token if uploaded without them
     const pageAccessToken = 'EAAceK0CbT7ABAMHchxFYxVA5CGYtom        LDQwcznZBhqBt8yo2AaoPZCkFf6DqkeIZBj5sZAhaQNDHlZAP41uTIzjOQdzgMCR8kA18K0sZCdROJpdQNDnZAugSRnnNl6N2i7uim6MeFU4xYehzyzHeb6XbZARjPdjjme6abhRTuB0s2Lh2t0nxkXAmf32ZBYan7iZCU0dCxGi8mrUZAFFEl2oE6nyFH0IRUcIDMjcZD';
     const pageId = '105339992616345';
 
@@ -22,10 +22,6 @@ function createPost(message) {
         }
     });
 }
-$(document).ready(function() {
-    $('#confirmBtn').click(function() {
-        createPost('check this out!!'+localStorage.getItem('user._id')+ ' just bought products from us');
-    });
-})
+
 
 
