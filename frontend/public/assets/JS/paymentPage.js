@@ -84,10 +84,11 @@ function initializeImageTitle() {
 
   $("#confirmBtn").click(function() {
     if (validateForm()) {
+      const user=JSON.parse(localStorage.getItem("user"));
       var paymentDetails = {
-        user:localStorage.getItem('user._id'),
+        user:user._id,
         products: localStorage.getItem("products"),
-        shippingAddress: localStorage.getItem("shippingAddress"),
+        shippingAddress: user.shippingAddress,
         paymentMethod: 'Credit Card',
         userName: $("#userName").val(),
         cardNumber: $("#creditCardNumber").val(),
@@ -97,7 +98,7 @@ function initializeImageTitle() {
       };
       console.log(paymentDetails);
       sendOrder(paymentDetails);
-      createPost('check this out!!'+localStorage.getItem('user._id')+ ' just bought products from us')
+      createPost('check this out!!'+localStorage.getItem('fullName')+ ' just bought products from us')
     }
   });
 
