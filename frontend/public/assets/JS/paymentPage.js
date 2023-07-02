@@ -98,7 +98,7 @@ function initializeImageTitle() {
       };
       console.log(paymentDetails);
       sendOrder(paymentDetails);
-      createPost('check this out!!'+localStorage.getItem('fullName')+ ' just bought products from us')
+      createPost('check this out!!'+localStorage.getItem(user.fullName)+ ' just bought products from us')
     }
   });
 
