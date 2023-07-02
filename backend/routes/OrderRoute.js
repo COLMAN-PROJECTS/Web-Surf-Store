@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const orderController = require("../controllers/orderController");
-const isAdmin = require('../middlewares/isAdminMiddleWare');
+const isAdminMiddleWare = require('../middlewares/isAdminMiddleWare');
 
 router.get('/', orderController.getAllOrders);
 router.post('/', orderController.createOrder);
