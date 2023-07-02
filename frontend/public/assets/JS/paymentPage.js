@@ -88,7 +88,7 @@ function initializeImageTitle() {
       var paymentDetails = {
         user:user._id,
         products: localStorage.getItem("products"),
-        shippingAddress: user.shippingAddress,
+        shippingAddress: user.address,
         paymentMethod: 'Credit Card',
         userName: $("#userName").val(),
         cardNumber: $("#creditCardNumber").val(),
