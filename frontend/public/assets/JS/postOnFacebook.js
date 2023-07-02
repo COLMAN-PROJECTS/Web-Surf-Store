@@ -1,7 +1,6 @@
 
 function createPost(message) {
     ////remove the space from the pageToken , git is blocking the token if uploaded without them
-    // const pageAccessToken = 'EAAceK0CbT7ABAMHchxFYxVA5CGYtomLDQwcznZBhqBt8yo2AaoPZCkFf6DqkeIZBj5sZAhaQNDHlZAP41uTIzjOQdzgMCR8kA18K0sZCdROJpdQNDnZAugSRnnNl6N2i7uim6MeFU4xYehzyzHeb6XbZARjPdjjme6abhRTuB0s2Lh2t0nxkXAmf32ZBYan7iZCU0dCxGi8mrUZAFFEl2oE6nyFH0IRUcIDMjcZD';
     let pageAccessToken;
     const pageId = '105339992616345';
 
@@ -9,11 +8,10 @@ function createPost(message) {
         url: 'http://localhost:3000/fb',
         type: 'GET',
         success: function(response) {
-            pageAccessToken = response;
-        }
-    })
-
+            pageAccessToken = String(response);
+            console.log('pageAccessToken', pageAccessToken);
     $.ajax({
+
         url: `https://graph.facebook.com/v13.0/${pageId}/feed`,
         method: 'POST',
         data: {
@@ -26,9 +24,12 @@ function createPost(message) {
         },
         error: function(error) {
             console.error('Error creating post:', error);
-            alert('Error creating post'+error.responseText);
+            console.log('Error creating post'+error.responseText);
         }
     });
+        }
+    })
+
 }
 
 

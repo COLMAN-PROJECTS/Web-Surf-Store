@@ -12,11 +12,12 @@ function initializeImageTitle() {
 }
 
   function sendOrder(orderData) {
+  console.log(orderData);
   $.ajax({
     type: "POST",
     url: "http://localhost:3000/orders",
     contentType: "application/json",
-    data: JSON.stringify(orderData),
+    data: orderData,
     success: function (data) {
       console.log("Order sent successfully");
       alert("Order sent successfully")
@@ -29,6 +30,7 @@ function initializeImageTitle() {
     error: function (data) {
       console.log("Error sending order");
       alert("Error sending order")
+      conlose.log(data);
       $("#orderNotCompleted").show();
       setTimeout(function () {
         $("#orderNotCompleted").hide();
@@ -86,8 +88,8 @@ function initializeImageTitle() {
     if (validateForm()) {
       const user=JSON.parse(localStorage.getItem("user"));
       var paymentDetails = {
-        user:user._id,
-        products: localStorage.getItem("products"),
+        user:user._id.$oid,
+        products: JSON.parse(localStorage.getItem("products")),
         shippingAddress: user.address,
         paymentMethod: 'Credit Card',
         userName: $("#userName").val(),
@@ -97,7 +99,15 @@ function initializeImageTitle() {
         cvv: $("#CVV").val()
       };
       console.log(paymentDetails);
-      sendOrder(paymentDetails);
+
+      //this is a valid order
+      const order={
+        user:user._id.$oid,
+        products: JSON.parse(localStorage.getItem("products")),
+        shippingAddress: user.address,
+        paymentMethod: 'Credit Card',
+      }
+      sendOrder(order);
       createPost('check this out!!'+localStorage.getItem(user.fullName)+ ' just bought products from us')
     }
   });
