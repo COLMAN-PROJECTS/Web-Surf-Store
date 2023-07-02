@@ -40,7 +40,8 @@ function initializeImageTitle() {
   $("#titleH1").text('Manage your store');
 }
 
-function populateTable(colTitles, data) {
+function  populateTable(colTitles, data) {
+  console.log(colTitles);
   var table = $('#manager-table');
   var tableHead = $('#manager-table-thead');
   var tableBody = $('#manager-table-tbody');
@@ -50,12 +51,15 @@ function populateTable(colTitles, data) {
 
   var headerRow = $("<tr></tr>");
   colTitles.forEach(function (title) {
-    var viewableTitle = setTitles(title);
-    var headerCell = $("<th></th>").text(viewableTitle);
     if (title === '_id') {
-      headerCell.text('');
+      // Skip the id column
     }
-    headerRow.append(headerCell);
+    else {
+      var viewableTitle = setTitles(title);
+      var headerCell = $("<th></th>").text(viewableTitle);
+
+      headerRow.append(headerCell);
+    }
   });
   headerRow.append("<th></th>"); // Add a column for buttons
   tableHead.append(headerRow);
@@ -252,6 +256,8 @@ function getDataForTable() {
           const dataWithoutId = products.map(function (products) {
             const {__v, details, images, frontImage, description, ...rest} = products;
             return rest;
+
+
           })
           const colTitles = Object.keys(products[0]).filter(key => key !== '__v' && key !== 'details' && key !== 'images' && key !== 'frontImage' && key !== 'description');
           addProduct()
@@ -277,6 +283,7 @@ function getDataForTable() {
           const colTitles = Object.keys(orders[0]).filter(key => key !== 'user' && key !== '__v');
 
           console.log(colTitles);
+          console.log(dataWithoutId);
           populateTable(colTitles, dataWithoutId);
         }
       })

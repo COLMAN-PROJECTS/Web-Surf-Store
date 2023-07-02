@@ -12,7 +12,10 @@ const session = require("express-session");
 const dotenv = require('dotenv');
 dotenv.config();
 const methodOverride = require("method-override");
+const MongoDBStore = require("connect-mongodb-session")(session);
 newLocal.env(process.env.NODE_ENV, './backend/config');
+const fs = require('fs');
+const app = express()
 
 
 //connect to mongodb
@@ -20,8 +23,23 @@ mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnif
     .then(() => console.log('connected to mongodb'))
     .catch(err => console.log(err))
 
-const app = express()
+const store = new MongoDBStore({
+    uri: process.env.CONNECTION_STRING,
+    collection: 'sessions',
+    mongooseConnection: mongoose.connection
+});
+
+
 app.use(cors());
+app.use(flash());
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        store: store
+    })
+);
 
 //Routes
 const ProductRoute = require('./routes/ProductRoute.js')
@@ -30,14 +48,6 @@ const UserRoute = require('./routes/UserRoute.js')
 const BeachInfoRoute = require('./routes/BeachInfoRoute.js')
 
 
-app.use(flash());
-app.use(
-    session({
-        secret: process.env.SESSION_SECRET,
-        resave: false,
-        saveUninitialized: false,
-    })
-);
 const chat = require('./controllers/chatController')
 let server = require('http').createServer(app);
 const socketIO = require('socket.io');
@@ -61,6 +71,16 @@ app.use('/beachInfo', BeachInfoRoute);
 app.get('/chat', (req, res) => {
     res.sendFile(__dirname + '/public/chat.html')
 })
+app.get('/fb', (req, res) => {
+    fs.readFile('../backend/config/token.txt', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading token file:', err);
+            res.status(500).send('Error reading token file');
+        } else {
+            res.send(data.trim());
+        }
+    });
+});
 app.get('*', (req, res) => {
     res.sendFile(__dirname + '/public/notFound.html')
 })

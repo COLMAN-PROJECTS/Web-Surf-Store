@@ -65,6 +65,7 @@ $(document).ready(function () {
             };
 
             localStorage.setItem("user", JSON.stringify(userWithoutPassword));
+            console.log("user: " + localStorage.getItem("user"));
             btnOrganized();
 
             setTimeout(function () {
