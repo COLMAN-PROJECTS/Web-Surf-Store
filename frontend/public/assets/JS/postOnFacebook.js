@@ -20,7 +20,7 @@ function createPost(message) {
         },
         success: function(response) {
             console.log('Post created successfully', response);
-            alert('Post created successfully');
+
         },
         error: function(error) {
             console.error('Error creating post:', error);
