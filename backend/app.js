@@ -72,14 +72,7 @@ app.get('/chat', (req, res) => {
     res.sendFile(__dirname + '/public/chat.html')
 })
 app.get('/fb', (req, res) => {
-    fs.readFile('../backend/config/token.txt', 'utf8', (err, data) => {
-        if (err) {
-            console.error('Error reading token file:', err);
-            res.status(500).send('Error reading token file');
-        } else {
-            res.send(data.trim());
-        }
-    });
+    res.send(process.env.FB_APP_ID)
 });
 app.get('*', (req, res) => {
     res.sendFile(__dirname + '/public/notFound.html')

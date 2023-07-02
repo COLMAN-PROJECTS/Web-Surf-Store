@@ -11,3 +11,4 @@
 /backend/config/.env.test
 /backend/config/.env.local
 /backend/config/config
+/backend/config/tokens
