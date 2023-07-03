@@ -86,13 +86,27 @@ span.new-line-span {
   line-height: 20px;
   color: #92999f;
   font-size: 13px;
-  font-weight: 400;
+  font-weight: normal;
   margin: 0
 }
 
 div.social-links {
   margin-top: 20px;
-  color: #fff
+  color: #fff;
+}
+.social-links a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 
 .btn {
