@@ -45,11 +45,11 @@ $(document).ready(function () {
           email: enteredEmail,
           password: enteredPassword
         },
-        success: function (response) {
+        success: function (response, textStatus, jqXHR ) {
+          if(jqXHR.status === 200) {
+            var userData = response;
 
-          var userData = response;
-
-          console.log("userData: " + userData);
+            console.log("userData: " + userData);
 
             var messageContainer = $(popup.document).find("#message-container");
             messageContainer.html("<p>Login successful!</p>");
@@ -70,11 +70,16 @@ $(document).ready(function () {
 
             setTimeout(function () {
               popup.close();
-            }, 2000);
+            }, 1000);
 
 
-          $(popup.document).find("#email").val("");
-          $(popup.document).find("#password").val("");
+            $(popup.document).find("#email").val("");
+            $(popup.document).find("#password").val("");
+          }else{
+            console.log("Error fetching user data: " + errorThrown);
+            var messageContainer = $(popup.document).find("#message-container");
+            messageContainer.html("<p>Login failed: Wrong email or password!</p>");
+          }
         },
         error: function (jqXHR, textStatus, errorThrown) {
           console.log("Error fetching user data: " + errorThrown);
@@ -86,7 +91,6 @@ $(document).ready(function () {
     $(popup.document).find("#signUpButton").click(function (event) {
       event.preventDefault();
       popup.close();
-      //go to diffrent html page
       window.location.href = "./public/signUpPage.html";
     })
 
