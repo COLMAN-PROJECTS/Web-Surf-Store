@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/fonts/font-awesome.css">
-    <link rel="stylesheet" href="assets/CSS/managerAreaPage.css">
+    <link rel="stylesheet" href="assets/CSS/beachInfo.css">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet"/>
@@ -47,16 +47,14 @@
 </section>
 
 <div id="beach-container"></div>
-<head>
+<body>
+<div id="map-container">
+<div id="map"></div>
   <title>Map Example</title>
   <style>
     #map-container { height: 450px;width: 100%;display: flex;justify-content: center;align-items: center;}
     #map {height: 400px;width: 50%;}
   </style>
-</head>
-<body>
-<div id="map-container">
-<div id="map"></div>
 </div>
 <button id="chatIcon" class="btn btn-primary rounded-circle chat-icon" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-size: 30px; font-weight: 30; padding: 5px;"onclick="window.location.href = 'http://localhost:3000/chat';">
   <canvas id="myCanvas" width="35" height="3" style="display: block; margin: 0 auto;"></canvas>
