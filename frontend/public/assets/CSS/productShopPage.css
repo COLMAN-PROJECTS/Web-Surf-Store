@@ -366,3 +366,10 @@ div.social-links {
   font-size: 15px;
   text-transform: none;
 }
+
+.h1-shop{
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-left: 450px;
+}
