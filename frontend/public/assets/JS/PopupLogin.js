@@ -35,6 +35,11 @@ $(document).ready(function () {
     $(popup.document).find('#Enter').click(function (event) {
       event.preventDefault();
       var enteredEmail = $(popup.document).find("#email").val();
+      if(!checkEmail(enteredEmail)){
+        var messageContainer = $(popup.document).find("#message-container");
+        messageContainer.html("<p>Invalid email!</p>");
+        return;
+      }
       var enteredPassword = $(popup.document).find("#password").val();
 
       $.ajax({
@@ -93,6 +98,11 @@ $(document).ready(function () {
       popup.close();
       window.location.href = "./public/signUpPage.html";
     })
+
+    function checkEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
 
     function btnOrganized() {
       let isLogin = localStorage.getItem('user') !== null;
