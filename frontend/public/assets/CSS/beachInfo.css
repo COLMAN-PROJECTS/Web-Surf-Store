@@ -94,6 +94,7 @@
   transition: color .3s
 }
 
+
 .photo-tags a:focus, .photo-tags a:hover {
   color: #e37544
 }
@@ -350,8 +351,14 @@ div.social-links {
 .navbar {
   background: rgba(241, 242, 244, .8);
   border-bottom: 2px solid #dfe3e7;
-  display: block
+  display: block;
 }
+
+#nav-col-1{
+  font-family: 'segoe ui', sans-serif;
+  font-size: 16px;
+}
+
 
 .hero-content {
   background: rgba(255, 255, 255, .3)
@@ -368,10 +375,25 @@ div.social-links {
   max-width: 500px
 }
 
+#logo-navbar-font{
+  font-family: '.AppleSystemUIFont',"segoe ui", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.nav-li{
+  font-family: '.AppleSystemUIFont',"segoe ui", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 2px;
+  margin-left: 6px;
+}
+
+
 .logo-nav {
   width: 80px;
   height: 80px;
-  margin-right: 20px
+  margin-right: 20px;
 }
 
 .section-hero img {
@@ -729,14 +751,23 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 95px 0;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 200
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  background-color: transparent;
 }
 
 .row-no-gutter {
   margin-right: 0;
   margin-left: 0
+}
+
+.navbar-btn span a{
+  font-family: "Apple Braille", sans-serif;
+  font-size: 15px;
+  text-transform: none;
 }
 
 .row-no-gutter [class*=col-] {
