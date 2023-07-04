@@ -17,26 +17,29 @@ window.innerWidth < 768 &&
       $("#addToCartBtn").on('click', addToCart);
 
       function addToCart() {
+        if(localStorage.getItem('user')) {
+          var selectedSize = $("#size-drop-text span").text();
+          var selectedQuantity = $("#quantity-drop-text span").text();
 
-        var selectedSize = $("#size-drop-text span").text();
-        var selectedQuantity = $("#quantity-drop-text span").text();
+          if (wantedProduct && selectedSize !== 'Size' && selectedQuantity !== 'Quantity') {
+            var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            var cartItem = {
+              product: wantedProduct,
+              size: selectedSize,
+              quantity: selectedQuantity
+            };
 
-        if (wantedProduct && selectedSize !== 'Size' && selectedQuantity !== 'Quantity') {
-          var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-          var cartItem = {
-            product: wantedProduct,
-            size: selectedSize,
-            quantity: selectedQuantity
-          };
+            cartItems.push(cartItem);
+            localStorage.setItem('cart', JSON.stringify(cartItems));
 
-          cartItems.push(cartItem);
-          localStorage.setItem('cart', JSON.stringify(cartItems));
+            showPopupMessage('Product added to cart');
 
-          showPopupMessage('Product added to cart');
-
-          console.log('Product added to cart', wantedProduct);
-        }else{
-          showPopupMessage('Please select size and quantity');
+            console.log('Product added to cart', wantedProduct);
+          } else {
+            showPopupMessage('Please select size and quantity');
+          }
+        } else {
+          showPopupMessage('Please login to add product to cart');
         }
       }
 
