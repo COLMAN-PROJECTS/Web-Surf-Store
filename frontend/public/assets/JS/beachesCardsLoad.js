@@ -6,17 +6,17 @@ function displayLoadingMessage() {
 
 async function displayWeatherData(latitude, longitude, weatherDiv) {
   const apiKey = 'd639e889ca39c6005b3a6cb8833ff9a3';
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
     weatherDiv.html('Loading Weather...');
   $.ajax({
       url: apiUrl,
       dataType: 'json',
     success: function (data) {
-      const temperature = (data.main.temp / 10).toFixed(1);
-      const description = data.weather[0].description;
-      const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString();
-      const windSpeed = data.wind.speed;
-      const windDirection = data.wind.deg;
+      let temperature = (data.main.temp / 10).toFixed(1);
+      let description = data.weather[0].description;
+      let sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString();
+      let windSpeed = data.wind.speed;
+      let windDirection = data.wind.deg;
       weatherDiv.html(`Temperature: ${temperature}°C<br>Description: ${description}<br>Sunset Time: ${sunsetTime}<br>Wind Speed: ${windSpeed} m/s<br>Wind Direction: ${windDirection}°`);
     },
     error: function () {
@@ -62,7 +62,7 @@ function getLocation(weatherDiv) {
 
         $('#beach-container').append(htmlCode);
         let weatherDiv = $('.weather-div').last();
-        displayWeatherData(element.lat, element.long, weatherDiv).then(null);
+        displayWeatherData(element.lat, element.long, weatherDiv);
       });
     },
     error: function () {
