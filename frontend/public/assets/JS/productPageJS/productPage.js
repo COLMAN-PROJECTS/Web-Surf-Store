@@ -1,23 +1,14 @@
-window.innerWidth < 768 &&
-[].slice
-  .call(document.querySelectorAll("[data-bss-disabled-mobile]"))
-  .forEach(function (e) {
-    e.classList.remove("animated"),
-      e.removeAttribute("data-bss-hover-animate"),
-      e.removeAttribute("data-aos"),
-      e.removeAttribute("data-bss-parallax-bg"),
-      e.removeAttribute("data-bss-scroll-zoom");
-  }),
-  document.addEventListener("DOMContentLoaded", function () {
+
     var wantedProduct = JSON.parse(localStorage.getItem("product"));
     var cartItems = [];
 
     $(document).ready(function () {
+      btnOrganized();
 
       $("#addToCartBtn").on('click', addToCart);
 
       function addToCart() {
-        if(localStorage.getItem('user')) {
+        if (localStorage.getItem('user')) {
           var selectedSize = $("#size-drop-text span").text();
           var selectedQuantity = $("#quantity-drop-text span").text();
 
@@ -53,7 +44,7 @@ window.innerWidth < 768 &&
       $('#product-description p').text(wantedProduct.description);
       $('#product-price').text(wantedProduct.price + " $");
       $('#simple-slider-img1').css('background', 'url(' + wantedProduct.frontImage + ') center center / auto no-repeat').css('background-size', 'contain');
-      $('#img-fluid1').find("a").attr("href",wantedProduct.frontImage).attr("target","_blank").find("img").attr("src", wantedProduct.frontImage);
+      $('#img-fluid1').find("a").attr("href", wantedProduct.frontImage).attr("target", "_blank").find("img").attr("src", wantedProduct.frontImage);
 
       enterImage("img-fluid");
       enterImage("simple-slider-img");
@@ -65,7 +56,7 @@ window.innerWidth < 768 &&
           if (imageSrc) {
             if (labelName === "img-fluid") {
               let imageElement = $("#" + labelName + (i + 2));
-              imageElement.find("a").attr("href",imageSrc).attr("target","_blank");
+              imageElement.find("a").attr("href", imageSrc).attr("target", "_blank");
               imageElement.find("img").attr("src", imageSrc);
             }
             if (labelName === "simple-slider-img") {
@@ -103,9 +94,7 @@ window.innerWidth < 768 &&
           prevEl: ".swiper-button-prev",
         },
       });
-
     });
-  });
 
 function showPopupMessage(message) {
   var popupMessage = $('<div>').attr('id', 'popup-message');
@@ -116,3 +105,27 @@ function showPopupMessage(message) {
     popupMessage.fadeOut();
   }, 1000);
 }
+    function btnOrganized() {
+      let isLogin = localStorage.getItem('user') !== null;
+      if (isLogin) {
+        $('#login').hide();
+        $('#logOut').show().click(function () {
+          localStorage.removeItem('user');
+          $('#login').show();
+          $('#logOut').hide();
+          $('#managerBtn').hide();
+          $('#clientBtn').hide();
+        });
+        if (JSON.parse(localStorage.getItem('user')).isAdmin) {
+          $('#managerBtn').show();
+          $('#clientBtn').hide();
+        } else {
+          $('#managerBtn').hide();
+          $('#clientBtn').show();
+        }
+      } else {
+        $('#logOut').hide();
+        $('#managerBtn').hide();
+        $('#clientBtn').hide();
+      }
+    }
