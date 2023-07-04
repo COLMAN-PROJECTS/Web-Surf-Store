@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
   initializeImageTitle();
+  btnOrganized();
 });
 
 function initializeImageTitle() {
@@ -111,4 +112,29 @@ function initializeImageTitle() {
       createPost('check this out!!'+ user.fullName + ' just bought products from us')
     }
   });
+
+function btnOrganized() {
+  let isLogin = localStorage.getItem('user') !== null;
+  if (isLogin) {
+    $('#login').hide();
+    $('#logOut').show().click(function () {
+      localStorage.removeItem('user');
+      $('#login').show();
+      $('#logOut').hide();
+      $('#managerBtn').hide();
+      $('#clientBtn').hide();
+    });
+    if (JSON.parse(localStorage.getItem('user')).isAdmin) {
+      $('#managerBtn').show();
+      $('#clientBtn').hide();
+    } else {
+      $('#managerBtn').hide();
+      $('#clientBtn').show();
+    }
+  } else {
+    $('#logOut').hide();
+    $('#managerBtn').hide();
+    $('#clientBtn').hide();
+  }
+}
 
