@@ -25,7 +25,8 @@ const OrderSchema = new Schema({
     }],
     totalPrice: {
         type: Number,
-        required: false
+        required: false,
+        default: 0
     },
     shippingAddress: {
         type: String,

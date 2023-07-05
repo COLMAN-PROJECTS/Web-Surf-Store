@@ -5,22 +5,6 @@ $(document).ready(function () {
   loadGroupByData('category');
 
   // just for testing
-  var user =
-    {
-      "_id": {
-        "$oid": "647e274b961b8485a84dbdc5"
-      },
-      "fullName": "John Doe",
-      "email": "johndoe@example.com",
-      "password": "1234",
-      "phone": "1234567890",
-      "address": "Tel Aviv",
-      "isAdmin": true
-    }
-
-  localStorage.setItem('user', JSON.stringify(user));
-
-  // just for testing
 
   $('.list-group-item#statistics').click(function () {
     $('#manager-table').hide();
@@ -149,19 +133,33 @@ function enableRowEditing(row) {
         cell.text(cell.val());
       });
 
-      //for testing
-      row.removeClass('edit-mode');
-      editButton.text('\u{1F504}');
-      if (Object.keys(updatedData).length > 0) {
-        console.log(JSON.stringify(updatedData));
-      }
-      alert('Row updated successfully');
+      // //for testing
+      // row.removeClass('edit-mode');
+      // editButton.text('\u{1F504}');
+      // if (Object.keys(updatedData).length > 0) {
+      //   console.log(JSON.stringify(updatedData));
+      // }
+      // alert('Row updated successfully');
 
       // Send the update request if there are changes
       if (Object.keys(updatedData).length > 0) {
+        var url = '';
+        var firstColTitle = row.closest('tbody').prev('thead').find('th:first-child').text();
+
+        if (firstColTitle === 'Products') {
+          url = 'http://localhost:3000/orders/' + rowId;
+          alert('orders')
+        } else if (firstColTitle === 'Email') {
+          url = 'http://localhost:3000/profile/update/' + rowId;
+          alert('users')
+        } else if (firstColTitle === 'Name') {
+          url = 'http://localhost:3000/products/' + rowId;
+            alert('products')
+        }
+
         // Send the PATCH request to update the row
         $.ajax({
-          url: '/frontend/DB/OrdersSeed.json',
+          url: url,
           type: 'PATCH',
           data: {_id: rowId, ...updatedData},
           dataType: 'json',
@@ -235,7 +233,6 @@ function deleteRow(row) {
   }
 }
 
-var workingTable = "none";
 
 function getDataForTable() {
   $('.list-group-item').click(function () {
