@@ -6,14 +6,14 @@ $(document).ready(function() {
         const email = $('#email').val();
         const password = $('#password').val();
         const address = $('#address').val();
-        const phoneNumber = $('#phoneNumber').val();
+        const phone = $('#phoneNumber').val();
 
         const user = {
-            fullName,
             email,
             password,
+            phone,
+            fullName,
             address,
-            phoneNumber
         };
 
         $.ajax({
@@ -30,12 +30,12 @@ $(document).ready(function() {
 
                   const userWithoutPassword = {
                     _id: user._id,
-                    fullName: user.fullName,
                     email: user.email,
                     phone: user.phone,
+                    isAdmin: user.isAdmin,
+                    fullName: user.fullName,
                     address: user.address,
-                    orders: user.orders,
-                    isAdmin: user.isAdmin
+                    orders: user.orders
                   };
 
                   localStorage.setItem("user", JSON.stringify(userWithoutPassword));

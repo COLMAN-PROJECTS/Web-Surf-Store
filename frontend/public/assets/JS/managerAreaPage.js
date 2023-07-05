@@ -254,8 +254,8 @@ function getDataForTable() {
         contentType: 'application/json',
         success: function (products) {
           const dataWithoutId = products.map(function (products) {
-            const {__v, details, images, frontImage, description, ...rest} = products;
-            return rest;
+            const {_id, name, price, category, brand, ...rest} = products;
+            return {_id, name, price, category, brand};
 
 
           })
@@ -277,8 +277,8 @@ function getDataForTable() {
         contentType: 'application/json' ,
         success: function (orders) {
           const dataWithoutId = orders.map(function (orders) {
-            const {__v, user, ...rest} = orders;
-            return rest;
+            const {_id, products,shippingAddress, paymentMethod, createdAt, totalPrice,  ...rest} = orders;
+            return {_id, products,shippingAddress, paymentMethod, createdAt, totalPrice};
           })
           const colTitles = Object.keys(orders[0]).filter(key => key !== 'user' && key !== '__v');
 
@@ -299,8 +299,8 @@ function getDataForTable() {
         contentType: 'application/json',
         success: function (users) {
           const dataWithoutId = users.map(function (users) {
-            const {__v, password, orders, ...rest} = users;
-            return rest;
+            const {_id, fullName, email,phone, isAdmin, ...rest} = users;
+            return {_id, fullName, email,phone, isAdmin};
           })
           const colTitles = Object.keys(users[0]).filter(key => key !== '__v' && key !== 'password' && key !== 'orders');
 

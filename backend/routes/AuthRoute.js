@@ -31,14 +31,14 @@ router.post(
             req.login(user, (err) => {
                 if (err) {
                     console.error("Error saving user to session:", err);
-                    return res.status(500).json({ error: "Internal server error" });
+                    return res.status(500).json({error: "Internal server error"});
                 }
                 res.status(200).json(user);
                 console.log("User logged in:", user);
             });
         } catch (error) {
             console.error("Error retrieving user:", error);
-            res.status(500).json({ error: "Internal server error" });
+            res.status(500).json({error: "Internal server error"});
         }
     }
 );
@@ -51,12 +51,13 @@ router.post(
     authMiddleware.validateFields,
     async (req, res) => {
         try {
-            const {fullName, email, password} = req.body;
+            const {email, password, phone, fullName,} = req.body;
             const hashedPassword = await bcrypt.hash(password, 10);
             const user = new User({
-                fullName: fullName,
                 email: email,
                 password: hashedPassword,
+                phone: phone,
+                fullName: fullName,
             });
             await user.save();
             res.redirect("/login");

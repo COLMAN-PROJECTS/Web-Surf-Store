@@ -109,7 +109,7 @@ function initializeImageTitle() {
         paymentMethod: 'Credit Card',
       }
       sendOrder(order);
-      createPost('check this out!!'+ user.fullName + ' just bought products from us')
+     // createPost('check this out!!'+ user.fullName + ' just bought products from us')
     }
   });
 
