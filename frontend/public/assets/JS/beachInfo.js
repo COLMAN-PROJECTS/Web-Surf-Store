@@ -2,6 +2,7 @@
   $(document).ready(function () {
     initializeImageTitle();
     btnOrganized();
+    updateCartIcon();
   });
 
 function initializeImageTitle() {
@@ -36,3 +37,16 @@ function btnOrganized() {
     $('#clientBtn').hide();
   }
 }
+  function updateCartIcon() {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    cartIcon = document.getElementById('cartIcon');
+    if (cart !== null) {
+      let count = 0;
+      cart.forEach(function (item) {
+        count += parseInt(item.quantity);
+      });
+      cartIcon.setAttribute('data-count', count);
+    } else {
+      cartIcon.setAttribute('data-count', 0);
+    }
+  }

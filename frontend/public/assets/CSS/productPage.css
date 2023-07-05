@@ -1,10 +1,23 @@
-/*@font-face {*/
-/*  font-family: swiper-icons;*/
-/*  src: url(frontend/public/assets/fonts/swiper-icons.woff) format('woff');*/
-/*  font-weight: 400;*/
-/*  font-style: normal;*/
-/*  font-display: auto*/
-/*}*/
+.cart-icon {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.cart-icon::after {
+  content: attr(data-count);
+  display: block;
+  position: absolute;
+  top: -10px;
+  background: red;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+}
 
 .footer-navigation h3 {
   margin: 0 0 20px;

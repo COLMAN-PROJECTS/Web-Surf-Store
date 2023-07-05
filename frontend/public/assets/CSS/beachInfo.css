@@ -17,6 +17,27 @@
   }
 }
 
+.cart-icon {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.cart-icon::after {
+  content: attr(data-count);
+  display: block;
+  position: absolute;
+  top: -10px;
+  background: red;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+}
+
 .photo-card {
   background-color: #2d3638;
   border-radius: 20px;

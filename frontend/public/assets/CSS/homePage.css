@@ -220,6 +220,27 @@ input[type=checkbox].css-checkbox + label.css-label {
 div.container-fluid {
 }
 
+.cart-icon {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.cart-icon::after {
+  content: attr(data-count);
+  display: block;
+  position: absolute;
+  top: -10px;
+  background: red;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+}
+
 input[type=checkbox].css-checkbox:checked + label.css-label {
   background-position: 0 -30px;
 }

@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+  updateCartIcon();
   let imageUrl = 'assets/images/productShop/sup-head.jpeg';
   let backgroundImage = 'url(' + imageUrl + ') center / cover';
 
@@ -90,7 +91,7 @@ $(document).ready(function () {
 
     let total = (tax + shipping + orderSummary);
 
-    document.getElementById('orderSubtotal').textContent = '$ '+ orderSummary;
+    document.getElementById('orderSubtotal').textContent = '$ '+ orderSummary.toFixed(2);
     document.getElementById('shipping').textContent = '$ '+ shipping;
     document.getElementById('tax').textContent = '$ '+ tax.toFixed(2);
     document.getElementById('total').textContent = '$ '+total.toFixed(2);
@@ -193,4 +194,17 @@ $(document).ready(function () {
     }
   }
 
+function updateCartIcon() {
+  let cart = JSON.parse(localStorage.getItem('cart'));
+  cartIcon = document.getElementById('cartIcon');
+  if (cart !== null) {
+    let count = 0;
+    cart.forEach(function (item) {
+      count += parseInt(item.quantity);
+    });
+    cartIcon.setAttribute('data-count', count);
+  } else {
+    cartIcon.setAttribute('data-count', 0);
+  }
+}
 

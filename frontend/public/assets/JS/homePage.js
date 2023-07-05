@@ -1,9 +1,23 @@
-
 $(document).ready(function () {
   btnOrganized();
   initializeImageTitle();
   initializeBestOffers();
+  updateCartIcon();
 });
+
+function updateCartIcon() {
+  let cart = JSON.parse(localStorage.getItem('cart'));
+  cartIcon = document.getElementById('cartIcon');
+  if (cart !== null) {
+    let count = 0;
+    cart.forEach(function (item) {
+      count += parseInt(item.quantity);
+    });
+    cartIcon.setAttribute('data-count', count);
+  } else {
+    cartIcon.setAttribute('data-count', 0);
+  }
+}
 
 function initializeBestOffers() {
   $('#bestOffers h1').text('Our Best Offers');

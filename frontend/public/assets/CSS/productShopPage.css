@@ -361,6 +361,27 @@ div.social-links {
   margin: 0 auto 80px 0;
 }
 
+.cart-icon {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.cart-icon::after {
+  content: attr(data-count);
+  display: block;
+  position: absolute;
+  top: -10px;
+  background: red;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+}
+
 .navbar-btn span a{
   font-family: "Apple Braille", sans-serif;
   font-size: 15px;
