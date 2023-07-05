@@ -299,7 +299,8 @@ function getDataForTable() {
             const {_id, fullName, email,phone, isAdmin, ...rest} = users;
             return {_id, fullName, email,phone, isAdmin};
           })
-          const colTitles = Object.keys(users[0]).filter(key => key !== '__v' && key !== 'password' && key !== 'orders');
+          //TODO: check after adding users to the database
+          const colTitles = Object.keys(users[8]).filter(key => key !== '__v' && key !== 'password' && key !== 'orders' && key !== 'address');
 
           console.log(colTitles);
           populateTable(colTitles, dataWithoutId);
