@@ -88,7 +88,7 @@ $(document).ready(function () {
 
     const tax = (orderSummary * 0.18);
 
-    let total = (tax + shipping);
+    let total = (tax + shipping + orderSummary);
 
     document.getElementById('orderSubtotal').textContent = '$ '+ orderSummary;
     document.getElementById('shipping').textContent = '$ '+ shipping;
