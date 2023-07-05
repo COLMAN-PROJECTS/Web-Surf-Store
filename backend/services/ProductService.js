@@ -40,7 +40,7 @@ const createProduct = async (product) => {
             throw  new Error("Error in getting product by id");
     }};
 
-    const updateProduct = async (product) => {
+    const updateProduct = async ( product) => {
         try {
             const updatedProduct = await Product.findByIdAndUpdate(product._id, product, {new: true});
             if (!updatedProduct) {

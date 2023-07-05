@@ -47,11 +47,11 @@ const createOrder = async (orderData) => {
     return savedOrder;
 };
 
-const updateOrder = async (orderId, order) => {
+const updateOrder = async (order) => {
     try {
-        const updatedOrder = await Order.findByIdAndUpdate(orderId, order, {new: true});
+        const updatedOrder = await Order.findByIdAndUpdate(order._id, order, {new: true});
         if (!updatedOrder) {
-            throw new Error(`Order with ID ${orderId} not found.`);
+            throw new Error(`Order with ID ${order._id} not found.`);
         }
         return updatedOrder;
     } catch (e) {

@@ -36,10 +36,11 @@ const getAllUsers = async () => {
     }
 };
 
-const updateUser = async (id, updatedFields) => {
+const updateUser = async (user) => {
+    console.log(user._id)
+    console.log(user)
     try {
-        console.log(id, updatedFields);
-        const updatedUser = await User.findByIdAndUpdate(id, updatedFields, {new: true});
+        const updatedUser = await User.findByIdAndUpdate(user._id, user, {new: true});
         if (updatedUser) {
             return updatedUser;
         }

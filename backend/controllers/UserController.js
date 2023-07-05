@@ -23,8 +23,8 @@ const getAllUsers = async (req, res, next) => {
 };
 
 const updateUser = async (req, res, next) => {
-    const { id, user } = req.body;
-    const updatedUser = await userService.updateUser(id, user);
+    const { user } = req.body;
+    const updatedUser = await userService.updateUser( user);
     if (!updatedUser) {
         res.status(400).json({ error: "Invalid email format." });
     }
