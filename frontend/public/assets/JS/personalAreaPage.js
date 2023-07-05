@@ -39,49 +39,42 @@ function setUpUser() {
 }
 
 function setUpTable() {
-  $.ajax({
-    url: '/frontend/DB/OrdersSeed.json',
-    type: 'GET',
-    dataType: 'json',
-    success: function (orders) {
-      const meOrders = orders.filter(order => order.user._id && order.user._id.$oid === meUser._id.$oid);
+  if (meUser) {
+    const orderTable = $('#order-table tbody');
+    let orderNum = 0;
 
-      const orderTable = $('#order-table tbody');
-      let orderNum = 0;
-
-      meOrders.forEach(order => {
-        orderNum++;
-        const orderRow = `<tr>
+    meUser.orders.forEach(order => {
+      orderNum++;
+      const orderRow = `<tr>
           <td>Order ${orderNum}</td>
           <td>${order.createdAt.$date}</td>
           <td>${order.products.length}</td>
           <td>${order.totalPrice}</td>
           <td>${order.shippingAddress}</td>
         </tr>`;
-        orderTable.append(orderRow);
+      orderTable.append(orderRow);
 
-        const titleProduct = `<tr style="font-size: 12px">
+      const titleProduct = `<tr style="font-size: 12px">
           <th>Product Image</th>
           <th>Product Name</th>
           <th>Product Price</th>
           <th>Product Size</th>
           <th>Product Quantity</th>
         </tr>`;
-        orderTable.append(titleProduct);
+      orderTable.append(titleProduct);
 
-        order.products.forEach(product => {
-          const productRow = `<tr style="font-size: 12px">
+      order.products.forEach(product => {
+        const productRow = `<tr style="font-size: 12px">
             <td><img class="image-product" src="${product.product.frontImage}" alt="Product Image"></td>
             <td>${product.product.name}</td>
             <td>${product.product.price}</td>
             <td>${product.size}</td>
             <td>${product.quantity}</td>
           </tr>`;
-          orderTable.append(productRow);
-        });
+        orderTable.append(productRow);
       });
-    }
-  });
+    });
+  }
 }
 function updateCartIcon() {
   let cart = JSON.parse(localStorage.getItem('cart'));
