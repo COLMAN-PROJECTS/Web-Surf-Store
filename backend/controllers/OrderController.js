@@ -5,7 +5,7 @@ const Product = require('../models/ProductSchema');
 const createOrder = async (req, res) => {
     try {
         const orderData = req.body;
-        console.log(orderData);
+        console.log('OrderController:' + '\n' + 'orderData:',orderData);
         const order = await OrderService.createOrder(orderData);
         if (order) {
             res.status(200).json(order);

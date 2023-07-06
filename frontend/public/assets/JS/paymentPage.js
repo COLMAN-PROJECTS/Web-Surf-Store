@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   initializeImageTitle();
   btnOrganized();
@@ -12,106 +11,106 @@ function initializeImageTitle() {
   $("#titleH1").text('Checkout Page');
 }
 
-  function sendOrder(orderData) {
+function sendOrder(orderData) {
   console.log(orderData);
   $.ajax({
     type: "POST",
     url: "http://localhost:3000/orders",
     contentType: "application/json",
-    data: orderData,
+    data: JSON.stringify(orderData),
     success: function (data) {
       console.log("Order sent successfully");
       alert("Order sent successfully")
-        $("#orderCompleted").show();
+      $("#orderCompleted").show();
       setTimeout(function () {
-        window.location.href = './index.html'
+        window.location.href = '../index.html';
       }, 5000);
+      localStorage.removeItem("products");
+      localStorage.removeItem("cart");
     },
 
     error: function (data) {
       console.log("Error sending order");
       alert("Error sending order")
-      conlose.log(data);
+      console.log(data);
       $("#orderNotCompleted").show();
       setTimeout(function () {
         $("#orderNotCompleted").hide();
       }, 2500);
     }
   });
-  }
-  function validateForm() {
-    var userName = $("#userName").val();
-    var cardNumber = $("#creditCardNumber").val();
-    var MM = $("#MM").val();
-    var YY = $("#YY").val();
-    var CVV = $("#CVV").val();
+}
 
-    // Perform basic validation tests
-    if (userName.trim() === "") {
-      console.log("wrong details");
-      $("#orderNotCompleted").show();
-      setTimeout(function () {
-        $("#orderNotCompleted").hide();
-      }, 2500);
-      return false;
-    }
+function validateForm() {
+  var userName = $("#userName").val();
+  var cardNumber = $("#creditCardNumber").val();
+  var MM = $("#MM").val();
+  var YY = $("#YY").val();
+  var CVV = $("#CVV").val();
 
-    if (cardNumber.trim() === "") {
-      console.log("wrong details");
-      $("#orderNotCompleted").show();
-      setTimeout(function () {
-        $("#orderNotCompleted").hide();
-      }, 2500);
-      return false;
-    }
-
-    if (MM.trim() === "" || YY.trim() === "") {
-      console.log("wrong details");
-      $("#orderNotCompleted").show();
-      setTimeout(function () {
-        $("#orderNotCompleted").hide();
-      }, 2500);
-      return false;
-    }
-
-    if (CVV.trim() === "") {
-      console.log("wrong details");
-      $("#orderNotCompleted").show();
-      setTimeout(function () {
-        $("#orderNotCompleted").hide();
-      }, 2500);
-      return false;
-    }
-    return true;
+  // Perform basic validation tests
+  if (userName.trim() === "") {
+    console.log("wrong details");
+    $("#orderNotCompleted").show();
+    setTimeout(function () {
+      $("#orderNotCompleted").hide();
+    }, 2500);
+    return false;
   }
 
-  $("#confirmBtn").click(function() {
-    if (validateForm()) {
-      const user=JSON.parse(localStorage.getItem("user"));
-      var paymentDetails = {
-        user:user._id.$oid,
-        products: JSON.parse(localStorage.getItem("products")),
-        shippingAddress: user.address,
-        paymentMethod: 'Credit Card',
-        userName: $("#userName").val(),
-        cardNumber: $("#creditCardNumber").val(),
-        expirationMonth: $("#MM").val(),
-        expirationYear: $("#YY").val(),
-        cvv: $("#CVV").val()
-      };
-      console.log(paymentDetails);
+  if (cardNumber.trim() === "") {
+    console.log("wrong details");
+    $("#orderNotCompleted").show();
+    setTimeout(function () {
+      $("#orderNotCompleted").hide();
+    }, 2500);
+    return false;
+  }
 
-      //this is a valid order
-      const order={
-        user:user._id.$oid,
-        products: JSON.parse(localStorage.getItem("products")),
-        shippingAddress: user.address,
-        paymentMethod: 'Credit Card',
-      }
-      sendOrder(order);
-     // createPost('check this out!!'+ user.fullName + ' just bought products from us')
+  if (MM.trim() === "" || YY.trim() === "") {
+    console.log("wrong details");
+    $("#orderNotCompleted").show();
+    setTimeout(function () {
+      $("#orderNotCompleted").hide();
+    }, 2500);
+    return false;
+  }
+
+  if (CVV.trim() === "") {
+    console.log("wrong details");
+    $("#orderNotCompleted").show();
+    setTimeout(function () {
+      $("#orderNotCompleted").hide();
+    }, 2500);
+    return false;
+  }
+  return true;
+}
+
+$("#confirmBtn").click(function () {
+  if (validateForm()) {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    const products = JSON.parse(localStorage.getItem("products"));
+
+    let productsID = [];
+    for (let i = 0; i < products.length; i++) {
+      productsID.push({
+        product: products[i].product._id,
+        size: products[i].size,
+        quantity: products[i].quantity
+      });
     }
-  });
+
+    const order = {
+      user: user._id,
+      products: productsID,
+      shippingAddress: user.address,
+      paymentMethod: 'Credit Card'
+    }
+    sendOrder(order);
+  }
+});
 
 function btnOrganized() {
   let isLogin = localStorage.getItem('user') !== null;

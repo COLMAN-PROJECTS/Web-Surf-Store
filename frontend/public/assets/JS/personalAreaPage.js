@@ -1,24 +1,12 @@
 const meUser = JSON.parse(localStorage.getItem("user"));
 
 
-window.innerWidth < 768 &&
-[].slice
-  .call(document.querySelectorAll("[data-bss-disabled-mobile]"))
-  .forEach(function (e) {
-    e.classList.remove("animated"),
-      e.removeAttribute("data-bss-hover-animate"),
-      e.removeAttribute("data-aos"),
-      e.removeAttribute("data-bss-parallax-bg"),
-      e.removeAttribute("data-bss-scroll-zoom");
-  }),
-  document.addEventListener("DOMContentLoaded", function () {
     $(document).ready(function () {
       initializeImageTitle();
       setUpUser();
       setUpTable();
       updateCartIcon();
     });
-  });
 
 function initializeImageTitle() {
   let imageUrl = 'assets/images/personalArea/imageTitlePersonal.jpeg';
@@ -47,7 +35,7 @@ function setUpTable() {
       orderNum++;
       const orderRow = `<tr>
           <td>Order ${orderNum}</td>
-          <td>${order.createdAt.$date}</td>
+          <td>${order.createdAt.substring(0,10)}</td>
           <td>${order.products.length}</td>
           <td>${order.totalPrice}</td>
           <td>${order.shippingAddress}</td>

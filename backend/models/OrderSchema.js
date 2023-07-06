@@ -51,7 +51,7 @@ OrderSchema.pre('save', async function (next) {
         }
     }
 
-    order.totalPrice = totalPrice;
+    order.totalPrice = (totalPrice + 10 + (totalPrice * 0.18)).toFixed(2);
     next();
 });
 
