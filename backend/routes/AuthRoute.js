@@ -27,7 +27,6 @@ router.post(
     passport.authenticate("local"),
     async (req, res) => {
         try {
-            console.log(req.session.user)
             const user = await UserService.getUserByEmail(req.body.email);
             req.login(user, (err) => {
 
@@ -35,8 +34,13 @@ router.post(
                     console.error("Error saving user to session:", err);
                     return res.status(500).json({error: "Internal server error"});
                 }
+                console.log('s:', req.session.id)
 
-                res.status(200).json(user);
+                res.cookie("connect.sid", req.session.id, {
+                    httpOnly: true,
+                    secure: false,
+                    maxAge: 1000 * 60 * 60 * 24
+                }).status(200).json(user)
                 console.log("User logged in:", user);
             });
         } catch (error) {

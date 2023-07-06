@@ -27,11 +27,11 @@ async function initialize(passport) {
     };
 
     passport.use(new LocalStrategy({ usernameField: "email" }, authenticateUser));
-    passport.serializeUser((user, done) => done(null, user._id));
-    passport.deserializeUser(async (id, done) => {
+    passport.serializeUser((user, done) => done(null, user));
+    passport.deserializeUser(async (user, done) => {
         try {
-            const user = await userServices.getUserById(id);
-            return done(null, user);
+            const retrievedUser = await userServices.getUserById(user._id);
+            return done(null, retrievedUser);
         } catch (error) {
             return done(error);
         }

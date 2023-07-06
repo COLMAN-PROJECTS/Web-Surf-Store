@@ -1,10 +1,10 @@
 const User = require('../models/UserSchema');
 
 const isAdminMiddleware = async (req, res, next) => {
+
     try {
-        console.log(req.session.user._id)
-        if (req.session.user && req.session.user._id) {
-            const user = await User.findById(req.session.user._id);
+        if (req.session.passport.user._id) {
+            const user = await User.findById(req.session.passport.user._id);
 
             if (user) {
                 if (user.isAdmin) {

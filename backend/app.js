@@ -7,8 +7,8 @@ const {mongoose} = require('mongoose');
 const newLocal = require('custom-env');
 const bcrypt = require("bcrypt");
 const passport = require("passport");
-const flash = require("express-flash");
 const session = require("express-session");
+const flash = require("express-flash");
 const dotenv = require('dotenv');
 dotenv.config();
 const methodOverride = require("method-override");
@@ -31,15 +31,21 @@ const store = new MongoDBStore({
 
 
 app.use(cors());
+
 app.use(flash());
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
-        store: store
+        store: store,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 // 1 day
+        }
     })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Routes
 const ProductRoute = require('./routes/ProductRoute.js')
@@ -58,8 +64,7 @@ chat.handleChat(io);
 app.use(express.static('./frontend'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(methodOverride("_method"));
 app.use(express.json())
 
