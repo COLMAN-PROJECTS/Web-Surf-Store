@@ -27,12 +27,15 @@ router.post(
     passport.authenticate("local"),
     async (req, res) => {
         try {
+            console.log(req.session.user)
             const user = await UserService.getUserByEmail(req.body.email);
             req.login(user, (err) => {
+
                 if (err) {
                     console.error("Error saving user to session:", err);
                     return res.status(500).json({error: "Internal server error"});
                 }
+
                 res.status(200).json(user);
                 console.log("User logged in:", user);
             });
@@ -51,13 +54,14 @@ router.post(
     authMiddleware.validateFields,
     async (req, res) => {
         try {
-            const {email, password, phone, fullName,} = req.body;
+            const {email, password, phone, fullName, address} = req.body;
             const hashedPassword = await bcrypt.hash(password, 10);
             const user = new User({
                 email: email,
                 password: hashedPassword,
                 phone: phone,
                 fullName: fullName,
+                address: address,
             });
             await user.save();
             res.redirect("/login");
