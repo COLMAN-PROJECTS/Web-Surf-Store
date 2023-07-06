@@ -51,12 +51,13 @@ $(document).ready(function () {
           password: enteredPassword
         },
         success: function (response, textStatus, jqXHR ) {
+          var messageContainer;
           if(jqXHR.status === 200) {
             var userData = response;
 
             console.log("userData: " + userData);
 
-            var messageContainer = $(popup.document).find("#message-container");
+            messageContainer = $(popup.document).find("#message-container");
             messageContainer.html("<p>Login successful!</p>");
 
             const userWithoutPassword = {
@@ -82,7 +83,7 @@ $(document).ready(function () {
             $(popup.document).find("#password").val("");
           }else{
             console.log("Error fetching user data: " + errorThrown);
-            var messageContainer = $(popup.document).find("#message-container");
+             messageContainer = $(popup.document).find("#message-container");
             messageContainer.html("<p>Login failed: Wrong email or password!</p>");
           }
         },

@@ -187,7 +187,8 @@ div.social-links {
 }
 
 .hero-h1 {
-  max-width: 500px
+  max-width: 500px;
+  text-shadow: 20px 10px 30px #000000;
 }
 
 .logo-nav {
