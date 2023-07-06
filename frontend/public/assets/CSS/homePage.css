@@ -690,7 +690,9 @@ a.preview {
 
 .hero-h1 {
   max-width: 500px;
-  text-shadow: 20px 10px 30px #000000;
+  text-shadow: 1px 5px 30px #000;
+  font-family: 'Cookie', cursive;
+  font-size: 80px;
 }
 
 .logo-nav {
@@ -720,5 +722,25 @@ a.preview {
   background: rgba(11,27,29,0.3);
   border-radius: 7px;
   border-bottom-color: rgb(255, 255, 255);
+}
+
+#videoSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#videoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#videoContainer video {
+  min-height: 700px;
+  min-width: 500px;
+  max-width: 400%;
+  max-height: 400%;
 }
 

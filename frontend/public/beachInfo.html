@@ -6,15 +6,15 @@
   <title>BeachInfo</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Akaya+Kanadaka&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie&amp;display=swap">
   <link rel="stylesheet" href="assets/fonts/font-awesome.css">
-    <link rel="stylesheet" href="assets/CSS/beachInfo.css">
-    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/CSS/beachInfo.css">
 </head>
 <body>
 <nav class="navbar navbar-light navbar-expand-md sticky-top py-3" style="padding-left: 30px;padding-right: 30px;">
-  <div class="container-fluid"><a id="logo-navbar-font" class="navbar-brand d-flex align-items-center" href="../index.html"><span><img
+  <div class="container-fluid"><a id="logo-navbar-font" class="navbar-brand d-flex align-items-center"
+                                  href="../index.html"><span><img
     class="rounded-circle logo-nav" src="assets/images/SurfStore-logo.png">SurfSights</span></a>
     <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
       class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
@@ -26,13 +26,17 @@
         <li class="nav-item"><a class="nav-link active nav-li" href="./shoppingCartPage.html">shopping cart</a></li>
       </ul>
       <div id="cartIcon" class="cart-icon" data-count="0">
-        <a class="fa btn fa-shopping-cart" href="./shoppingCartPage.html" style="font-size: 29px;margin-right: 10px;"></a>
+        <a class="fa btn fa-shopping-cart" href="./shoppingCartPage.html"
+           style="font-size: 29px;margin-right: 10px;"></a>
       </div>
       <span>
         <a id="login" class="btn bg-white me-3 navbar-btn" style="text-transform: none; font-size: 15px;" type="button">Log in</a>
-        <a id="logOut" class="btn bg-white me-3" style="display: none; text-transform: none; font-size: 15px;" type="button">Log Out</a>
-        <a id="managerBtn" style="display: none; text-transform: none; font-size: 15px;" class="btn bg-white me-3" href="managerAreaPage.html" type="button">Manage Area</a>
-        <a id="clientBtn" style="display: none; text-transform: none; font-size: 15px;" class="btn bg-white me-3" href="personalAreaPage.html" type="button">Personal Area</a>
+        <a id="logOut" class="btn bg-white me-3" style="display: none; text-transform: none; font-size: 15px;"
+           type="button">Log Out</a>
+        <a id="managerBtn" style="display: none; text-transform: none; font-size: 15px;" class="btn bg-white me-3"
+           href="managerAreaPage.html" type="button">Manage Area</a>
+        <a id="clientBtn" style="display: none; text-transform: none; font-size: 15px;" class="btn bg-white me-3"
+           href="personalAreaPage.html" type="button">Personal Area</a>
       </span>
     </div>
   </div>
@@ -50,14 +54,26 @@
 <div id="beach-container"></div>
 <body>
 <div id="map-container">
-<div id="map"></div>
+  <div id="map"></div>
   <title>Map Example</title>
   <style>
-    #map-container { height: 450px;width: 100%;display: flex;justify-content: center;align-items: center;}
-    #map {height: 400px;width: 50%;}
+    #map-container {
+      height: 450px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #map {
+      height: 400px;
+      width: 50%;
+    }
   </style>
 </div>
-<button id="chatIcon" class="btn btn-primary rounded-circle chat-icon" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-size: 30px; font-weight: 30; padding: 5px;"onclick="window.location.href = 'http://localhost:3000/chat';">
+<button id="chatIcon" class="btn btn-primary rounded-circle chat-icon"
+        style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-size: 30px; font-weight: 30; padding: 5px;"
+        onclick="window.location.href = 'http://localhost:3000/chat';">
   <canvas id="myCanvas" width="35" height="3" style="display: block; margin: 0 auto;"></canvas>
   <i class="fa fa-comment" style="display: block; margin: 0 auto;"></i>
 </button>
@@ -84,10 +100,12 @@
           <p><a href="mailto:davidovich.dan@gmail.com" target="_blank"> support@surfsights.com</a></p></div>
       </div>
       <div class="col-md-4 footer-about"><h4>About the company</h4>
-        <p> Welcome to our online surfing shop, where you can find everything you need for your next wave-riding adventure.
+        <p> Welcome to our online surfing shop, where you can find everything you need for your next wave-riding
+          adventure.
           Browse our extensive collection of surfboards, wetsuits, and accessories from top brands,
           ensuring you're equipped for the ultimate surfing experience. With secure online ordering and fast shipping,
-          we're committed to providing surf enthusiasts with convenient access to high-quality gear for conquering the waves. </p>
+          we're committed to providing surf enthusiasts with convenient access to high-quality gear for conquering the
+          waves. </p>
         <div class="social-links social-icons">
           <a href="https://www.facebook.com/colmanSurfShop" target="_blank">
             <i class="fa fa-facebook"></i>
@@ -101,8 +119,12 @@
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

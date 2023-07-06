@@ -399,10 +399,18 @@ div.social-links {
     height: 500px
   }
 }
+@font-face {
+  font-family: 'Cookie';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cookie'), local('Cookie-Regular'), url(https://fonts.gstatic.com/s/cookie/v8/syky-y18lb0tSbfNlQCT9tPz7Q.ttf) format('truetype');
+}
 
 .hero-h1 {
   max-width: 500px;
-  text-shadow: 20px 10px 30px #000000;
+  text-shadow: 1px 5px 30px #000;
+  font-family: 'Cookie', cursive;
+  font-size: 80px;
 }
 
 #logo-navbar-font{
