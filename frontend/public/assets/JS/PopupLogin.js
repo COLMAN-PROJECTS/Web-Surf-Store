@@ -97,7 +97,10 @@ $(document).ready(function () {
     $(popup.document).find("#signUpButton").click(function (event) {
       event.preventDefault();
       popup.close();
-      window.location.href = "./public/signUpPage.html";
+      if(window.location.href.includes("index.html"))
+         window.location.href = "./public/signUpPage.html";
+      else
+        window.location.href = "./signUpPage.html";
     })
 
     function checkEmail(email) {
