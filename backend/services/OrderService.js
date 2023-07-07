@@ -112,6 +112,20 @@ const filterOrders = async (filter) => {
 }
 const groupByField = async (field) => {
   try {
+    let groupField = "";
+    let projectionField = "";
+
+    if (field === "category") {
+      groupField = "$productInfo.category";
+      projectionField = "category";
+    } else if (field === "totalPrice") {
+      groupField = null;
+      projectionField = "Total Price";
+    } else if (field === "createdAt") {
+      groupField = { $dateToString: { format: "%Y-%m", date: "$createdAt" } };
+      projectionField = "Month";
+    }
+
     const pipeline = [
       {
         $lookup: {
@@ -126,18 +140,17 @@ const groupByField = async (field) => {
       },
       {
         $group: {
-          _id: `$productInfo.${field}`,
-          count: {$sum: 1},
-          totalPrice: {$sum: "$totalPrice"}
+          _id: groupField,
+          count: { $sum: 1 },
+          totalPrice: { $sum: "$totalPrice" },
         }
       },
       {
         $project: {
           _id: 1,
           count: 1,
-          totalPrice: {$round: ["$totalPrice", 2]}
+          totalPrice: { $round: ["$totalPrice", 2] }
         }
-
       }
     ];
 
@@ -147,6 +160,44 @@ const groupByField = async (field) => {
     throw new Error('Error occurred while aggregating orders by field');
   }
 };
+
+// const groupByField = async (field) => {
+//   try {
+//     const pipeline = [
+//       {
+//         $lookup: {
+//           from: "products",
+//           localField: "products.product",
+//           foreignField: "_id",
+//           as: "productInfo"
+//         }
+//       },
+//       {
+//         $unwind: "$productInfo"
+//       },
+//       {
+//         $group: {
+//           _id: `$productInfo.${field}`,
+//           count: {$sum: 1},
+//           totalPrice: {$sum: "$totalPrice"},
+//         }
+//       },
+//       {
+//         $project: {
+//           _id: 1,
+//           count: 1,
+//           totalPrice: {$round: ["$totalPrice", 2]}
+//         }
+//
+//       }
+//     ];
+//
+//     const result = await Order.aggregate(pipeline);
+//     return result;
+//   } catch (error) {
+//     throw new Error('Error occurred while aggregating orders by field');
+//   }
+// };
 
 
 module.exports = {

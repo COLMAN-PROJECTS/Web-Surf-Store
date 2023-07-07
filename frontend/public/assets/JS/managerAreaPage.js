@@ -3,6 +3,7 @@ $(document).ready(function () {
     initializeImageTitle()
     getDataForTable()
     loadGroupByData('category');
+    loadGroupByData('createdAt');
 
     // just for testing
 
@@ -10,8 +11,10 @@ $(document).ready(function () {
         $('#manager-table').hide();
         $('#product-buttons').hide();
         $('#graph-container').empty();
-        loadGraphs(graphTest, 'Total Sell profit');
+        loadGraphs(graph1, 'Total Sales profit', 'graph-container');
+        loadGraphs(graph2, 'Sales per month', 'graph-container1');
         $('#graph-container').show();
+        $('#graph-container1').show();
     });
 });
 
@@ -510,11 +513,21 @@ function loadGroupByData(groupByField) {
         success: function (response) {
             console.log('GroupBy data loaded successfully:', response);
             response.forEach(function (group) {
-                graphTest.push({
+                if (groupByField === 'category') {
+                graph1.push({
                     name: group._id,
                     frequency: group.totalPrice,
-                },);
+                });
                 renderGroup(group);
+            }
+                else if (groupByField === 'createdAt'){
+                    graph2.push({
+                        name: group._id,
+                        frequency: group.count,
+                    })
+                    console.log(graph2);
+                    ;}
+
             });
         },
         error: function (error) {
@@ -554,9 +567,10 @@ function getFileBoxClass(groupByField) {
     }
 }
 
-var graphTest = [];
+var graph1 = [];
+var graph2 = [];
 
-function loadGraphs(data, value) {
+function loadGraphs(data, value, index) {
     const width = 500;
     const height = 500;
     const marginTop = 30;
@@ -576,7 +590,7 @@ function loadGraphs(data, value) {
         .range([height - marginBottom, marginTop]);
 
     // Create the SVG container.
-    const svg = d3.select("svg")
+    const svg = d3.select($('#'+index).get(0))
         .attr("width", width)
         .attr("height", height)
         .attr("viewBox", [0, 0, width, height])
