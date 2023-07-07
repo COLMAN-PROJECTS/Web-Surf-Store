@@ -15,14 +15,10 @@ const getUserByEmail = async (email) => {
 };
 
 const getUserById = async (id) => {
-    const user = await User.findById(id).populate('orders')
-        .populate({
-            path: 'orders',
-            populate: {
-                path: 'products.product',
-                model: Product,
-            },
-        });
+    const user = await User.findById(id).populate('orders').populate({
+        path: 'orders.products',
+        model: Product
+    });
     return user;
 };
 
