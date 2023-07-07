@@ -30,7 +30,7 @@ $(document).ready(function () {
     BrandList.on('change', filterProducts);
     priceList.on('change', filterProducts);
     SizeList.on('change', filterProducts);
-
+    document.reload();
     filterProducts();
 });
 
