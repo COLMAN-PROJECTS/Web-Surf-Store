@@ -588,7 +588,7 @@ function loadGraphs(data, value, index) {
   const y = d3.scaleLinear()
     .domain([0, d3.max(data, (d) => (d.frequency))])
     .range([height - marginBottom, marginTop]);
-  if (d3.max(data, (d) => (d.frequency)) < 50) {
+  if (d3.max(data, (d) => (d.frequency)) < 10) {
     y.domain([0, d3.max(data, (d) => (d.frequency)), 10])
   }
 
