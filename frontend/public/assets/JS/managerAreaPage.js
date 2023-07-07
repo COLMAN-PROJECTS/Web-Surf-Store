@@ -580,14 +580,18 @@ function loadGraphs(data, value, index) {
 
     // Declare the x (horizontal position) scale.
     const x = d3.scaleBand()
-        .domain(d3.groupSort(data, ([d]) => -(d.frequency / 100), (d) => d.name)) // descending frequency
+        .domain(d3.groupSort(data, ([d]) => -(d.frequency), (d) => d.name)) // descending frequency
         .range([marginLeft, width - marginRight])
         .padding(0.1);
 
     // Declare the y (vertical position) scale.
     const y = d3.scaleLinear()
-        .domain([0, d3.max(data, (d) => (d.frequency / 100))])
+        .domain([0, d3.max(data, (d) => (d.frequency))])
         .range([height - marginBottom, marginTop]);
+    if (d3.max(data, (d) => (d.frequency)) < 50) {
+        y.domain([0, d3.max(data, (d) => (d.frequency)), 10])
+    }
+
 
     // Create the SVG container.
     const svg = d3.select($('#'+index).get(0))
@@ -603,8 +607,8 @@ function loadGraphs(data, value, index) {
         .data(data)
         .join("rect")
         .attr("x", (d) => x(d.name))
-        .attr("y", (d) => y(d.frequency / 100))
-        .attr("height", (d) => y(0) - y(d.frequency / 100))
+        .attr("y", (d) => y(d.frequency))
+        .attr("height", (d) => y(0) - y(d.frequency))
         .attr("width", x.bandwidth());
 
     // Add the x-axis and label.
@@ -615,7 +619,7 @@ function loadGraphs(data, value, index) {
     // Add the y-axis and label, and remove the domain line.
     svg.append("g")
         .attr("transform", `translate(${marginLeft},0)`)
-        .call(d3.axisLeft(y).tickFormat((y) => (y * 100).toFixed()))
+        .call(d3.axisLeft(y).tickFormat((y) => (y).toFixed()))
         .call(g => g.select(".domain").remove())
         .call(g => g.append("text")
             .attr("x", -marginLeft)
