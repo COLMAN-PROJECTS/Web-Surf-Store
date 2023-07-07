@@ -3,7 +3,7 @@ let meUser = JSON.parse(localStorage.getItem("user"));
 
     $(document).ready(function () {
       initializeImageTitle();
-      $.ajax({
+      $.when($.ajax({
         url: 'http://localhost:3000/profile/email/' + meUser.email,
         type: 'GET',
         dataType: 'json',
@@ -16,10 +16,11 @@ let meUser = JSON.parse(localStorage.getItem("user"));
         error: function (err) {
           console.log(err);
         }
-      })
-      setUpUser();
-      setUpTable();
-      updateCartIcon();
+      })).done(function () {
+        setUpUser();
+        setUpTable();
+        updateCartIcon();
+      });
     });
 
 function initializeImageTitle() {
