@@ -626,7 +626,7 @@ function loadGraphs(data, value, index) {
             .attr("y", 10)
             .attr("fill", "currentColor")
             .attr("text-anchor", "start")
-            .text("↑ " + value + " (%)"));
+            .text("↑ " + value));
 }
 
 
