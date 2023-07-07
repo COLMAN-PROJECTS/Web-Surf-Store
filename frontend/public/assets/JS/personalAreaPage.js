@@ -1,8 +1,22 @@
-const meUser = JSON.parse(localStorage.getItem("user"));
+let meUser = JSON.parse(localStorage.getItem("user"));
 
 
     $(document).ready(function () {
       initializeImageTitle();
+      $.ajax({
+        url: 'http://localhost:3000/profile/email/' + meUser.email,
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (user) {
+          meUser = user;
+          localStorage.removeItem("user");
+          localStorage.setItem("user", JSON.stringify(user));
+        },
+        error: function (err) {
+          console.log(err);
+        }
+      })
       setUpUser();
       setUpTable();
       updateCartIcon();
