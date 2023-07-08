@@ -335,7 +335,7 @@ function addProduct() {
     $('#form-container').show();
     createLabelAndInput('Name:', 'text', 'name', 'Name', true);
     createLabelAndInput('Description:', 'textarea', 'description', 'Description', false);
-    createLabelAndInput('Price:', 'number', 'price', 'Price', true);
+    createLabelAndInput('Price:', 'double', 'price', 'Price', true);
     createLabelAndInput('Front Image:', 'text', 'frontImage', 'Front Image URL', true);
     createLabelAndInput('Category:', 'text', 'category', 'Category', true);
     createLabelAndInput('Brand:', 'text', 'brand', 'Brand', true);

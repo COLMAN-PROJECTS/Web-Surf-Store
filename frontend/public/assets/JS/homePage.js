@@ -31,7 +31,7 @@ function initializeBestOffers() {
         let productImageId = '#bestOffersImg' + (j + 1);
         let productPId = '#bestOffersP' + (j + 1);
 
-        $(productImageId + ' img').attr('src', product[j].frontImage);
+        $(productImageId + ' img').attr('src', 'public/' + product[j].frontImage);
         $(productPId).html(product[j].name + "<br>" + product[j].price + "$");
       }
     }
