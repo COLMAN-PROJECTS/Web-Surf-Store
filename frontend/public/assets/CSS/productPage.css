@@ -161,7 +161,7 @@ div.social-links {
   width: 100%;
   height: 100%;
   position: relative;
-  transition-property: transform
+  transition-property: transform;
 }
 
 .swiper-slide-invisible-blank {
@@ -701,6 +701,8 @@ a:focus, a:hover {
     font-size: 25px
   }
 }
+
+.
 
 .x-drop-btn {
   width: 100%;
