@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   $("#login").click(function () {
     const popup = window.open("", "Login Popup", "width=600,height=500");
@@ -6,8 +5,61 @@ $(document).ready(function () {
       <html>
         <head>
           <title>Login</title>
-          <link rel="stylesheet" type="text/css" href="/frontend/public/assets/CSS/login.css">
-          <style class="body,popup-container" >
+          <style>
+          .popup-container {
+  width: 400px;
+  height: 300px;
+  background-color: #e3cf7a;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+
+}
+
+.popup-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.popup-form input[type="email"],
+.popup-form input[type="password"] {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.popup-form button[type="submit"] {
+  padding: 5px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.popup-container {
+  width: 400px;
+  height: 300px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
           </style>
         </head>
         <body class="body">
@@ -35,7 +87,7 @@ $(document).ready(function () {
     $(popup.document).find('#Enter').click(function (event) {
       event.preventDefault();
       var enteredEmail = $(popup.document).find("#email").val();
-      if(!checkEmail(enteredEmail)){
+      if (!checkEmail(enteredEmail)) {
         var messageContainer = $(popup.document).find("#message-container");
         messageContainer.html("<p>Invalid email!</p>");
         return;
@@ -50,9 +102,9 @@ $(document).ready(function () {
           email: enteredEmail,
           password: enteredPassword
         },
-        success: function (response, textStatus, jqXHR ) {
+        success: function (response, textStatus, jqXHR) {
           var messageContainer;
-          if(jqXHR.status === 200) {
+          if (jqXHR.status === 200) {
             var userData = response;
 
             console.log("userData: " + userData);
@@ -81,9 +133,9 @@ $(document).ready(function () {
 
             $(popup.document).find("#email").val("");
             $(popup.document).find("#password").val("");
-          }else{
+          } else {
             console.log("Error fetching user data: " + errorThrown);
-             messageContainer = $(popup.document).find("#message-container");
+            messageContainer = $(popup.document).find("#message-container");
             messageContainer.html("<p>Login failed: Wrong email or password!</p>");
           }
         },
@@ -97,8 +149,8 @@ $(document).ready(function () {
     $(popup.document).find("#signUpButton").click(function (event) {
       event.preventDefault();
       popup.close();
-      if(window.location.href.includes("index.html"))
-         window.location.href = "./public/signUpPage.html";
+      if (window.location.href.includes("index.html"))
+        window.location.href = "./public/signUpPage.html";
       else
         window.location.href = "./signUpPage.html";
     })
