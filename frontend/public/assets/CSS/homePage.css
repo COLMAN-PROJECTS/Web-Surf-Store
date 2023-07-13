@@ -67,6 +67,7 @@ footer {
   padding: 25px;
   bottom: 0;
   color: #fff;
+  column-count: inherit;
 }
 
 .footer-navigation h3 {
