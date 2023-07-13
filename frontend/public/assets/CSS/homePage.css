@@ -746,6 +746,5 @@ a.preview {
 .img-fluid {
   height: 250px;
   margin-left: 75px;
-  border: 1px solid #FFFADF;
   cursor: pointer;
 }
