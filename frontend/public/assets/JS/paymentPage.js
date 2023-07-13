@@ -20,11 +20,10 @@ function sendOrder(orderData) {
     data: JSON.stringify(orderData),
     success: function (data) {
       console.log("Order sent successfully");
-      alert("Order sent successfully")
       $("#orderCompleted").show();
       setTimeout(function () {
         window.location.href = '../index.html';
-      }, 5000);
+      }, 2000);
       localStorage.removeItem("products");
       localStorage.removeItem("cart");
     },

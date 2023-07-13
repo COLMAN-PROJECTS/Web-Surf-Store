@@ -74,6 +74,9 @@ function addToCart() {
       showPopupMessage('Product added to cart');
 
       console.log('Product added to cart', wantedProduct);
+      setTimeout(function () {
+        window.close();
+      }, 1000);
     } else {
       showPopupMessage('Please select size and quantity');
     }
