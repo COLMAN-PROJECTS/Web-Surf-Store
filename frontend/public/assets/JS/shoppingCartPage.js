@@ -79,9 +79,11 @@ $(document).ready(function () {
 
   function calcSummary() {
     let orderSummary = 0;
-    dataCart.forEach(function(item) {
-      orderSummary += item.product.price * item.quantity;
-    });
+    if (dataCart && dataCart.length > 0) {
+      dataCart.forEach(function (item) {
+        orderSummary += item.product.price * item.quantity;
+      });
+    }
 
     let shipping = 0;
     if(orderSummary > 0)
