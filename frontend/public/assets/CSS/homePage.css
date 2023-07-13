@@ -1,5 +1,4 @@
 
-
 .bs-icon {
   --bs-icon-size: .75rem;
   display: flex;
@@ -97,7 +96,7 @@ footer {
   margin-top: 20px;
 }
 
-@media (max-width:767px) {
+@media (max-width: 767px) {
   .footer-contacts {
     margin: 30px 0;
   }
@@ -348,7 +347,7 @@ li.active {
   background: #00B16A;
 }
 
-.navbar-btn span a{
+.navbar-btn span a {
   font-family: "Apple Braille", sans-serif;
   font-size: 15px;
   text-transform: none;
@@ -395,8 +394,8 @@ li.active {
   left: 50px;
   width: 155px;
   border-radius: 2px;
-//padding: 15px 10px 15px 65px;
-//font-family: Helvetica, sans-serif;
+/ / padding: 15 px 10 px 15 px 65 px;
+/ / font-family: Helvetica, sans-serif;
   text-transform: uppercase;
   color: #fff;
   text-decoration: none;
@@ -576,8 +575,8 @@ div.container {
   left: 50px;
   width: 155px;
   border-radius: 2px;
-//padding: 15px 10px 15px 65px;
-//font-family: Helvetica, sans-serif;
+/ / padding: 15 px 10 px 15 px 65 px;
+/ / font-family: Helvetica, sans-serif;
   text-transform: uppercase;
   color: #fff;
   text-decoration: none;
@@ -662,8 +661,8 @@ a.preview {
 }
 
 .navbar {
-  background: rgba(241,242,244,0.8);
-  border-bottom: 2px solid #dfe3e7 ;
+  background: rgba(241, 242, 244, 0.8);
+  border-bottom: 2px solid #dfe3e7;
 }
 
 .hero-content {
@@ -673,19 +672,19 @@ a.preview {
 @media (min-width: 768px) {
   .hero-content {
     height: 500px;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255, 255, 255, 0.3);
   }
 }
 
 @media (min-width: 768px) {
   .hero-content {
     height: 500px;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255, 255, 255, 0.3);
   }
 }
 
 .hero-content {
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .hero-h1 {
@@ -719,7 +718,7 @@ a.preview {
 
 .h4-back {
   color: #212529;
-  background: rgba(11,27,29,0.3);
+  background: rgba(11, 27, 29, 0.3);
   border-radius: 7px;
   border-bottom-color: rgb(255, 255, 255);
 }
@@ -744,3 +743,9 @@ a.preview {
   max-height: 400%;
 }
 
+.img-fluid {
+  height: 250px;
+  margin-left: 75px;
+  border: 1px solid #FFFADF;
+  cursor: pointer;
+}
