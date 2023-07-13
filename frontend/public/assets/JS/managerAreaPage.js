@@ -578,11 +578,19 @@ function loadGraphs(data, value, index) {
   const marginBottom = 30;
   const marginLeft = 40;
 
-  // Declare the x (horizontal position) scale.
+   // // Declare the x (horizontal position) scale.
+   //  const x = d3.scaleBand()
+   //    .domain(data.map(b => b.name).sort().reverse()) // descending frequency
+   //    .range([marginLeft, width - marginRight])
+   //    .padding(0.2);
+
+  const regex = /^\d{4}-\d{2}$/;
+  const aMatch = regex.test(data[0].name);
+
   const x = d3.scaleBand()
-    .domain(d3.groupSort(data, ([d]) => -(d.frequency), (d) => d.name)) // descending frequency
+    .domain((aMatch) ? data.map(b => b.name).sort().reverse() : data.map(b => b.name).sort())
     .range([marginLeft, width - marginRight])
-    .padding(0.1);
+    .padding(0.2);
 
   // Declare the y (vertical position) scale.
   const y = d3.scaleLinear()
