@@ -992,5 +992,17 @@ figure {
   width: 32px;
   height: 32px
 }
+#map-container {
+  height: 450px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#map {
+  height: 400px;
+  width: 50%;
+}
 
 
