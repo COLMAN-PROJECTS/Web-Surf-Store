@@ -12,7 +12,9 @@ function handleBotResponse(message) {
     } else if (lowercaseMessage.includes('product' || 'products' || 'items' || 'stock' || 'available')) {
         return 'We have a wide range of surfboards, wetsuits, and accessories in stock.\nIs there a specific product you are interested in?';
     } else if (lowercaseMessage.includes('surfboard' || 'surfboards')) {
-        return 'We have a wide range of surfboards in stock.\n you can check out our website for more details.';
+      return 'We have a wide range of surfboards in stock.\n you can check out our website for more details.';
+    }else if (lowercaseMessage.includes('sup' || 'sups')) {
+        return 'We have a wide range of SUPs in stock.\n you can check out our website for more details.';
     } else if (lowercaseMessage.includes('wetsuit' || 'wetsuits')) {
         return 'We have a wide range of wetsuits in stock.\n you can check out our website for more details.';
     } else if (lowercaseMessage.includes('accessory' || 'accessories')) {
