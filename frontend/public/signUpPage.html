@@ -37,13 +37,29 @@
     </form>
 </div>
 
-<button id="chatIcon" class="btn btn-primary rounded-circle chat-icon" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-size: 30px; font-weight: 30; padding: 5px;"onclick="window.location.href = 'http://localhost:3000/chat';">
+<section id="section-chat">
+  <button id="chat-btn" class="btn btn-primary rounded-circle chat-icon" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-size: 30px; font-weight: 30; padding: 5px;" >
     <canvas id="myCanvas" width="35" height="3" style="display: block; margin: 0 auto;"></canvas>
     <i class="fa fa-comment" style="display: block; margin: 0 auto;"></i>
-</button>
+  </button>
+
+  <div id="chat-pop-up" class="chat-popup">
+    <div class="chat-area">
+    </div>
+
+    <div class="input-area">
+      <input id="client-chat-input" type="text">
+      <button id="emoji-btn"> &#127773;</button>
+      <button id="client-submit" class="submit"> <i class="material-icons"> send</i></button>
+    </div>
+  </div>
+</section>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"></script>
+<script src="assets/JS/chat.js"></script>
 <script src="./assets/JS/signUpPage.js"></script>
 
 </body>

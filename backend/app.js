@@ -73,9 +73,7 @@ app.use('/products', ProductRoute);
 app.use('/orders', OrderRoute);
 app.use('/profile', UserRoute);
 app.use('/beachInfo', BeachInfoRoute);
-app.get('/chat', (req, res) => {
-    res.sendFile(__dirname + '/public/chat.html')
-})
+
 app.get('/fb', (req, res) => {
     res.send(process.env.FB_APP_ID)
 });
