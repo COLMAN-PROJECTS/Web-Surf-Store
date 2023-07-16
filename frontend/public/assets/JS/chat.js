@@ -36,11 +36,22 @@ function sendMessage(message) {
 
 
 $('#client-submit').on('click', () => {
+  processUserInput();
+});
+clientInput.on('keyup', (event) => {
+    if (event.which === 13) {
+        processUserInput();
+    }
+});
+
+
+function processUserInput() {
   let userInput = clientInput.val();
-  addMessage('out-msg',userInput);
+  addMessage('out-msg', userInput);
   sendMessage(userInput);
   clientInput.val('');
-})
+}
+
 
 socket.on('message', function (msg) {
   addMessage('income-msg',msg);
