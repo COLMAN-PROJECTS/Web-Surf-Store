@@ -38,14 +38,10 @@ const createOrder = async (orderData) => {
   }
 
   order.totalPrice = totalPrice;
-  console.log('OrderService:' + '\n' + 'order:',order);
   const savedOrder = await order.save();
-  console.log('OrderService:' + '\n' + 'savedOrder:',savedOrder);
   const user = await User.getUserById(savedOrder.user);
   user.orders.push(savedOrder._id);
   await user.save();
-  // const updatedUser = await User.updateUser(savedOrder.user, {$push: {orders: savedOrder._id}}, {new: true})
-  console.log(user);
   return savedOrder;
 };
 

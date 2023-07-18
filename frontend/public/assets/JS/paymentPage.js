@@ -12,7 +12,6 @@ function initializeImageTitle() {
 }
 
 function sendOrder(orderData) {
-  console.log(orderData);
   $.ajax({
     type: "POST",
     url: "http://localhost:3000/orders",
@@ -22,6 +21,7 @@ function sendOrder(orderData) {
       console.log("Order sent successfully");
       const user = JSON.parse(localStorage.getItem("user"));
       createPost(`Check this out: New order has been made by ${user.fullName} !`)
+
       $("#orderCompleted").show();
       setTimeout(function () {
         window.location.href = '../index.html';

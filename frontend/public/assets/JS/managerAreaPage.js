@@ -286,7 +286,7 @@ function getDataForTable() {
         success: function (orders) {
           const dataWithoutId = orders.map(function (orders) {
             const {_id, products, shippingAddress, paymentMethod, createdAt, totalPrice, ...rest} = orders;
-            return {_id, products, shippingAddress, paymentMethod, createdAt, totalPrice};
+            return {_id, products, totalPrice, shippingAddress, paymentMethod, createdAt }
           })
           const colTitles = Object.keys(orders[0]).filter(key => key !== 'user' && key !== '__v');
 
@@ -311,7 +311,6 @@ function getDataForTable() {
             const {_id, fullName, email, phone, isAdmin, ...rest} = users;
             return {_id, fullName, email, phone, isAdmin};
           })
-          //TODO: check after adding users to the database
           const colTitles = Object.keys(users[8]).filter(key => key !== '__v' && key !== 'password' && key !== 'orders' && key !== 'address');
 
           console.log(colTitles);
@@ -578,11 +577,6 @@ function loadGraphs(data, value, index) {
   const marginBottom = 30;
   const marginLeft = 40;
 
-   // // Declare the x (horizontal position) scale.
-   //  const x = d3.scaleBand()
-   //    .domain(data.map(b => b.name).sort().reverse()) // descending frequency
-   //    .range([marginLeft, width - marginRight])
-   //    .padding(0.2);
 
   const regex = /^\d{4}-\d{2}$/;
   const aMatch = regex.test(data[0].name);
