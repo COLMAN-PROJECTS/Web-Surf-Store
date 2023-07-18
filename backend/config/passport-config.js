@@ -4,18 +4,14 @@ const userServices = require("../services/UserService");
 
 async function initialize(passport) {
     const authenticateUser = async (email, password, done) => {
-        console.log("email: " + email);
         const user = await userServices.getUserByEmail(email);
         if (user == null) {
             return done(null, false, { message: "No user with that email" });
         }
 
-        console.log("password: " + password);
-        console.log("user.password: " + user.password);
 
         try {
             const isMatch = await bcrypt.compare(password, user.password);
-            console.log("isMatch: " + isMatch);
             if (isMatch) {
                 return done(null, user);
             } else {
