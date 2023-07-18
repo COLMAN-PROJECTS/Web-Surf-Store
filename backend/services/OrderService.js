@@ -136,7 +136,7 @@ const groupByField = async (field) => {
         }
       },
       {
-        $unwind: "$productInfo"
+        $unwind: "$productInfo" // similar to join
       },
       {
         $group: {
@@ -161,43 +161,6 @@ const groupByField = async (field) => {
   }
 };
 
-// const groupByField = async (field) => {
-//   try {
-//     const pipeline = [
-//       {
-//         $lookup: {
-//           from: "products",
-//           localField: "products.product",
-//           foreignField: "_id",
-//           as: "productInfo"
-//         }
-//       },
-//       {
-//         $unwind: "$productInfo"
-//       },
-//       {
-//         $group: {
-//           _id: `$productInfo.${field}`,
-//           count: {$sum: 1},
-//           totalPrice: {$sum: "$totalPrice"},
-//         }
-//       },
-//       {
-//         $project: {
-//           _id: 1,
-//           count: 1,
-//           totalPrice: {$round: ["$totalPrice", 2]}
-//         }
-//
-//       }
-//     ];
-//
-//     const result = await Order.aggregate(pipeline);
-//     return result;
-//   } catch (error) {
-//     throw new Error('Error occurred while aggregating orders by field');
-//   }
-// };
 
 
 module.exports = {

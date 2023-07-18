@@ -52,9 +52,9 @@ const ProductRoute = require('./routes/ProductRoute.js')
 const OrderRoute = require('./routes/OrderRoute.js')
 const UserRoute = require('./routes/UserRoute.js')
 const BeachInfoRoute = require('./routes/BeachInfoRoute.js')
-
-
 const chat = require('./controllers/chatController')
+
+
 let server = require('http').createServer(app);
 const socketIO = require('socket.io');
 const io = socketIO(server);

@@ -46,8 +46,7 @@ function validateLogin(req, res, next) {
  */
 function validateFields(req, res, next) {
   const { fullName, email, password } = req.body;
-  console.log(req.body)
-  console.log(fullName, email, password)
+
   if (!fullName || !email || !password) {
     return res.json({ error: "Missing fields" });
   }
