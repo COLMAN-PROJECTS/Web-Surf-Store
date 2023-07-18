@@ -33,8 +33,6 @@ function sendMessage(message) {
   }
 }
 
-
-
 $('#client-submit').on('click', () => {
   processUserInput();
 });

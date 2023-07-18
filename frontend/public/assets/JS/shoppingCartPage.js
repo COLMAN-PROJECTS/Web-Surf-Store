@@ -122,31 +122,7 @@ $(document).ready(function () {
     };
     console.log(JSON.stringify(payload));
 
-    // // Send the AJAX request to the backend
-    // $.ajax({
-    //   //todo change the url
-    //   url: '/purchase',
-    //   type: 'POST',
-    //   data: JSON.stringify(payload),
-    //   contentType: 'application/json',
-    //   success: function(response) {
-    //     const popup = window.open('', 'Order Confirmation', 'width=400,height=200');
-    //     popup.document.write('<h1>Order was made successfully!</h1>');
-    //
-    //     // Close the pop-up after 5 seconds
-    //     setTimeout(function() {
-    //       popup.close();
-    //       // Clear the cart
-    //       localStorage.removeItem('cart');
-    //       // Redirect to the home page
-    //       window.location.href = '../index.html';
-    //     }, 5000);
-    //   },
-    //   error: function(error) {
-    //     // Handle the error response from the backend
-    //     alert('Purchase failed. Please try again.');
-    //   }
-    // });
+
   });
   $(document).on('click','#checkOutBtn', function(){
 
@@ -155,7 +131,6 @@ $(document).ready(function () {
 
     if (!isLoggedIn ) {
       event.preventDefault();
-      alert("Please log in to proceed.");
     }
 
     else{
@@ -164,7 +139,6 @@ $(document).ready(function () {
       window.location.href = "paymentPage.html";
       }
       else{
-        alert("Please add items to your cart");
       }
     }
   })

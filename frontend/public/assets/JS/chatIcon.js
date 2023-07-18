@@ -10,7 +10,6 @@
 //       },
 //       error: function(xhr, status, error) {
 //         console.log('Error starting chat:', error);
-//         alert('Error starting chat:'+ error);
 //       }
 //     });
 //   });

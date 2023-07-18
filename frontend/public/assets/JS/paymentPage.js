@@ -30,8 +30,6 @@ function sendOrder(orderData) {
 
     error: function (data) {
       console.log("Error sending order");
-      alert("Error sending order")
-      console.log(data);
       $("#orderNotCompleted").show();
       setTimeout(function () {
         $("#orderNotCompleted").hide();

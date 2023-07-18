@@ -67,7 +67,6 @@ function getLocation(weatherDiv) {
     },
     error: function () {
       console.log('Failed to fetch location data from the database.');
-      alert('Failed to fetch location data.(1)');
     }
   })
 }
