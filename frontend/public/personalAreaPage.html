@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>personalArea</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Akaya+Kanadaka&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie&amp;display=swap">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="assets/CSS/chat.css">
+  <link rel="stylesheet" href="assets/fonts/font-awesome.css">
+  <link rel="stylesheet" href="assets/CSS/personalAreaPage.css">
+</head>
+<body>
+<nav class="navbar navbar-light navbar-expand-md sticky-top py-3" style="padding-left: 30px;padding-right: 30px;">
+  <div class="container-fluid"><a class="navbar-brand d-flex align-items-center" href="../index.html"><span><img
+    class="rounded-circle logo-nav" src="assets/images/SurfStore-logo.png">SurfSights</span></a>
+    <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+      class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-uppercase navbar-btn" id="navcol-1">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link active" href="./productShopPage.html">shop</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./beachInfo.html">Beach info</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./shoppingCartPage.html">shopping cart</a></li>
+      </ul>
+      <div id="cartIcon" class="cart-icon" data-count="0">
+        <a class="fa btn fa-shopping-cart" href="./shoppingCartPage.html" style="font-size: 29px;margin-right: 10px;"></a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<section id="titleImage" class="section-hero">
+  <div data-bss-scroll-zoom="true" data-bss-scroll-zoom-speed="1">
+    <div class="text-center d-flex flex-column justify-content-center align-items-center my-0 py-3 px-3 hero-content">
+      <h1 id="titleH1" class="display-1 fw-bold hero-h1" style="color: #000000;"></h1>
+    </div>
+  </div>
+</section>
+
+<section class="card-section-image" style="margin-top: 28px;"><h1>Hey</h1>
+  <h2 id="user-name"></h2>
+  <div class="container">
+    <div class="row" style="height: 345px;margin: -11px;">
+      <div class="col-sm-6 col-md-4" style="margin-left: 450px;height: 345px;">
+        <div class="card-container-image" style="height: 345px;">
+          <div class="card-image">
+            <div class="front-image" style="height: 335px;">
+              <div class="cover-image cover-gradient"></div>
+              <div class="user-image"><img
+                src="https://api.dicebear.com/6.x/adventurer/svg"
+                alt="avatar"
+              />
+              </div>
+              <div class="content-image"><h3 id="user-name2" class="name-image">Name</h3>
+                <p id="user-email" class="text-center"><em> </em></p>
+                <p id="user-address" class="subtitle-image"> </p>
+                <p id="user-phone" class="subtitle-image"> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="mt-4">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col" style="margin-top: 18px;">
+        <div class="card shadow">
+          <div class="card-header py-2"><p class="lead text-info m-0">Your Orders</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive table mb-0 pt-3 pe-2">
+              <table id="order-table" class="table table-striped table-sm my-0 mydatatable">
+                <thead>
+                <tr>
+                  <th>Order Num</th>
+                  <th>Order Date</th>
+                  <th>Quantity of products</th>
+                  <th>Total Price</th>
+                  <th>Shipment address</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section style="margin-top: 96px;margin-bottom: 96px;margin-left: 55px;margin-right: 55px;"></section>
+<section id="section-chat">
+  <button id="chat-btn" class="btn btn-primary rounded-circle chat-icon" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-size: 30px; font-weight: 30; padding: 5px;" >
+    <canvas id="myCanvas" width="35" height="3" style="display: block; margin: 0 auto;"></canvas>
+    <i class="fa fa-comment" style="display: block; margin: 0 auto;"></i>
+  </button>
+
+  <div id="chat-pop-up" class="chat-popup">
+    <div class="chat-area">
+    </div>
+
+    <div class="input-area">
+      <input id="client-chat-input" type="text">
+      <button id="emoji-btn"> &#127773;</button>
+      <button id="client-submit" class="submit"> <i class="material-icons"> send</i></button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-4 footer-navigation"><h3><a href="#">Surf Sights</a></h3>
+        <p class="links" style="margin-top: 31px;"><a href="#">Top</a><strong> · </strong><a
+          href="productShopPage.html">Shop</a><strong> · </strong><a href="beachInfo.html">Beach Info</a><strong>
+          · </strong><a href="shoppingCartPage.html">Shopping Cart</a><strong> ·</strong></p>
+        <p class="company-name" style="margin-bottom: 2px;margin-top: 43px;">SurfSights ©
+          2023</p></div>
+      <div class="col-sm-6 col-md-4 footer-contacts">
+        <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+          <p><span class="new-line-span">184 Dizengoff Street</span> Tel-Aviv, Israel</p>
+        </div>
+        <div><i class="fa fa-phone footer-contacts-icon"></i>
+          <p class="footer-center-info email text-start"> +972 3-3333333</p></div>
+        <div><i class="fa fa-envelope footer-contacts-icon"></i>
+          <p><a href="mailto:davidovich.dan@gmail.com" target="_blank"> support@surfsights.com</a></p></div>
+      </div>
+      <div class="col-md-4 footer-about"><h4>About the company</h4>
+        <p>Welcome to our online surfing shop, where you can find everything you need for your next wave-riding adventure.
+          Browse our extensive collection of surfboards, wetsuits, and accessories from top brands,
+          ensuring you're equipped for the ultimate surfing experience. With secure online ordering and fast shipping,
+          we're committed to providing surf enthusiasts with convenient access to high-quality gear for conquering the waves. </p>
+        <div class="social-links social-icons">
+          <a href="https://www.facebook.com/colmanSurfShop" target="_blank">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a href="https://github.com/COLMAN-PROJECTS/Web-Surf-Store" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"></script>
+<script src="assets/JS/chat.js"></script>
+<script src="assets/JS/personalAreaPage.js"></script>
+
+</body>
+</html>

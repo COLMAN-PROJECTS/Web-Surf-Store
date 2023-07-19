@@ -1,0 +1,45 @@
+###
+GET http://localhost:3000/profile
+
+###
+GET http://localhost:3000/profile/email/Israel.Israeli@gmail.com
+
+###
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Israel Israeli",
+  "email": "Israel.Israeli@gmail.com",
+  "password": "123456",
+  "isAdmin": true
+}
+
+###
+POST http://localhost:3000/auth/loginReq
+Content-Type: application/json
+
+{
+  "email": "666@example.com || 1=1",
+  "password": "1234"
+}
+
+###
+PATCH http://localhost:3000/profile/update/
+Content-Type: application/json
+
+{
+  "id": "647e274b961b8485a84dbdc5",
+  "user": {
+    "fullName": "John Doe",
+    "phone": "0541234567"
+  }
+}
+
+###
+DELETE  http://localhost:3000/profile/delete/
+Content-Type: application/json
+
+{
+  "id": "6497e9ddb05344edf41a6c78"
+}

@@ -1,0 +1,280 @@
+.rounded-lg {
+  border-radius: 1rem
+}
+
+.nav-pills .nav-link {
+  color: #555
+}
+
+.nav-pills .nav-link.active {
+  color: #fff
+}
+
+.radius-15 {
+  border-radius: 15px
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid transparent;
+  border-radius: .25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%)
+}
+
+footer {
+  background-color: #292c2f;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: bold 16px sans-serif;
+  margin-top: 20px;
+  padding: 25px;
+  bottom: 0;
+  color: #fff
+}
+
+.footer-navigation h3 {
+  margin: 0 0 20px;
+  font: 36px Cookie, cursive;
+  color: #fff
+}
+
+.footer-navigation h3 a {
+  text-decoration: none;
+  color: #fff
+}
+
+.footer-navigation h3 span {
+  color: #5383d3
+}
+
+.footer-navigation p.links a {
+  color: #fff;
+  text-decoration: none
+}
+
+.footer-navigation p.company-name {
+  color: #8f9296;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 20px
+}
+
+@media (max-width: 767px) {
+  .footer-contacts {
+    margin: 30px 0
+  }
+}
+
+.footer-contacts p {
+  display: inline-block;
+  color: #fff;
+  vertical-align: middle
+}
+
+.footer-contacts p a {
+  color: #5383d3;
+  text-decoration: none
+}
+
+.fa.footer-contacts-icon {
+  background-color: #33383b;
+  color: #fff;
+  font-size: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 38px;
+  margin: 10px 15px 10px 0
+}
+
+span.new-line-span {
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 2
+}
+
+.footer-about h4 {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 20px
+}
+
+.footer-about p {
+  line-height: 20px;
+  color: #92999f;
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0
+}
+
+div.social-links {
+  margin-top: 20px;
+  color: #fff
+}
+
+.social-links a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 5px;
+  margin-bottom: 5px
+}
+
+.btn {
+  border-radius: 10px
+}
+
+.navbar {
+  background: rgba(241, 242, 244, .8);
+  border-bottom: 2px solid #dfe3e7
+}
+
+.hero-content {
+  background: rgba(255, 255, 255, .3)
+}
+
+@media (min-width: 768px) {
+  .hero-content {
+    background: rgba(255, 255, 255, .3);
+    height: 500px
+  }
+}
+
+.hero-h1 {
+  max-width: 500px;
+  text-shadow: 1px 5px 30px #000;
+  font-family: 'Cookie', cursive;
+  font-size: 80px;
+}
+
+.logo-nav {
+  width: 80px;
+  height: 80px;
+  margin-right: 20px
+}
+
+.section-hero img {
+  display: none
+}
+
+
+.hero-h1-2, .hero-h1-categories {
+  max-width: 700px
+}
+
+.row-categories {
+  text-align: center
+}
+
+.h4-back {
+  color: rgb(255, 255, 255);
+  background: rgba(11, 27, 29, .3);
+  border-radius: 7px;
+  border-bottom-color: #fff
+}
+
+.main-container {
+  margin-top: 30px;
+  width: 100%;
+}
+
+form {
+  width: 200px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 5px;
+}
+
+#detailsContainer {
+  margin-bottom: 10px;
+}
+
+.detailRow input {
+  width: 30%;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+#addDetail {
+  margin-bottom: 5px;
+}
+
+
+
+.error {
+  color: red;
+  margin-top: 5px;
+}
+
+.list-group-item{
+  cursor: pointer;
+}
+.list-group-item:nth-child(odd) {
+  background-color: ghostwhite;
+}
+td .emoji {
+  display: flex;
+  align-items: normal;
+  justify-content: center;
+}
+
+#new-button{
+  margin-left: 10px;
+}
+
+#addDetail{
+margin-top: 5px;
+}
+
+#delete-button{
+  margin-left: 10px;
+}
+
+.ml-1, .mr-1 {
+  vertical-align: middle;
+  height: max-content;
+  width: max-content;
+}
+
+#table-container-title {
+margin: 400px 0 0 0;
+}
+
+.bar-chart{
+  width: 100%;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 100px;
+}
+
+

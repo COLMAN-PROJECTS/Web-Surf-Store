@@ -7,7 +7,8 @@ const createProduct = async (product) => {
             price: product.price,
             frontImage: product.frontImage,
             category: product.category,
-            details: product.details,
+            brand: product.brand,
+            details: [...product.details],
             images: product.images
         });
 
@@ -39,59 +40,72 @@ const createProduct = async (product) => {
             throw  new Error("Error in getting product by id");
     }};
 
-    const updateProduct = async (_id, name, description, price, frontImage, category, details, images) => {
+    const updateProduct = async ( product) => {
         try {
-            const product = await Product.findById(_id);
-            if (!product) {
-                throw new Error("Product not found");
+            const updatedProduct = await Product.findByIdAndUpdate(product._id, product, {new: true});
+            if (!updatedProduct) {
+                console.log("Product not found");
             }
+            else
+                return updatedProduct;
 
-            if (name) {
-                product.name = name;
-            }
-            if (description) {
-                product.description = description;
-            }
-            if (price) {
-                product.price = price;
-            }
-            if (frontImage) {
-                product.frontImage = frontImage;
-            }
-            if (category) {
-                product.category = category;
-            }
-            if (details) {
-                product.details.brand = details.brand;
-                product.details.size = details.size;
-            }
-            if (images) {
-                product.images = images;
-            }
-
-            return await product.save();
         }catch (error) {
             throw  new Error("Error in updating product");
         }
     };
 
-    const deleteProduct = async (id) => {
-        try {
-            const product = await Product.findById(id);
-            if (!product) {
-                throw new Error("Product not found");
-            }
 
-            return await product.remove();
-        }catch (error) {
-            throw  new Error("Error in deleting product");
+
+const deleteProduct = async (id) => {
+    try {
+        const product = await Product.findByIdAndDelete(id);
+        if (!product) {
+            console.log("Error: Product not found");
+            return null;
         }
-    };
+        console.log(product)
+        return product;
+    } catch (error) {
+        console.error("Error in deleting product:", error);
+        throw new Error("Error in deleting product");
+    }
+};
 
-    module.exports = {
+
+const filterProducts = async (filter) => {
+    try {
+        const {product} = filter;
+        return await Product.find(product);
+    }catch (error) {
+        throw  new Error("Error in filtering products");
+    }
+}
+
+const groupByField = async (field) => {
+    try {
+        const result = await Product.aggregate([
+            {
+                $group: {
+                    _id: `$${field}`,
+                    count: { $sum: 1 },
+                },
+            },
+        ]);
+
+        return result;
+    } catch (error) {
+        throw new Error('Failed to group by field');
+    }
+};
+
+
+
+module.exports = {
         createProduct,
         getAllProducts,
         getProductById,
         updateProduct,
-        deleteProduct
+        deleteProduct,
+        filterProducts,
+        groupByField
     };

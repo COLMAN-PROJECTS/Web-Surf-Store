@@ -2,40 +2,49 @@
   "_id": {
     "$oid": "647e274b961b8485a84dbdc5"
   },
-  "name": "John Doe",
+  "fullName": "John Doe",
   "email": "johndoe@example.com",
-  "password": " $2b$10$1v9WIXGO3DyI2f/c0I9Q3e6K14V1u7X/lhTzG9bX2t1yQeCQz7fwO",
+  "password": "1234",
   "phone": "1234567890",
-  "role": "manager"
+  "address": "Tel Aviv",
+  "isAdmin": true
 },
   {
     "_id": {
       "$oid": "647e274b961b8485a84dbdc6"
     },
-    "name": "Eviatar d",
+    "fullName": "Eviatar d",
     "email": "eviatard@example.com",
-    "password": " $2b$10$1v9WIXGO3DyI2f/c0I9Q3e6K14V1u7X/lhTzG9bX2t1yQeCQz7fw1",
+    "password":"1234",
     "phone": "1234567891",
-    "role": "user"
+    "address": "Jerusalem",
+    "orders": [{"_id":"647e2a7e961b8485a84oocb1"}],
+    "isAdmin": false
+
   },
   {
     "_id": {
       "$oid": "647e274b961b8485a84dbdc7"
     },
-    "name": "Matan d",
+    "fullName": "Matan d",
     "email": "matand@example.com",
-    "password": " $2b$10$1v9WIXGO3DyI2f/c0I9Q3e6K14V1u7X/lhTzG9bX2t1yQeCQz7fw2",
+    "password": "1234",
     "phone": "1234567892",
-    "role": "user"
+    "address": "Haifa",
+    "orders": [{"_id":"647e2a7e961b8485a84oocb3"}],
+    "isAdmin": false
   },
   {
     "_id": {
       "$oid": "647e274b961b8485a84dbdc8"
     },
-    "name": "Dan d",
+    "fullName": "Dan d",
     "email": "dand@example.com",
-    "password": " $2b$10$1v9WIXGO3DyI2f/c0I9Q3e6K14V1u7X/lhTzG9bX2t1yQeCQz7fw3",
+    "password": "1234",
     "phone": "1234567893",
-    "role": "user"
+    "address": "Ashdod",
+    "orders": [{"_id":"647e2a7e961b8485a84oocb2"}],
+    "isAdmin": false
+
   }]
 

@@ -1,67 +1,69 @@
-const User = require('../models/UserSchema');
+const User = require("../models/UserSchema");
+const Order = require("../models/OrderSchema");
+const Product = require("../models/ProductSchema");
 
-const createUser = async (username, email, password, address, phoneNumber) => {
-    const user = new User({
-        username: username,
-        email: email,
-        password: password,
-        address: address,
-        phoneNumber: phoneNumber
-    });
-
-    return await user.save();
-};
-
-const getAllUsers = async () => {
-    return await User.find();
+const getUserByEmail = async (email) => {
+    const user = await User.findOne({ email: email }).populate('orders')
+        .populate({
+            path: 'orders',
+            populate: {
+                path: 'products.product',
+                model: Product,
+            },
+        });
+    return user;
 };
 
 const getUserById = async (id) => {
-    return await User.findById(id);
+    const user = await User.findById(id).populate('orders').populate({
+        path: 'orders.products',
+        model: Product
+    });
+    return user;
 };
 
-const updateUser = async (id, username, email, password, address, phoneNumber) => {
-    const user = await User.findById(id);
-    if (!user) {
-        return null;
+const getAllUsers = async () => {
+    try {
+        const users = await User.find().populate('orders').populate({
+            path: 'orders.products',
+            model: Product
+        });
+        if (users) {
+            return users;
+        }
+    } catch (err) {
+        console.log(err);
     }
-
-    if (username) {
-        user.username = username;
-    }
-    if (email) {
-        user.email = email;
-    }
-    if (password) {
-        user.password = password;
-    }
-    if (address) {
-        user.address = address;
-    }
-    if (phoneNumber) {
-        user.phoneNumber = phoneNumber;
-    }
-
-    return await user.save();
 };
 
-const deleteUser = async (id, role) => {
-    if (role !== 'manager') {
-        // Unauthorized access, return an error or handle it accordingly
-        return { error: 'Unauthorized access: Only managers are allowed to delete users.' };
+const updateUser = async (user) => {
+    console.log(user._id)
+    console.log(user)
+    try {
+        const updatedUser = await User.findByIdAndUpdate(user._id, user, {new: true});
+        if (updatedUser) {
+            return updatedUser;
+        }
+    } catch (error) {
+        console.log(error);
     }
+};
 
-    if (!await User.findById(id)) {
-        return null;
+const deleteUser = async (id) => {
+    try {
+        const deletedUser = await User.findByIdAndDelete(id);
+        if (deletedUser) {
+            return deletedUser;
+        }
+    } catch (error) {
+        console.log(error);
     }
-
-    return await User.findByIdAndDelete(id);
 };
 
 module.exports = {
-    createUser,
-    getAllUsers,
+    getUserByEmail,
     getUserById,
     updateUser,
-    deleteUser
+    getAllUsers,
+    deleteUser,
 };

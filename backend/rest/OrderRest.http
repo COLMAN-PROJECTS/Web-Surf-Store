@@ -1,0 +1,70 @@
+# get all orders
+GET http://localhost:3000/orders
+
+###
+
+# create a new order
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+  "user": "649883a6a725e5210808890d",
+  "products": [
+    {
+      "product": "647e271a961b8485a84dbde4",
+      "quantity": 1,
+      "size": "11.0"
+    }
+  ],
+  "shippingAddress": "123 Main St, Tel Aviv, Israel",
+  "paymentMethod": "Credit Card"
+}
+
+
+###
+
+# get order by id
+GET http://localhost:3000/orders/649413868a4ed1705a9b4895
+
+###
+
+# update order
+PATCH http://localhost:3000/orders
+Content-Type: application/json
+
+{
+  "id": "649739b1c5cd32671139635c",
+  "order":
+{
+  "paymentMethod": "Credit Card"
+}
+}
+
+
+###
+
+# filter orders
+POST http://localhost:3000/orders/filter
+Content-Type: application/json
+
+
+{
+  "paymentMethod": "PayPal"
+}
+
+
+###
+
+# delete product
+DELETE http://localhost:3000/orders
+Content-Type: application/json
+
+{
+  "_id": "649413868a4ed1705a9b4895"
+}
+
+
+
+
+
+

@@ -1,0 +1,352 @@
+footer {
+  background-color: #292c2f;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: bold 16px sans-serif;
+  margin-top: 20px;
+  padding: 25px;
+  bottom: 0;
+  color: #fff
+}
+
+.cart-icon {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.cart-icon::after {
+  content: attr(data-count);
+  display: block;
+  position: absolute;
+  top: -10px;
+  background: red;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+}
+
+.footer-navigation h3 {
+  margin: 0 0 20px;
+  font: 36px Cookie, cursive;
+  color: #fff
+}
+
+.footer-navigation h3 a {
+  text-decoration: none;
+  color: #fff
+}
+
+.footer-navigation h3 span {
+  color: #5383d3
+}
+
+.footer-navigation p.links a {
+  color: #fff;
+  text-decoration: none
+}
+
+.footer-navigation p.company-name {
+  color: #8f9296;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 20px
+}
+
+@media (max-width: 767px) {
+  .footer-contacts {
+    margin: 30px 0
+  }
+}
+
+.footer-contacts p {
+  display: inline-block;
+  color: #fff;
+  vertical-align: middle
+}
+
+.footer-contacts p a {
+  color: #5383d3;
+  text-decoration: none
+}
+
+.fa.footer-contacts-icon {
+  background-color: #33383b;
+  color: #fff;
+  font-size: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 38px;
+  margin: 10px 15px 10px 0
+}
+
+span.new-line-span {
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 2
+}
+
+.footer-about h4 {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 20px
+}
+
+.footer-about p {
+  line-height: 20px;
+  color: #92999f;
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0
+}
+
+div.social-links {
+  margin-top: 20px;
+  color: #fff
+}
+
+.social-links a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 5px;
+  margin-bottom: 5px
+}
+
+.btn {
+  border-radius: 10px
+}
+
+.navbar {
+  background: rgba(241, 242, 244, .8);
+  border-bottom: 2px solid #dfe3e7
+}
+
+.hero-content {
+  background: rgba(255, 255, 255, .3)
+}
+
+@media (min-width: 768px) {
+  .hero-content {
+    background: rgba(255, 255, 255, .3);
+    height: 500px
+  }
+}
+
+.hero-h1 {
+  max-width: 500px;
+  text-shadow: 1px 5px 30px #000;
+  font-family: 'Cookie', cursive;
+  font-size: 80px;
+}
+
+.logo-nav {
+  width: 80px;
+  height: 80px;
+  margin-right: 20px
+}
+
+.section-hero img {
+  display: none
+}
+
+.hero-h1-2, .hero-h1-categories {
+  max-width: 700px
+}
+
+.row-categories {
+  text-align: center
+}
+
+.h4-back {
+  color: rgb(255,255,255);
+  background: rgba(11, 27, 29, .3);
+  border-radius: 7px;
+  border-bottom-color: #fff
+}
+
+.card-section-image {
+  padding: 60px 0 30px;
+  background: #f1f1f1
+}
+
+.card-section-image > h1 {
+  font-size: 48px;
+  text-align: center;
+  margin: 0 0 10px
+}
+
+.card-section-image > h2 {
+  font-size: 24px;
+  text-align: center;
+  margin: 0 0 60px;
+  color: #aaa;
+  text-transform: uppercase
+}
+
+.card-container-image {
+  -webkit-perspective: 1500px;
+  -moz-perspective: 1500px;
+  -o-perspective: 1500px;
+  perspective: 1500px;
+  margin-bottom: 30px
+}
+
+.card-image {
+  -webkit-transition: -webkit-transform .5s;
+  -moz-transition: -moz-transform .5s;
+  -o-transition: -o-transform .5s;
+  transition: transform .5s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  position: relative
+}
+
+.back-image, .front-image {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, .1);
+  padding-bottom: 46px
+}
+
+.front-image {
+  z-index: 2
+}
+
+.back-image {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  z-index: 3
+}
+
+.back-image, .card-container-image, .front-image {
+  width: 100%;
+  height: 420px;
+  border-radius: 4px
+}
+
+.card-image .cover-image {
+  height: 120px;
+  overflow: hidden;
+  border-radius: 4px 4px 0 0
+}
+
+.card-image .cover-image img {
+  width: 100%;
+  height: auto
+}
+
+.card-image .cover-image.cover-gradient {
+  background: #fff radial-gradient(circle at 50% 100%, #adcace 0, #89bece 33%, #34a1c8 66%, #036ead 100%);
+}
+
+.card-image .user-image {
+  border-radius: 50%;
+  display: block;
+  height: 130px;
+  margin: -65px auto 0;
+  overflow: hidden;
+  width: 120px
+}
+
+.card-image .user-image img {
+  background: #fff;
+  border: 5px solid #fff;
+  width: 100%
+}
+
+.card-image .content-image {
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: none;
+  padding: 10px 20px 20px
+}
+
+.content-back-image {
+  display: flex;
+  align-items: center;
+  height: 100%
+}
+
+.card-image .name-image {
+  font-size: 22px;
+  line-height: 26px;
+  margin: 0;
+  text-align: center;
+  text-transform: capitalize
+}
+
+.card-image .subtitle-image {
+  color: #aaa;
+  text-align: center;
+  margin-bottom: 15px
+}
+
+.card-image .footer-image {
+  width: 100%;
+  color: #aaa;
+  padding: 10px 0;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #eee
+}
+
+.card-image .footer-image .social-image a {
+  margin: 0 7px;
+  font-size: 18px
+}
+
+@media screen and (-ms-high-contrast: active),(-ms-high-contrast: none) {
+  .back-image, .front-image {
+    -ms-backface-visibility: visible;
+    backface-visibility: visible
+  }
+
+  .back-image {
+    visibility: hidden;
+    -ms-transition: .2s cubic-bezier(.92, .01, .83, .67)
+  }
+
+  .front-image {
+    z-index: 4
+  }
+
+  .card-container-image:hover .back-image {
+    z-index: 5;
+    visibility: visible
+  }
+}
+.image-product{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+

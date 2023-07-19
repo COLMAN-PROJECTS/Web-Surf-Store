@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>paymentPage</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Akaya+Kanadaka&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie&amp;display=swap">
+  <link rel="stylesheet" href="assets/CSS/chat.css">
+  <link rel="stylesheet" href="assets/fonts/font-awesome.css">
+  <link rel="stylesheet" href="assets/CSS/paymentPage.css">
+</head>
+<body>
+<nav class="navbar navbar-light navbar-expand-md sticky-top py-3" style="padding-left: 30px;padding-right: 30px;">
+  <div class="container-fluid"><a class="navbar-brand d-flex align-items-center" href="../index.html"><span><img
+    class="rounded-circle logo-nav" src="assets/images/SurfStore-logo.png">SurfSights</span></a>
+    <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+      class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-uppercase navbar-btn" id="navcol-1">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link active" href="./productShopPage.html">shop</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./beachInfo.html">Beach info</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./shoppingCartPage.html">shopping cart</a></li>
+      </ul>
+      <span>
+        <a id="login" class="btn bg-white me-3" type="button">Log in</a>
+        <a id="logOut" style="display: none" class="btn bg-white me-3" type="button">Log Out</a>
+        <a id="managerBtn" style="display: none" class="btn bg-white me-3" href="managerAreaPage.html" type="button">Manage Area</a>
+        <a id="clientBtn" style="display: none" class="btn bg-white me-3" href="personalAreaPage.html" type="button">Personal Area</a>
+      </span>
+    </div>
+  </div>
+</nav>
+
+<section id="titleImage" class="section-hero">
+  <div data-bss-scroll-zoom="true" data-bss-scroll-zoom-speed="1">
+    <div class="text-center d-flex flex-column justify-content-center align-items-center my-0 py-3 px-3 hero-content">
+      <h1 id="titleH1" class="display-1 fw-bold hero-h1" style="color: #000000;">
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section style="margin-top: 96px;margin-bottom: 96px;margin-left: 55px;margin-right: 55px;">
+  <div class="container py-5">
+
+    <div class="row">
+      <div class="col-lg-7 mx-auto">
+        <div class="bg-white rounded-lg shadow-sm p-5">
+          <!-- Credit card form tabs -->
+          <ul role="tablist" class="nav bg-light nav-pills rounded-pill nav-fill mb-3">
+            <li class="nav-item">
+              <a data-toggle="pill" href="#nav-tab-card"
+                 class="nav-link active rounded-pill">
+                <i class="fa fa-credit-card"></i>
+                Credit Card
+              </a>
+            </li>
+<!--            <li class="nav-item">-->
+<!--              <a data-toggle="pill" href="#nav-tab-paypal"-->
+<!--                 class="nav-link rounded-pill">-->
+<!--                <i class="fa fa-paypal"></i>-->
+<!--                Paypal-->
+<!--              </a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--              <a data-toggle="pill" href="#nav-tab-bank"-->
+<!--                 class="nav-link rounded-pill">-->
+<!--                <i class="fa fa-university"></i>-->
+<!--                Bank Transfer-->
+<!--              </a>-->
+<!--            </li>-->
+          </ul>
+          <!-- End -->
+
+
+          <!-- Credit card form content -->
+          <div class="tab-content">
+
+            <!-- credit card info-->
+            <div id="nav-tab-card" class="tab-pane fade show active">
+              <form role="form">
+                <div class="form-group">
+                  <label class="label-input" >Full name (on the card)</label>
+                  <input  id="userName" type="text" name="username" placeholder="Jeff Doe" required class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="label-input" id="cardNumber">Card number</label>
+                  <div class="input-group">
+                    <label>
+                      <input id="creditCardNumber" type="text" name="cardNumber" placeholder="Your card number" class="form-control" required>
+                    </label>
+                    <div class="input-group-append icons-visa">
+                    <span class="input-group-text text-muted">
+                      <i class="fa fa-cc-visa mx-1"></i>
+                      <i class="fa fa-cc-amex mx-1"></i>
+                      <i class="fa fa-cc-mastercard mx-1"></i>
+                    </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="form-group">
+                      <label class="label-input" ><span class=" hidden-xs">Expiration</span></label>
+                      <div class="input-group">
+                        <input id="MM" type="number" placeholder="MM" name="" class="form-control" required>
+                        <input id="YY" type="number" placeholder="YY" name="" class="form-control" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group mb-4">
+                      <label class="label-input" data-toggle="tooltip" title="Three-digits code on the back of your card">CVV
+                        <i class="fa fa-question-circle"></i>
+                      </label>
+                      <input id="CVV" type="text" required class="form-control">
+                    </div>
+                  </div>
+
+
+                </div>
+                <button id="confirmBtn" type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm">Confirm</button>
+                <label id="orderCompleted" class="label-input" style="display: none">Order completed</label>
+                <label id="orderNotCompleted" class="label-input" style="display: none">Order not completed</label>
+              </form>
+            </div>
+            <!-- End -->
+
+            <!-- Paypal info -->
+<!--            <div id="nav-tab-paypal" class="tab-pane fade">-->
+<!--              <p>Paypal is easiest way to pay online</p>-->
+<!--              <p>-->
+<!--                <button type="button"-->
+<!--                        class="btn btn-primary rounded-pill"><i-->
+<!--                  class="fa fa-paypal mr-2"></i> Log into my-->
+<!--                  Paypal-->
+<!--                </button>-->
+<!--              </p>-->
+<!--              <p class="text-muted">Lorem ipsum dolor sit amet, consectetur-->
+<!--                adipisicing elit, sed do eiusmod tempor incididunt ut-->
+<!--                labore et dolore magna aliqua.-->
+<!--              </p>-->
+<!--            </div>-->
+            <!-- End -->
+
+<!--            &lt;!&ndash; bank transfer info &ndash;&gt;-->
+<!--            <div id="nav-tab-bank" class="tab-pane fade">-->
+<!--              <h6>Bank account details</h6>-->
+<!--              <dl>-->
+<!--                <dt>Bank</dt>-->
+<!--                <dd> THE WORLD BANK</dd>-->
+<!--              </dl>-->
+<!--              <dl>-->
+<!--                <dt>Account number</dt>-->
+<!--                <dd>7775877975</dd>-->
+<!--              </dl>-->
+<!--              <dl>-->
+<!--                <dt>IBAN</dt>-->
+<!--                <dd>CZ7775877975656</dd>-->
+<!--              </dl>-->
+<!--              <p class="text-muted">Lorem ipsum dolor sit amet, consectetur-->
+<!--                adipisicing elit, sed do eiusmod tempor incididunt ut-->
+<!--                labore et dolore magna aliqua.-->
+<!--              </p>-->
+<!--            </div>-->
+            <!-- End -->
+          </div>
+          <!-- End -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="section-chat">
+  <button id="chat-btn" class="btn btn-primary rounded-circle chat-icon" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; font-size: 30px; font-weight: 30; padding: 5px;" >
+    <canvas id="myCanvas" width="35" height="3" style="display: block; margin: 0 auto;"></canvas>
+    <i class="fa fa-comment" style="display: block; margin: 0 auto;"></i>
+  </button>
+
+  <div id="chat-pop-up" class="chat-popup">
+    <div class="chat-area">
+    </div>
+
+    <div class="input-area">
+      <input id="client-chat-input" type="text">
+      <button id="emoji-btn"> &#127773;</button>
+      <button id="client-submit" class="submit"> <i class="material-icons"> send</i></button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-4 footer-navigation"><h3><a href="#">Surf Sights</a></h3>
+        <p class="links" style="margin-top: 31px;"><a href="#">Top</a><strong> · </strong><a
+          href="productShopPage.html">Shop</a><strong> · </strong><a href="beachInfo.html">Beach Info</a><strong>
+          · </strong><a href="shoppingCartPage.html">Shopping Cart</a><strong> ·</strong></p>
+        <p class="company-name" style="margin-bottom: 2px;margin-top: 43px;">SurfSights ©
+          2023</p></div>
+      <div class="col-sm-6 col-md-4 footer-contacts">
+        <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+          <p><span class="new-line-span">184 Dizengoff Street</span> Tel-Aviv, Israel</p>
+        </div>
+        <div><i class="fa fa-phone footer-contacts-icon"></i>
+          <p class="footer-center-info email text-start"> +972 3-3333333</p></div>
+        <div><i class="fa fa-envelope footer-contacts-icon"></i>
+          <p><a href="mailto:davidovich.dan@gmail.com" target="_blank"> support@surfsights.com</a></p></div>
+      </div>
+      <div class="col-md-4 footer-about"><h4>About the company</h4>
+        <p>Welcome to our online surfing shop, where you can find everything you need for your next wave-riding adventure.
+          Browse our extensive collection of surfboards, wetsuits, and accessories from top brands,
+          ensuring you're equipped for the ultimate surfing experience. With secure online ordering and fast shipping,
+          we're committed to providing surf enthusiasts with convenient access to high-quality gear for conquering the waves. </p>
+        <div class="social-links social-icons">
+          <a href="https://www.facebook.com/colmanSurfShop" target="_blank">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a href="https://github.com/COLMAN-PROJECTS/Web-Surf-Store" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"></script>
+<script src="assets/JS/chat.js"></script>
+<script src="assets/JS/postOnFacebook.js"></script>
+<script src="assets/JS/paymentPage.js"></script>
+<script src="assets/JS/PopupLogin.js"></script>
+
+</body>
+</html>
