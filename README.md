@@ -6,7 +6,6 @@ Welcome to the Surf Store repository! This is a web application developed as par
 
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
 
@@ -17,8 +16,8 @@ The Surf Store offers the following features:
 1. Surf Staff Shop: Browse and purchase surf-related products.
 2. Shop Cart: Add items to your cart, view the cart, and proceed to checkout.
 3. Webcams: View live feeds from webcams placed in various beaches.
-4. Twitter API: Access the latest surf-related tweets and trends.
-5. Chat Web Socket: Engage in real-time chat with other users on the website.
+4. Facbook API: post and look over the last purchases.
+5. Chat Web Socket: Engage in real-time chat-bot to get live support.
 6. Login: Create an account, log in, and manage your profile information.
 
 ## Technologies Used
@@ -37,38 +36,11 @@ The following technologies were used in the development of this project:
 
 - APIs:
   - Webcams API for live webcam feeds
-  - Twitter API for surf-related tweets and trends
+  - Facbook API
+  - Open Weather API
 
 - Additional Libraries and Tools:
   - Socket.IO for real-time chat functionality
-
-## Installation
-
-To set up the Surf Store project on your local machine, follow these steps:
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/Surf-Store/Web-Surf-Store.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```bash
-   cd Web-Surf-Store
-   ```
-   
-3. Refer to `.env.local` file in the `backend/config` directory and provide the necessary environment variables.
-
-4. Start the development server:
-
-   ```bash
-   cd ../backend
-   npm start
-   ```
-   This will start the back-end development server.
-
-5. Open your browser and visit `http://localhost:3000` to access the Surf Store.
 
 ## Usage
 
@@ -84,8 +56,8 @@ Once you have the project set up and running, you can start exploring the Surf S
   - Access the "Webcams" section to view live feeds from different beaches.
   - Click on a webcam feed to enlarge it.
 
-- Twitter API:
-  - Check the "Twitter" section to see the latest surf-related tweets and trends.
+- Facbook API:
+  - When you reach the payment page we would add you to our Facbook page as one of the engaged customers.
 - Chat Web Socket:
   - Engage in real-time chat with other users on the website.
   - Use the chat feature to discuss surfing, ask questions, or interact with fellow surf enthusiasts.
