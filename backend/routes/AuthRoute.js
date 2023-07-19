@@ -34,14 +34,12 @@ router.post(
                     console.error("Error saving user to session:", err);
                     return res.status(500).json({error: "Internal server error"});
                 }
-                console.log('s:', req.session.id)
 
                 res.cookie("connect.sid", req.session.id, {
                     httpOnly: true,
                     secure: false,
                     maxAge: 1000 * 60 * 60 * 24
                 }).status(200).json(user)
-                console.log("User logged in:", user);
             });
         } catch (error) {
             console.error("Error retrieving user:", error);
